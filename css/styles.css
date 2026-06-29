@@ -926,15 +926,48 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   box-shadow: 0 0 60px rgba(100,180,255,0.06), 0 24px 64px rgba(0,0,0,0.5);
 }
 
+/* Foto real de la guitarra */
+.anatomia-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius);
+  box-shadow: 0 24px 64px rgba(0,0,0,0.5);
+}
+
+/* Puntos interactivos (círculos rojos sobre la foto) */
 .hotspot {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  margin: -15px 0 0 -15px;       /* centra el punto sobre la coordenada */
+  border-radius: 50%;
+  background: var(--red);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  line-height: 1;
   cursor: pointer;
-  transition: r 0.2s ease, opacity 0.2s ease;
+  z-index: 5;
+  box-shadow: 0 0 0 0 rgba(211,47,47,0.5);
+  animation: hotspot-pulse 2.2s ease-out infinite;
+  transition: transform 0.2s ease, background 0.2s ease;
 }
-.hotspot:hover, .hotspot:focus-visible {
-  opacity: 1 !important;
-  filter: drop-shadow(0 0 8px rgba(211,47,47,0.7));
+.hotspot::before { content: '+'; }
+.hotspot:hover,
+.hotspot:focus-visible,
+.hotspot.active {
+  background: var(--red-hover);
+  transform: scale(1.18);
+  animation-play-state: paused;
 }
-.hotspot.active { opacity: 1 !important; }
+@keyframes hotspot-pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(211,47,47,0.5); }
+  70%  { box-shadow: 0 0 0 14px rgba(211,47,47,0); }
+  100% { box-shadow: 0 0 0 0 rgba(211,47,47,0); }
+}
 
 /* Hotspot info cards */
 .hotspot-info {
