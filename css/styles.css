@@ -2,7 +2,7 @@
    TRASTES — Luthería de Autor · styles.css
    Paleta rebelde-industrial
    ────────────────────────────────────────────────
-   --bg-deep     #0A0A0A   fondo principal
+   --bg-deep     #000000   fondo principal (negro puro)
    --bg-card     #121212   elevaciones / tarjetas
    --bg-mid      #1E1E1E   superficies medias
    --red         #D32F2F   acento rebelde
@@ -18,7 +18,7 @@ ul, ol { list-style: none; }
 
 /* ── Variables globales ── */
 :root {
-  --bg-deep:       #0A0A0A;
+  --bg-deep:       #000000;
   --bg-card:       #121212;
   --bg-mid:        #1A1A1A;
   --bg-border:     rgba(255,255,255,0.07);
@@ -65,18 +65,17 @@ a     { text-decoration: none; color: inherit; }
 button { font-family: inherit; cursor: pointer; border: none; background: none; }
 
 /* ── Textura grunge/stencil sobre toda la página ──
-   Capa fija de ruido que "viste" todo el sitio con un acabado
-   desgastado tipo relic. No bloquea clics ni afecta el layout. */
+   Capa fija de grano claro semitransparente que "viste" todo el sitio
+   con un acabado desgastado tipo relic. No bloquea clics ni afecta el layout. */
 body::after {
   content: '';
   position: fixed;
   inset: 0;
   z-index: 9000;
   pointer-events: none;
-  opacity: 0.08;
-  mix-blend-mode: overlay;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.78' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
-  background-size: 220px 220px;
+  opacity: 0.16;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.92  0 0 0 0 0.92  0 0 0 0 0.92  0 0 0 3 -1.55'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
   background-repeat: repeat;
 }
 
@@ -238,7 +237,7 @@ body::after {
   position: fixed;
   top: 0; left: 0; right: 0;
   z-index: 100;
-  background: rgba(10,10,10,0.92);
+  background: rgba(0,0,0,0.92);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--bg-border);
@@ -344,8 +343,8 @@ body::after {
   z-index: 1;
   pointer-events: none;
   background:
-    linear-gradient(90deg, rgba(10,10,10,0.92) 0%, rgba(10,10,10,0.62) 50%, rgba(10,10,10,0.42) 100%),
-    linear-gradient(0deg, rgba(10,10,10,0.85) 0%, transparent 45%);
+    linear-gradient(90deg, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.62) 50%, rgba(0,0,0,0.42) 100%),
+    linear-gradient(0deg, rgba(0,0,0,0.85) 0%, transparent 45%);
 }
 
 /* Contenedor del titular (alineado a la izquierda) */
@@ -1538,7 +1537,7 @@ details[open] .faq-question::after { transform: rotate(45deg); }
 
 .footer-inner {
   display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-columns: 1fr 2fr;
   gap: 3rem;
   max-width: 1200px;
   margin: 0 auto 3rem;
@@ -1692,7 +1691,7 @@ details[open] .faq-question::after { transform: rotate(45deg); }
     flex-direction: column;
     position: fixed;
     top: 64px; left: 0; right: 0;
-    background: rgba(10,10,10,0.98);
+    background: rgba(0,0,0,0.98);
     backdrop-filter: blur(12px);
     padding: 2rem var(--sp-side);
     gap: 1.5rem;

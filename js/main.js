@@ -18,44 +18,11 @@ const qsa = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
 
 
 /* ════════════════════════════════════════════════
-   1 · TEMA VISUAL
+   1 · TEMA VISUAL — siempre oscuro
+   La estética de la marca es negro; nunca modo claro.
 ════════════════════════════════════════════════ */
-function applyTheme(theme) {
-  const html = document.documentElement;
-  if (theme === 'system') {
-    const sys = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
-    html.setAttribute('data-theme', sys);
-  } else {
-    html.setAttribute('data-theme', theme);
-  }
-}
-
-function initTheme() {
-  const saved = localStorage.getItem('trastes-theme') || 'system';
-  applyTheme(saved);
-
-  qsa('.theme-btn').forEach(btn => {
-    const t = btn.dataset.theme;
-    btn.setAttribute('aria-pressed', t === saved ? 'true' : 'false');
-    btn.classList.toggle('active', t === saved);
-
-    btn.addEventListener('click', () => {
-      localStorage.setItem('trastes-theme', t);
-      applyTheme(t);
-      qsa('.theme-btn').forEach(b => {
-        const active = b.dataset.theme === t;
-        b.setAttribute('aria-pressed', active ? 'true' : 'false');
-        b.classList.toggle('active', active);
-      });
-    });
-  });
-
-  window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', () => {
-    if (localStorage.getItem('trastes-theme') === 'system') applyTheme('system');
-  });
-}
-
-initTheme();
+document.documentElement.setAttribute('data-theme', 'dark');
+localStorage.setItem('trastes-theme', 'dark');
 
 
 /* ════════════════════════════════════════════════
