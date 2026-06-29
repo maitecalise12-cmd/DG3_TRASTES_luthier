@@ -1479,8 +1479,11 @@ body::after {
   height: auto;
   transform: translate(-50%, -50%) rotate(-90deg);
   display: block;
-  border-radius: 6px;
-  box-shadow: 0 0 60px rgba(0,0,0,0.5);
+  /* Luz neón roja que bordea la silueta (requiere PNG con fondo transparente) */
+  filter:
+    drop-shadow(0 0 6px rgba(211,47,47,0.95))
+    drop-shadow(0 0 16px rgba(211,47,47,0.7))
+    drop-shadow(0 0 34px rgba(211,47,47,0.45));
 }
 
 /* Puntos interactivos (círculos rojos sobre la foto) */
