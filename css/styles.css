@@ -1479,11 +1479,40 @@ body::after {
   height: auto;
   transform: translate(-50%, -50%) rotate(-90deg);
   display: block;
-  /* Luz neón roja que bordea la silueta (requiere PNG con fondo transparente) */
+  /* Luz neón roja que recorre la silueta (PNG con fondo transparente) */
   filter:
-    drop-shadow(0 0 6px rgba(211,47,47,0.95))
-    drop-shadow(0 0 16px rgba(211,47,47,0.7))
-    drop-shadow(0 0 34px rgba(211,47,47,0.45));
+    drop-shadow(0 0 6px rgba(211,47,47,0.9))
+    drop-shadow(0 0 18px rgba(211,47,47,0.5))
+    drop-shadow(5px 0 12px rgba(255,70,70,1));
+  animation: neon-travel 2.4s linear infinite;
+  will-change: filter;
+}
+/* La luz brillante orbita el contorno de la guitarra */
+@keyframes neon-travel {
+  0%, 100% {
+    filter:
+      drop-shadow(0 0 6px rgba(211,47,47,0.9))
+      drop-shadow(0 0 18px rgba(211,47,47,0.5))
+      drop-shadow(5px 0 12px rgba(255,70,70,1));
+  }
+  25% {
+    filter:
+      drop-shadow(0 0 6px rgba(211,47,47,0.9))
+      drop-shadow(0 0 18px rgba(211,47,47,0.5))
+      drop-shadow(0 5px 12px rgba(255,70,70,1));
+  }
+  50% {
+    filter:
+      drop-shadow(0 0 6px rgba(211,47,47,0.9))
+      drop-shadow(0 0 18px rgba(211,47,47,0.5))
+      drop-shadow(-5px 0 12px rgba(255,70,70,1));
+  }
+  75% {
+    filter:
+      drop-shadow(0 0 6px rgba(211,47,47,0.9))
+      drop-shadow(0 0 18px rgba(211,47,47,0.5))
+      drop-shadow(0 -5px 12px rgba(255,70,70,1));
+  }
 }
 
 /* Puntos interactivos (círculos rojos sobre la foto) */
