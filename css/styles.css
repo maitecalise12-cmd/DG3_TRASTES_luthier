@@ -64,6 +64,22 @@ img   { display: block; max-width: 100%; }
 a     { text-decoration: none; color: inherit; }
 button { font-family: inherit; cursor: pointer; border: none; background: none; }
 
+/* ── Textura grunge/stencil sobre toda la página ──
+   Capa fija de ruido que "viste" todo el sitio con un acabado
+   desgastado tipo relic. No bloquea clics ni afecta el layout. */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9000;
+  pointer-events: none;
+  opacity: 0.08;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.78' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+  background-size: 220px 220px;
+  background-repeat: repeat;
+}
+
 /* ── Accesibilidad ── */
 .sr-only {
   position: absolute; width: 1px; height: 1px;
