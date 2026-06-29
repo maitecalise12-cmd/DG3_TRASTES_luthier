@@ -300,13 +300,49 @@ document.addEventListener('keydown', e => {
 /* ════════════════════════════════════════════════
    6.5 · FLIP-CARDS DE MADERAS
 ════════════════════════════════════════════════ */
-qsa('.madera-card').forEach(card => {
-  const flip = () => card.classList.toggle('flipped');
+const maderaCards = qsa('.madera-card');
+maderaCards.forEach(card => {
+  const flip = () => {
+    const willOpen = !card.classList.contains('flipped');
+    // Cierra todas, así solo una queda dada vuelta a la vez
+    maderaCards.forEach(c => c.classList.remove('flipped'));
+    if (willOpen) card.classList.add('flipped');
+  };
   card.addEventListener('click', flip);
   card.addEventListener('keydown', e => {
     if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); flip(); }
   });
 });
+
+
+/* ════════════════════════════════════════════════
+   6.6 · GRÁFICO DE CARÁCTER TONAL (60% / 40%)
+════════════════════════════════════════════════ */
+const tonoBlock = qs('.materia-tono');
+if (tonoBlock) {
+  const tonoIO = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      tonoBlock.classList.add('is-visible');
+
+      qsa('.tono-pct', tonoBlock).forEach(el => {
+        const target = parseInt(el.dataset.target, 10) || 0;
+        const duration = 1500;
+        const start = performance.now();
+        const tick = (now) => {
+          const p = Math.min((now - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - p, 3);
+          el.textContent = Math.round(eased * target) + '%';
+          if (p < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      });
+
+      tonoIO.unobserve(entry.target);
+    });
+  }, { threshold: 0.4 });
+  tonoIO.observe(tonoBlock);
+}
 
 
 /* ════════════════════════════════════════════════

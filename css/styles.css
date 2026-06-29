@@ -1137,7 +1137,28 @@ body::after {
 .materia {
   background: var(--cream);
   padding: var(--sp-section) var(--sp-side);
+  position: relative;
 }
+
+/* Textura de madera al tope, superpuesta con el título y difuminada al crema */
+.materia-topwood {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: clamp(340px, 40vw, 560px);
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.6;
+  background-image:
+    linear-gradient(to bottom, rgba(0,0,0,0.25) 0%, transparent 20%, transparent 48%, var(--cream) 84%),
+    url("../assets/textura-madera.png");
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+}
+/* El contenido va por encima de la textura */
+.materia-header,
+.materia-tono,
+.maderas-showcase { position: relative; z-index: 1; }
 
 .materia-inner {
   display: grid;
@@ -1172,6 +1193,67 @@ body::after {
   max-width: 780px;
   margin: 1.5rem auto 0;
 }
+
+/* Gráfico de carácter tonal (60% / 40%) */
+.materia-tono {
+  max-width: 720px;
+  margin: clamp(3rem, 6vw, 4.5rem) auto 0;
+}
+.tono-intro {
+  text-align: center;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #8A7A66;
+  margin-bottom: 2rem;
+}
+.tono-rows { display: flex; flex-direction: column; gap: 1.75rem; }
+.tono-row-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.6rem;
+}
+.tono-label {
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+.tono-pct {
+  font-family: var(--ff-display);
+  font-size: clamp(2.4rem, 6vw, 4rem);
+  line-height: 0.9;
+  color: var(--red);
+}
+.tono-row--alt .tono-pct { color: #3A322C; }
+.tono-bar {
+  width: 100%;
+  height: 12px;
+  background: rgba(0,0,0,0.1);
+  border-radius: 6px;
+  overflow: hidden;
+}
+.tono-fill {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: var(--red);
+  border-radius: 6px;
+  transition: width 1.5s cubic-bezier(.22,1,.36,1);
+}
+.tono-fill--alt { background: #5A4A3A; }
+.materia-tono.is-visible .tono-fill { width: var(--pct); }
+.tono-note {
+  text-align: center;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: #3A322C;
+  margin-top: 2rem;
+}
+.tono-note strong { color: var(--red); }
 
 .materia-text {
   display: flex;
