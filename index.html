@@ -21,11 +21,11 @@
   <nav class="nav-container" aria-label="Navegación principal">
     <a href="#inicio" class="nav-logo" aria-label="Inicio — Trastes Luthería de Autor">TRASTES <span class="accent">★</span></a>
     <ul class="nav-links" role="list" id="nav-links-mobile">
-      <li><a href="#configurador">Configurador</a></li>
+      <li><a href="#cursos">Cursos</a></li>
       <li><a href="#anatomia">Anatomía</a></li>
       <li><a href="#precios">Precios</a></li>
       <li><a href="#faq">FAQ</a></li>
-      <li><a href="#configurador" class="nav-cta">Forjar mi instrumento</a></li>
+      <li><a href="#cursos" class="nav-cta">Forjar mi instrumento</a></li>
     </ul>
     <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-links-mobile">
       <span></span><span></span><span></span>
@@ -57,7 +57,7 @@
         Forjá tu propia guitarra eléctrica desde cero. Con tus manos. Con tu idea.
       </p>
       <div class="hero-ctas animate-fade-up delay-3">
-        <a href="#configurador" class="btn btn-primary">Forjar mi instrumento <span aria-hidden="true">→</span></a>
+        <a href="#cursos" class="btn btn-primary">Forjar mi instrumento <span aria-hidden="true">→</span></a>
         <a href="#legado" class="btn btn-ghost">El legado</a>
       </div>
     </div>
@@ -188,19 +188,71 @@
 
   <div class="versus-cta">
     <p class="versus-cta-text">No comprés un instrumento más. Forjá el único que será tuyo.</p>
-    <a href="#configurador" class="btn btn-primary">Anotarme al taller <span aria-hidden="true">→</span></a>
+    <a href="#cursos" class="btn btn-primary">Anotarme al taller <span aria-hidden="true">→</span></a>
   </div>
 </section>
 
 <!-- ═══════════════════════════════════════════════
-     §2 · EL ATELIER VIRTUAL — CONFIGURADOR
+     §2 · CURSOS DE LUTHERÍA
 ═══════════════════════════════════════════════ -->
-<section class="configurador reveal-section" id="configurador" aria-label="Configurador interactivo de instrumento">
+<section class="cursos reveal-section" id="cursos" aria-label="Cursos de luthería">
   <div class="section-header">
-    <span class="section-tag">★ Atelier Virtual</span>
-    <h2 class="section-title">DISEÑA TU<br>INSTRUMENTO</h2>
-    <p class="section-desc">Cada elección transforma la pieza. El precio se actualiza en tiempo real.</p>
+    <span class="section-tag">★ Formación</span>
+    <h2 class="section-title">ELEGÍ TU<br>CAMINO</h2>
+    <p class="section-desc">Aprendé el oficio de la mano de un luthier. De cero a profesional, con tus propias manos.</p>
   </div>
+  <div class="cursos-grid" role="list">
+
+    <!-- Curso estrella -->
+    <article class="curso-card curso-card--featured reveal-item" role="listitem" aria-label="Curso Construí tu guitarra desde cero">
+      <div class="curso-badge">★ Curso estrella</div>
+      <span class="curso-level">Nivel inicial · 6 meses</span>
+      <h3 class="curso-title">Construí tu guitarra desde cero</h3>
+      <p class="curso-desc">De la madera en bruto al instrumento terminado. Diseño, corte, ensamblaje, electrónica, acabado y setup final. Te vas con tu propia guitarra hecha por vos.</p>
+      <ul class="curso-points">
+        <li>Diseño y planos de tu modelo</li>
+        <li>Corte y trabajo de la madera</li>
+        <li>Trastes, cejilla y mástil</li>
+        <li>Electrónica y pastillas</li>
+        <li>Acabado y setup profesional</li>
+      </ul>
+      <a href="curso-guitarra-desde-cero.html" class="btn btn-primary curso-cta">Ver curso completo <span aria-hidden="true">→</span></a>
+    </article>
+
+    <!-- Curso 2 -->
+    <article class="curso-card reveal-item" role="listitem" aria-label="Curso de Electrónica y Pastillas Artesanales">
+      <span class="curso-level">Nivel intermedio · 2 meses</span>
+      <h3 class="curso-title">Electrónica & Pastillas Artesanales</h3>
+      <p class="curso-desc">Bobiná tus propias pastillas y dominá el cableado: circuitos, soldadura de precisión y modificaciones de tono.</p>
+      <ul class="curso-points">
+        <li>Bobinado manual de pastillas</li>
+        <li>Circuitos y diagramas</li>
+        <li>Soldadura de precisión</li>
+        <li>Mods de tono y switching</li>
+      </ul>
+      <a href="#hermandad" class="btn btn-ghost curso-cta">Más información</a>
+    </article>
+
+    <!-- Curso 3 -->
+    <article class="curso-card reveal-item" role="listitem" aria-label="Curso de Setup, Trastes y Calibración Pro">
+      <span class="curso-level">Nivel pro · 1 mes</span>
+      <h3 class="curso-title">Setup, Trastes & Calibración Pro</h3>
+      <p class="curso-desc">Convertite en el técnico que todo músico busca: nivelado de trastes, acción, intonación y mantenimiento profesional.</p>
+      <ul class="curso-points">
+        <li>Nivelado y coronado de trastes</li>
+        <li>Ajuste de acción y alma</li>
+        <li>Intonación por cuerda</li>
+        <li>Diagnóstico y mantenimiento</li>
+      </ul>
+      <a href="#hermandad" class="btn btn-ghost curso-cta">Más información</a>
+    </article>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     §2-OLD · CONFIGURADOR (movido a curso-guitarra-desde-cero.html)
+═══════════════════════════════════════════════ -->
+<section class="configurador-removed" hidden aria-hidden="true">
   <div class="configurador-inner">
 
     <!-- Render SVG del instrumento -->
@@ -395,17 +447,17 @@
     <article class="slot slot--available" role="listitem" aria-label="Slot 10 disponible, Q2 2026">
       <span class="slot-num" aria-hidden="true">10</span>
       <span class="slot-quarter">Q2 · 2026</span>
-      <a href="#configurador" class="btn btn-primary slot-cta">Reservar</a>
+      <a href="#cursos" class="btn btn-primary slot-cta">Reservar</a>
     </article>
     <article class="slot slot--available" role="listitem" aria-label="Slot 11 disponible, Q3 2026">
       <span class="slot-num" aria-hidden="true">11</span>
       <span class="slot-quarter">Q3 · 2026</span>
-      <a href="#configurador" class="btn btn-primary slot-cta">Reservar</a>
+      <a href="#cursos" class="btn btn-primary slot-cta">Reservar</a>
     </article>
     <article class="slot slot--available" role="listitem" aria-label="Slot 12 disponible, Q4 2026">
       <span class="slot-num" aria-hidden="true">12</span>
       <span class="slot-quarter">Q4 · 2026</span>
-      <a href="#configurador" class="btn btn-primary slot-cta">Reservar</a>
+      <a href="#cursos" class="btn btn-primary slot-cta">Reservar</a>
     </article>
   </div>
   <p class="slots-note">Solo 3 slots disponibles para 2026. El depósito del 20% asegura tu posición en la lista de producción.</p>
@@ -650,7 +702,7 @@
         <li>Setup completo incluido</li>
         <li>Estuche semi-rígido incluido</li>
       </ul>
-      <a href="#configurador" class="btn btn-ghost precio-cta">Configurar Core</a>
+      <a href="#cursos" class="btn btn-ghost precio-cta">Configurar Core</a>
     </article>
 
     <article class="precio-card precio-card--featured" role="listitem" aria-label="Plan Artisan Series — $3,299, más elegido">
@@ -669,7 +721,7 @@
         <li>Estuche rígido blindado incluido</li>
         <li>Calibración gratuita de por vida</li>
       </ul>
-      <a href="#configurador" class="btn btn-primary precio-cta">Configurar Artisan</a>
+      <a href="#cursos" class="btn btn-primary precio-cta">Configurar Artisan</a>
     </article>
 
     <article class="precio-card" role="listitem" aria-label="Plan Master Reserve — desde $5,500">
@@ -854,7 +906,7 @@
       <div class="footer-nav-col">
         <h4>Instrumento</h4>
         <ul role="list">
-          <li><a href="#configurador">Configurador</a></li>
+          <li><a href="#cursos">Cursos</a></li>
           <li><a href="#anatomia">Anatomía acústica</a></li>
           <li><a href="#proceso">Proceso de fabricación</a></li>
           <li><a href="#garantias">Garantías</a></li>
