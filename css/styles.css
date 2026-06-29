@@ -31,7 +31,7 @@ ul, ol { list-style: none; }
   --text-muted:    #9E9E9E;
   --text-dark:     #1A1A1A;
 
-  --ff-display: 'Bebas Neue', 'Impact', sans-serif;
+  --ff-display: 'pf-fuel-grime', 'Bebas Neue', 'Impact', sans-serif;
   --ff-sans:    'Inter', 'Montserrat', system-ui, -apple-system, sans-serif;
 
   --sp-section: clamp(80px, 10vw, 130px);
