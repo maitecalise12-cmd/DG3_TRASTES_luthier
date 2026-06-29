@@ -249,6 +249,31 @@ if (reserveBtn) {
 ════════════════════════════════════════════════ */
 let activeHotspot = null;
 
+// Ubica la ficha al lado del punto, dentro de los límites del contenedor
+function positionInfo(infoEl, spot) {
+  const container = spot.closest('.blueprint-container');
+  if (!container) return;
+  const cw = container.clientWidth;
+  const ch = container.clientHeight;
+  const cx = spot.offsetLeft + spot.offsetWidth / 2;
+  const cy = spot.offsetTop + spot.offsetHeight / 2;
+  const iw = infoEl.offsetWidth;
+  const ih = infoEl.offsetHeight;
+  const gap = 22;
+
+  let left;
+  if (cx + gap + iw <= cw)        left = cx + gap;           // a la derecha del punto
+  else if (cx - gap - iw >= 0)    left = cx - gap - iw;      // a la izquierda
+  else                            left = (cw - iw) / 2;      // centrada
+
+  let top = cy - ih / 2;                                     // alineada verticalmente
+  top = Math.max(8, Math.min(ch - ih - 8, top));
+  left = Math.max(8, Math.min(cw - iw - 8, left));
+
+  infoEl.style.left = left + 'px';
+  infoEl.style.top  = top + 'px';
+}
+
 qsa('.hotspot').forEach(spot => {
   const toggle = () => {
     const targetId = spot.dataset.target;
@@ -266,6 +291,7 @@ qsa('.hotspot').forEach(spot => {
 
     if (!isOpen) {
       infoEl.hidden = false;
+      positionInfo(infoEl, spot);
       spot.classList.add('active');
       spot.setAttribute('aria-expanded', 'true');
       activeHotspot = spot;
