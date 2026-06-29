@@ -629,10 +629,17 @@ body::after {
    §1.6 · VS — SERIE vs LUTHERÍA
 ════════════════════════════════════════════════ */
 .versus {
-  background: var(--bg-deep);
+  background: var(--cream);
   padding: var(--sp-section) var(--sp-side);
-  border-top: 1px solid var(--bg-border);
+  border-top: 1px solid rgba(0,0,0,0.1);
+  border-bottom: 1px solid rgba(0,0,0,0.1);
 }
+/* Texto oscuro sobre el fondo claro de esta sección */
+.versus .section-title { color: var(--text-dark); }
+.versus .accent-text { color: var(--red); }
+.versus-intro-body > p { color: #4A4038; }
+.versus-punch { color: var(--text-dark) !important; }
+.versus-cta-text { color: var(--text-dark); }
 
 .versus-intro {
   max-width: 1100px;
@@ -662,7 +669,7 @@ body::after {
   line-height: 1 !important;
   letter-spacing: 0.03em;
   text-transform: uppercase;
-  color: var(--text-primary) !important;
+  color: var(--text-dark) !important;
 }
 .versus-star {
   display: inline-block;
@@ -801,7 +808,7 @@ body::after {
   font-size: clamp(1.5rem, 3.5vw, 2.6rem);
   letter-spacing: 0.02em;
   text-transform: uppercase;
-  color: var(--text-primary);
+  color: var(--text-dark);
 }
 
 
