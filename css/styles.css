@@ -635,7 +635,7 @@ body::after {
   border-bottom: 1px solid rgba(0,0,0,0.1);
 }
 /* Texto oscuro sobre el fondo claro de esta sección */
-.versus .section-title { color: var(--text-dark); }
+.versus .section-title { color: var(--red); }
 .versus .accent-text { color: var(--red); }
 .versus-intro-body > p { color: #4A4038; }
 .versus-punch { color: var(--text-dark) !important; }
@@ -644,24 +644,23 @@ body::after {
 .versus-intro {
   max-width: 1100px;
   margin: 0 auto clamp(2.5rem, 5vw, 4rem);
-  display: grid;
-  grid-template-columns: minmax(260px, 380px) 1fr;
-  gap: clamp(1.5rem, 4vw, 3.5rem);
-  align-items: center;
-}
-.versus-intro-head .section-title {
-  font-size: clamp(2.6rem, 5.5vw, 4.5rem);
-  margin-bottom: 1.25rem;
-}
-.versus-intro-body {
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  align-items: flex-start;
 }
-.versus-intro-body > p {
-  font-size: 1rem;
-  line-height: 1.7;
-  color: var(--text-muted);
+.versus-intro .section-title {
+  font-size: clamp(2.6rem, 6vw, 5rem);
+  margin-bottom: 1.5rem;
+}
+.versus-lead {
+  font-family: var(--ff-sans);
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(1rem, 1.4vw, 1.25rem);
+  line-height: 1.55;
+  color: #3A322C;
+  max-width: 640px;
+  margin-bottom: 1.75rem;
 }
 .versus-punch {
   font-family: var(--ff-display) !important;
@@ -675,6 +674,7 @@ body::after {
   display: inline-block;
   font-size: 2rem;
   color: var(--red);
+  margin-top: 1.75rem;
 }
 
 /* Carrusel de fotos en la tarjeta de luthería */
