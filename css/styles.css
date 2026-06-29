@@ -32,7 +32,7 @@ ul, ol { list-style: none; }
   --text-dark:     #1A1A1A;
 
   --ff-display: 'pf-fuel-grime', 'Bebas Neue', 'Impact', sans-serif;
-  --ff-sans:    'Inter', 'Montserrat', system-ui, -apple-system, sans-serif;
+  --ff-sans:    'tt-commons-pro', 'Inter', system-ui, -apple-system, sans-serif;
 
   --sp-section: clamp(80px, 10vw, 130px);
   --sp-side:    clamp(1.5rem, 6vw, 6rem);
@@ -622,6 +622,171 @@ body::after {
   font-size: 0.9rem;
   line-height: 1.65;
   color: var(--text-muted);
+}
+
+
+/* ════════════════════════════════════════════════
+   §1.6 · VS — SERIE vs LUTHERÍA
+════════════════════════════════════════════════ */
+.versus {
+  background: var(--bg-deep);
+  padding: var(--sp-section) var(--sp-side);
+  border-top: 1px solid var(--bg-border);
+}
+
+.versus-intro {
+  position: relative;
+  max-width: 1100px;
+  margin: 0 auto clamp(2.5rem, 5vw, 4rem);
+  display: grid;
+  grid-template-columns: minmax(280px, 360px) 1fr;
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+  align-items: center;
+}
+.versus-intro .section-title { font-size: clamp(2.6rem, 5.5vw, 4.5rem); }
+.versus-intro > p {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-muted);
+  align-self: center;
+}
+.versus-punch {
+  font-family: var(--ff-display) !important;
+  font-size: clamp(1.4rem, 2.6vw, 2rem) !important;
+  line-height: 1 !important;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--text-primary) !important;
+  margin-top: 1.2rem;
+}
+.versus-star {
+  position: absolute;
+  left: 0;
+  bottom: -2.5rem;
+  font-size: 2rem;
+  color: var(--red);
+}
+
+/* Comparación */
+.versus-compare {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: clamp(1rem, 3vw, 2.5rem);
+  align-items: start;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.vs-card {
+  border: 1px solid var(--bg-border);
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.vs-card--good {
+  border-color: var(--red);
+  box-shadow: 0 0 40px rgba(211,47,47,0.18);
+}
+
+.vs-media {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: #050505;
+}
+.vs-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.vs-card--bad .vs-media img {
+  filter: grayscale(1) contrast(1.05) brightness(0.85);
+}
+.vs-card--good .vs-media img {
+  filter: grayscale(1) contrast(1.05) brightness(0.9);
+}
+/* Tinte rojo sobre la foto de luthería */
+.vs-card--good .vs-media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--red);
+  mix-blend-mode: multiply;
+  opacity: 0.55;
+}
+
+.vs-label {
+  position: absolute;
+  top: 0.85rem;
+  left: 0.85rem;
+  z-index: 2;
+  font-family: var(--ff-display);
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  background: rgba(0,0,0,0.7);
+  padding: 0.35rem 0.75rem;
+  border-radius: 2px;
+}
+.vs-label--red {
+  background: var(--red);
+  color: #fff;
+}
+
+.vs-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1.5rem;
+}
+.vs-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.vs-no { color: var(--text-muted); }
+.vs-yes { color: var(--text-primary); font-weight: 700; }
+.vs-no::before,
+.vs-yes::before {
+  font-family: var(--ff-sans);
+  font-weight: 700;
+  font-size: 0.85rem;
+  width: 1rem;
+  text-align: center;
+}
+.vs-no::before  { content: '✕'; color: var(--text-muted); }
+.vs-yes::before { content: '✓'; color: var(--red); }
+
+.vs-divider {
+  align-self: center;
+  font-family: var(--ff-display);
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  color: var(--red);
+  line-height: 1;
+}
+
+/* CTA de cierre */
+.versus-cta {
+  max-width: 1100px;
+  margin: clamp(2.5rem, 5vw, 4rem) auto 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  text-align: center;
+}
+.versus-cta-text {
+  font-family: var(--ff-display);
+  font-size: clamp(1.5rem, 3.5vw, 2.6rem);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--text-primary);
 }
 
 
@@ -1709,6 +1874,11 @@ details[open] .faq-question::after { transform: rotate(45deg); }
   .hero-redpanel { width: 80px; }
 
   .manifiesto-pilares { grid-template-columns: 1fr; }
+
+  .versus-intro { grid-template-columns: 1fr; }
+  .versus-star { display: none; }
+  .versus-compare { grid-template-columns: 1fr; }
+  .vs-divider { padding: 0.5rem 0; }
 
   .guitar-preview { flex-direction: column; }
 
