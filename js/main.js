@@ -359,6 +359,26 @@ if (track && prevBtn && nextBtn) {
 
 
 /* ════════════════════════════════════════════════
+   7.5 · CARRUSEL DE FOTOS — LUTHERÍA (sección VS)
+════════════════════════════════════════════════ */
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+qsa('.vs-carousel').forEach(carousel => {
+  const slides = qsa('.vs-slide', carousel);
+  if (slides.length < 2 || reduceMotion) return;
+
+  const interval = parseInt(carousel.dataset.interval, 10) || 3200;
+  let i = 0;
+
+  setInterval(() => {
+    slides[i].classList.remove('active');
+    i = (i + 1) % slides.length;
+    slides[i].classList.add('active');
+  }, interval);
+});
+
+
+/* ════════════════════════════════════════════════
    8 · TIMELINE ACTIVADO POR SCROLL
 ════════════════════════════════════════════════ */
 const timelineIO = new IntersectionObserver((entries) => {

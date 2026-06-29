@@ -635,20 +635,26 @@ body::after {
 }
 
 .versus-intro {
-  position: relative;
   max-width: 1100px;
   margin: 0 auto clamp(2.5rem, 5vw, 4rem);
   display: grid;
-  grid-template-columns: minmax(280px, 360px) 1fr;
+  grid-template-columns: minmax(260px, 380px) 1fr;
   gap: clamp(1.5rem, 4vw, 3.5rem);
   align-items: center;
 }
-.versus-intro .section-title { font-size: clamp(2.6rem, 5.5vw, 4.5rem); }
-.versus-intro > p {
+.versus-intro-head .section-title {
+  font-size: clamp(2.6rem, 5.5vw, 4.5rem);
+  margin-bottom: 1.25rem;
+}
+.versus-intro-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+.versus-intro-body > p {
   font-size: 1rem;
   line-height: 1.7;
   color: var(--text-muted);
-  align-self: center;
 }
 .versus-punch {
   font-family: var(--ff-display) !important;
@@ -657,15 +663,24 @@ body::after {
   letter-spacing: 0.03em;
   text-transform: uppercase;
   color: var(--text-primary) !important;
-  margin-top: 1.2rem;
 }
 .versus-star {
-  position: absolute;
-  left: 0;
-  bottom: -2.5rem;
+  display: inline-block;
   font-size: 2rem;
   color: var(--red);
 }
+
+/* Carrusel de fotos en la tarjeta de luthería */
+.vs-carousel .vs-slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.9s ease;
+}
+.vs-carousel .vs-slide.active { opacity: 1; }
 
 /* Comparación */
 .versus-compare {
