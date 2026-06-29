@@ -1503,9 +1503,12 @@ body::after {
   transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
 }
 .hotspot::before {
-  content: '+';
+  content: attr(data-num);
   position: relative;
   z-index: 2;
+  font-family: var(--ff-display);
+  font-size: 1rem;
+  line-height: 1;
 }
 /* Halo de luz que emana del punto */
 .hotspot::after {
@@ -1547,19 +1550,21 @@ body::after {
 .hotspot-info {
   position: absolute;
   top: 0; left: 0;
-  background: var(--bg-card);
-  border: 1px solid var(--bg-border);
+  background: var(--cream);
+  border: 1px solid rgba(0,0,0,0.12);
   border-left: 3px solid var(--red);
   padding: 1.25rem;
   width: clamp(210px, 60vw, 250px);
   border-radius: var(--radius);
-  box-shadow: 0 12px 40px rgba(0,0,0,0.6), 0 0 30px rgba(211,47,47,0.12);
+  box-shadow: 0 16px 46px rgba(0,0,0,0.55), 0 0 28px rgba(211,47,47,0.2);
   z-index: 10;
-  animation: info-in 0.28s cubic-bezier(.22,1,.36,1);
+  transform-origin: left center;
+  animation: info-in 0.4s cubic-bezier(.34,1.56,.64,1);
 }
 @keyframes info-in {
-  from { opacity: 0; transform: translateX(-8px) scale(0.97); }
-  to   { opacity: 1; transform: translateX(0) scale(1); }
+  0%   { opacity: 0; transform: translateY(10px) scale(0.85); }
+  60%  { opacity: 1; transform: translateY(-3px) scale(1.03); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
 }
 .hotspot-info[hidden] { display: none; }
 
@@ -1567,7 +1572,7 @@ body::after {
   position: absolute;
   top: 0.6rem; right: 0.6rem;
   font-size: 0.75rem;
-  color: var(--text-muted);
+  color: #7A6A5A;
   cursor: pointer;
   padding: 0.2rem 0.4rem;
   transition: color var(--transition);
@@ -1576,14 +1581,14 @@ body::after {
 
 .hotspot-info h4 {
   font-family: var(--ff-display);
-  font-size: 1.1rem;
+  font-size: 1.25rem;
   letter-spacing: 0.06em;
-  color: var(--text-primary);
+  color: var(--text-dark);
   margin-bottom: 0.5rem;
 }
 .hotspot-info p {
-  font-size: 0.82rem;
-  color: var(--text-muted);
+  font-size: 0.85rem;
+  color: #4A4038;
   line-height: 1.65;
 }
 
