@@ -1427,7 +1427,7 @@ body::after {
 .blueprint-container {
   position: relative;
   width: 100%;
-  padding-bottom: 41.95%;   /* caja apaisada = imagen vertical rotada 90° */
+  padding-bottom: 42.32%;   /* caja apaisada = imagen vertical rotada 90° */
   overflow: visible;
 }
 
@@ -1443,7 +1443,7 @@ body::after {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 41.95%;            /* tras rotar -90°, llena la caja apaisada */
+  width: 42.32%;            /* tras rotar -90°, llena la caja apaisada */
   height: auto;
   transform: translate(-50%, -50%) rotate(-90deg);
   display: block;
