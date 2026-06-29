@@ -1325,14 +1325,15 @@ body::after {
 }
 
 .anatomia-inner {
-  max-width: 560px;
+  max-width: 1080px;
   margin: 0 auto;
   position: relative;
 }
 
 .blueprint-container {
   position: relative;
-  border-radius: var(--radius);
+  width: 100%;
+  padding-bottom: 41.95%;   /* caja apaisada = imagen vertical rotada 90° */
   overflow: visible;
 }
 
@@ -1345,11 +1346,15 @@ body::after {
 
 /* Foto real de la guitarra */
 .anatomia-img {
-  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 41.95%;            /* tras rotar -90°, llena la caja apaisada */
   height: auto;
+  transform: translate(-50%, -50%) rotate(-90deg);
   display: block;
-  border-radius: var(--radius);
-  box-shadow: 0 24px 64px rgba(0,0,0,0.5);
+  border-radius: 6px;
+  box-shadow: 0 0 60px rgba(0,0,0,0.5);
 }
 
 /* Puntos interactivos (círculos rojos sobre la foto) */
