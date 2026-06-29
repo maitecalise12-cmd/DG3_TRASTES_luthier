@@ -127,7 +127,7 @@ const revealItemIO = new IntersectionObserver((entries) => {
   });
 }, revealOpts);
 
-qsa('.garantias').forEach(el => revealItemIO.observe(el));
+qsa('.garantias, .manifiesto').forEach(el => revealItemIO.observe(el));
 
 
 /* ════════════════════════════════════════════════

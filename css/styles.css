@@ -528,6 +528,89 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
 
 /* ════════════════════════════════════════════════
+   §1.5 · MANIFIESTO DE IDENTIDAD
+════════════════════════════════════════════════ */
+.manifiesto {
+  background: var(--bg-deep);
+  padding: var(--sp-section) var(--sp-side);
+  border-top: 1px solid var(--bg-border);
+  position: relative;
+  overflow: hidden;
+}
+.manifiesto::before {
+  content: '★';
+  position: absolute;
+  top: -2rem;
+  right: 4%;
+  font-size: clamp(12rem, 24vw, 26rem);
+  line-height: 1;
+  color: rgba(211,47,47,0.05);
+  pointer-events: none;
+  user-select: none;
+}
+
+.manifiesto-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+}
+.manifiesto .section-tag { margin-bottom: 1.5rem; }
+
+.manifiesto-frase {
+  font-family: var(--ff-display);
+  font-size: clamp(2.6rem, 7vw, 6.5rem);
+  line-height: 0.95;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--cream);
+  margin-bottom: 2rem;
+}
+.manifiesto-frase .accent-text { color: var(--red); }
+
+.manifiesto-sub {
+  font-size: clamp(1rem, 1.4vw, 1.25rem);
+  line-height: 1.7;
+  color: var(--text-muted);
+  max-width: 680px;
+  margin: 0 auto clamp(3rem, 6vw, 5rem);
+}
+
+.manifiesto-pilares {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1.5rem, 4vw, 3rem);
+  text-align: left;
+}
+.pilar {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding-top: 1.5rem;
+  border-top: 2px solid rgba(211,47,47,0.4);
+}
+.pilar-num {
+  font-family: var(--ff-display);
+  font-size: 1.4rem;
+  color: var(--red);
+  letter-spacing: 0.08em;
+}
+.pilar h3 {
+  font-family: var(--ff-display);
+  font-size: 1.5rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+}
+.pilar p {
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: var(--text-muted);
+}
+
+
+/* ════════════════════════════════════════════════
    §2 · CONFIGURADOR
 ════════════════════════════════════════════════ */
 .configurador {
@@ -1558,6 +1641,8 @@ details[open] .faq-question::after { transform: rotate(45deg); }
   .hero-blueprint { display: none; }
   .hero-title { font-size: clamp(3.2rem, 13vw, 5.5rem); }
   .hero-redpanel { width: 80px; }
+
+  .manifiesto-pilares { grid-template-columns: 1fr; }
 
   .guitar-preview { flex-direction: column; }
 
