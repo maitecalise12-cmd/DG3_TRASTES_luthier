@@ -325,8 +325,9 @@ body::after {
   padding-top: 64px;
 }
 
-/* Video de fondo */
-.hero-video {
+/* Imagen / video de fondo */
+.hero-video,
+.hero-img {
   position: absolute;
   inset: 0;
   width: 100%;
