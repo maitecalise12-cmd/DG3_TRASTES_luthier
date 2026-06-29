@@ -304,80 +304,139 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   flex-direction: column;
   justify-content: center;
   overflow: hidden;
-  background: var(--bg-deep);
+  background:
+    radial-gradient(ellipse 80% 80% at 85% 40%, rgba(120,15,15,0.35) 0%, transparent 60%),
+    var(--bg-deep);
   padding-top: 64px;
 }
 
-.hero-bg {
+/* Textura grunge de fondo */
+.hero-grain {
   position: absolute;
   inset: 0;
   z-index: 0;
   pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E");
+  opacity: 0.6;
 }
 
-.hero-grain {
+/* Panel rojo del borde derecho con estrella */
+.hero-redpanel {
+  position: absolute;
+  top: 0; right: 0; bottom: 0;
+  z-index: 0;
+  width: clamp(110px, 22vw, 340px);
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    linear-gradient(100deg, transparent 0%, rgba(150,20,20,0.45) 40%, rgba(110,12,12,0.85) 100%);
+}
+.hero-redpanel::after {
+  content: '';
   position: absolute;
   inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-  opacity: 0.5;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n2'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n2)' opacity='0.12'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
 }
-
-/* Líneas horizontales sutiles de blueprint */
-.hero-lines {
-  position: absolute;
-  inset: 0;
-  background-image: repeating-linear-gradient(
-    0deg,
-    transparent,
-    transparent 79px,
-    rgba(211,47,47,0.04) 79px,
-    rgba(211,47,47,0.04) 80px
-  );
-}
-
-.hero-bg-guitar {
-  position: absolute;
-  right: -4%;
-  top: 50%;
-  transform: translateY(-50%);
-  width: clamp(300px, 45vw, 640px);
+.hero-redstar {
+  position: relative;
+  width: clamp(70px, 11vw, 150px);
   height: auto;
-  opacity: 1;
+  opacity: 0.55;
 }
 
-.hero-content {
+/* Grid principal: specs · blueprint · titular */
+.hero-grid {
   position: relative;
   z-index: 2;
-  padding: var(--sp-section) var(--sp-side);
-  max-width: 900px;
+  display: grid;
+  grid-template-columns: minmax(220px, 340px) 1fr;
+  gap: clamp(1.5rem, 4vw, 4.5rem);
+  align-items: center;
+  width: 100%;
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 2rem var(--sp-side) 5rem;
 }
 
-.hero-eyebrow {
-  font-size: 0.68rem;
-  font-weight: 500;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: var(--red);
-  margin-bottom: 1.5rem;
-}
-
-.hero-title {
-  font-family: var(--ff-display);
-  font-size: clamp(4.5rem, 10vw, 10rem);
-  line-height: 0.88;
-  letter-spacing: 0.03em;
-  margin-bottom: 2rem;
+/* ── Especificaciones (izquierda) ── */
+.spec-list {
   display: flex;
   flex-direction: column;
+  gap: 1.3rem;
+}
+.spec-item {
+  display: flex;
+  align-items: baseline;
+  gap: 0.85rem;
+}
+.spec-num {
+  font-family: var(--ff-display);
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--red);
+  flex-shrink: 0;
+  min-width: 1.6rem;
+}
+.spec-body { display: flex; flex-direction: column; gap: 0.1rem; }
+.spec-body strong {
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--text-primary);
+}
+.spec-body em {
+  font-style: normal;
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+}
+
+/* ── Blueprint central ── */
+.hero-blueprint {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.blueprint-guitar {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  max-height: 82vh;
+  filter: drop-shadow(0 0 40px rgba(244,243,240,0.06));
+}
+
+/* ── Titular (derecha) ── */
+.hero-headline {
+  position: relative;
+  z-index: 3;
+}
+.hero-title {
+  font-family: var(--ff-display);
+  font-size: clamp(3rem, 8vw, 8.5rem);
+  line-height: 0.82;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--cream);
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  text-shadow: 0 2px 30px rgba(0,0,0,0.5);
 }
 .hero-title-line { display: block; }
+.hero-title .accent-text { color: var(--red); }
 
 .hero-subtitle {
-  font-size: clamp(0.95rem, 1.3vw, 1.1rem);
+  font-size: clamp(0.85rem, 1.1vw, 1rem);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
   color: var(--text-muted);
-  line-height: 1.75;
-  max-width: 520px;
-  margin-bottom: 2.5rem;
+  line-height: 1.6;
+  max-width: 460px;
+  margin-bottom: 2.25rem;
 }
 
 .hero-ctas {
@@ -386,9 +445,21 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   flex-wrap: wrap;
 }
 
+/* ── Onda de sonido inferior ── */
+.hero-waveform {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  z-index: 1;
+  height: clamp(56px, 8vw, 100px);
+  pointer-events: none;
+  opacity: 0.9;
+}
+.hero-waveform svg { width: 100%; height: 100%; display: block; }
+
+/* ── Scroll hint ── */
 .hero-scroll-hint {
   position: absolute;
-  bottom: 2.5rem;
+  bottom: clamp(70px, 9vw, 115px);
   left: var(--sp-side);
   z-index: 2;
   display: flex;
@@ -399,7 +470,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .scroll-line {
   display: block;
   width: 1px;
-  height: 48px;
+  height: 40px;
   background: linear-gradient(to bottom, var(--red), transparent);
   animation: scroll-pulse 2s ease-in-out infinite;
 }
@@ -1383,6 +1454,11 @@ details[open] .faq-question::after { transform: rotate(45deg); }
    RESPONSIVE
 ════════════════════════════════════════════════ */
 @media (max-width: 1024px) {
+  .hero-grid {
+    grid-template-columns: minmax(180px, 260px) 1fr;
+  }
+  .hero-specs { display: none; }
+
   .configurador-inner {
     grid-template-columns: 1fr;
   }
@@ -1435,8 +1511,13 @@ details[open] .faq-question::after { transform: rotate(45deg); }
   }
   .nav-links.open a { font-size: 1rem; }
 
-  .hero-title { font-size: clamp(3.5rem, 14vw, 6rem); }
-  .hero-bg-guitar { opacity: 0.15; }
+  .hero-grid {
+    grid-template-columns: 1fr;
+    padding-bottom: 6rem;
+  }
+  .hero-blueprint { display: none; }
+  .hero-title { font-size: clamp(3.2rem, 13vw, 5.5rem); }
+  .hero-redpanel { width: 80px; }
 
   .guitar-preview { flex-direction: column; }
 

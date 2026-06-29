@@ -35,40 +35,147 @@
      §1 · HERO — EL MANIFIESTO
 ═══════════════════════════════════════════════ -->
 <section class="hero" id="inicio" aria-label="Sección principal — El Manifiesto">
-  <div class="hero-bg" aria-hidden="true">
-    <div class="hero-grain"></div>
-    <div class="hero-lines" aria-hidden="true"></div>
-    <svg class="hero-bg-guitar" viewBox="0 0 400 700" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <ellipse cx="200" cy="530" rx="130" ry="170" fill="none" stroke="rgba(211,47,47,0.08)" stroke-width="1"/>
-      <ellipse cx="200" cy="415" rx="95" ry="110" fill="none" stroke="rgba(211,47,47,0.08)" stroke-width="1"/>
-      <rect x="183" y="90" width="34" height="330" fill="none" stroke="rgba(211,47,47,0.08)" stroke-width="1"/>
-      <rect x="178" y="40" width="44" height="55" rx="4" fill="none" stroke="rgba(211,47,47,0.08)" stroke-width="1"/>
-      <line x1="183" y1="150" x2="217" y2="150" stroke="rgba(211,47,47,0.06)" stroke-width="0.8"/>
-      <line x1="183" y1="185" x2="217" y2="185" stroke="rgba(211,47,47,0.06)" stroke-width="0.8"/>
-      <line x1="183" y1="217" x2="217" y2="217" stroke="rgba(211,47,47,0.06)" stroke-width="0.8"/>
-      <line x1="183" y1="245" x2="217" y2="245" stroke="rgba(211,47,47,0.06)" stroke-width="0.8"/>
-      <line x1="183" y1="270" x2="217" y2="270" stroke="rgba(211,47,47,0.06)" stroke-width="0.8"/>
-      <line x1="183" y1="292" x2="217" y2="292" stroke="rgba(211,47,47,0.06)" stroke-width="0.8"/>
-      <line x1="183" y1="312" x2="217" y2="312" stroke="rgba(211,47,47,0.06)" stroke-width="0.8"/>
+  <div class="hero-grain" aria-hidden="true"></div>
+  <div class="hero-redpanel" aria-hidden="true">
+    <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" class="hero-redstar">
+      <path d="M60 8 L73 44 L112 44 L80 67 L92 104 L60 81 L28 104 L40 67 L8 44 L47 44 Z"
+            fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2"/>
     </svg>
   </div>
-  <div class="hero-content">
-    <p class="hero-eyebrow animate-fade-up">Luthería Artesanal · Custom Builds · Est. Taller de Autor</p>
-    <h1 class="hero-title animate-fade-up delay-1">
-      <span class="hero-title-line">CONSTRUÍ</span>
-      <span class="hero-title-line accent-text">TU PROPIA</span>
-      <span class="hero-title-line">REVOLUCIÓN</span>
-      <span class="hero-title-line">SONORA</span>
-    </h1>
-    <p class="hero-subtitle animate-fade-up delay-2">
-      Cada instrumento es una obra única. Madera viva, trastes nivelados a mano,<br>
-      calibración de por vida. Sin series. Sin fábricas. Solo tu sonido.
-    </p>
-    <div class="hero-ctas animate-fade-up delay-3">
-      <a href="#configurador" class="btn btn-primary">Forjar mi instrumento</a>
-      <a href="#legado" class="btn btn-ghost">El legado ↓</a>
+
+  <div class="hero-grid">
+
+    <!-- Columna izquierda: blueprint técnico de la guitarra -->
+    <div class="hero-blueprint animate-fade-up delay-1" aria-hidden="true">
+      <svg viewBox="0 0 300 760" xmlns="http://www.w3.org/2000/svg" class="blueprint-guitar">
+        <g fill="none" stroke="rgba(244,243,240,0.78)" stroke-width="1" stroke-linejoin="round" stroke-linecap="round">
+          <!-- Clavijero -->
+          <path d="M150 36 C 138 36 132 40 131 52 L128 96 C 128 104 134 108 142 108 L158 108 C 166 108 172 104 172 96 L169 52 C 168 40 162 36 150 36 Z"/>
+          <circle cx="140" cy="56" r="3.2"/><circle cx="140" cy="72" r="3.2"/><circle cx="140" cy="88" r="3.2"/>
+          <circle cx="160" cy="56" r="3.2"/><circle cx="160" cy="72" r="3.2"/><circle cx="160" cy="88" r="3.2"/>
+          <!-- Cejilla -->
+          <line x1="136" y1="112" x2="164" y2="112" stroke-width="1.6"/>
+          <!-- Mástil -->
+          <path d="M137 112 L134 372 L166 372 L163 112"/>
+          <!-- Trastes -->
+          <line x1="136" y1="150" x2="164" y2="150"/><line x1="136" y1="184" x2="164" y2="184"/>
+          <line x1="135.5" y1="216" x2="164.5" y2="216"/><line x1="135.5" y1="246" x2="164.5" y2="246"/>
+          <line x1="135" y1="274" x2="165" y2="274"/><line x1="135" y1="300" x2="165" y2="300"/>
+          <line x1="134.5" y1="324" x2="165.5" y2="324"/><line x1="134.5" y1="346" x2="165.5" y2="346"/>
+          <!-- Marcadores de traste -->
+          <circle cx="150" cy="200" r="2.2" fill="rgba(244,243,240,0.5)" stroke="none"/>
+          <circle cx="150" cy="260" r="2.2" fill="rgba(244,243,240,0.5)" stroke="none"/>
+          <circle cx="150" cy="312" r="2.2" fill="rgba(244,243,240,0.5)" stroke="none"/>
+          <!-- Cuerpo (doble cutaway tipo strat) -->
+          <path d="M134 372
+                   C 110 368 92 376 80 392
+                   C 66 410 54 420 44 432
+                   C 30 448 26 470 32 496
+                   C 38 520 50 540 64 560
+                   C 80 584 96 624 110 650
+                   C 124 676 138 690 150 690
+                   C 162 690 176 676 190 650
+                   C 204 624 220 584 236 560
+                   C 250 540 262 520 268 496
+                   C 274 470 270 448 256 432
+                   C 246 420 234 410 220 392
+                   C 208 376 190 368 166 372"/>
+          <!-- Golpeador -->
+          <path d="M150 392 C 122 392 104 404 100 430 C 96 456 104 500 120 540 C 132 568 150 580 168 568 C 188 552 204 512 206 470 C 207 436 196 404 170 394 C 164 392 157 392 150 392 Z"
+                stroke="rgba(244,243,240,0.4)"/>
+          <!-- Pastillas (3 single coil) -->
+          <rect x="124" y="438" width="52" height="11" rx="2"/>
+          <rect x="124" y="470" width="52" height="11" rx="2" transform="rotate(-6 150 475)"/>
+          <rect x="120" y="506" width="60" height="13" rx="2" stroke="rgba(211,47,47,0.85)"/>
+          <!-- Bridge / puente -->
+          <rect x="126" y="540" width="48" height="26" rx="2"/>
+          <line x1="133" y1="540" x2="133" y2="566"/><line x1="141" y1="540" x2="141" y2="566"/>
+          <line x1="149" y1="540" x2="149" y2="566"/><line x1="157" y1="540" x2="157" y2="566"/>
+          <line x1="165" y1="540" x2="165" y2="566"/>
+          <!-- Controles -->
+          <circle cx="206" cy="556" r="7"/><circle cx="222" cy="578" r="7"/><circle cx="208" cy="592" r="7"/>
+          <!-- Selector -->
+          <rect x="118" y="560" width="6" height="20" rx="3"/>
+          <!-- Cuerdas -->
+          <line x1="143" y1="40" x2="142" y2="552" stroke="rgba(200,200,150,0.35)" stroke-width="0.5"/>
+          <line x1="146" y1="40" x2="146" y2="552" stroke="rgba(200,200,150,0.35)" stroke-width="0.6"/>
+          <line x1="149" y1="40" x2="149" y2="552" stroke="rgba(200,200,150,0.35)" stroke-width="0.7"/>
+          <line x1="151" y1="40" x2="151" y2="552" stroke="rgba(200,200,150,0.35)" stroke-width="0.9"/>
+          <line x1="154" y1="40" x2="155" y2="552" stroke="rgba(200,200,150,0.35)" stroke-width="1.1"/>
+          <line x1="157" y1="40" x2="158" y2="552" stroke="rgba(200,200,150,0.35)" stroke-width="1.3"/>
+        </g>
+        <!-- Cotas técnicas -->
+        <g stroke="rgba(244,243,240,0.35)" stroke-width="0.6" fill="none">
+          <line x1="92" y1="112" x2="92" y2="540" stroke-dasharray="4,3"/>
+          <line x1="87" y1="112" x2="97" y2="112"/><line x1="87" y1="540" x2="97" y2="540"/>
+          <line x1="44" y1="640" x2="256" y2="640" stroke-dasharray="4,3"/>
+        </g>
+        <text x="78" y="330" fill="rgba(244,243,240,0.55)" font-size="9" font-family="Inter" transform="rotate(-90 78 330)">647.7 mm</text>
+        <text x="150" y="636" fill="rgba(244,243,240,0.55)" font-size="9" font-family="Inter" text-anchor="middle">102 mm</text>
+        <text x="200" y="430" fill="rgba(211,47,47,0.8)" font-size="8" font-family="Inter">SECCIÓN A-A</text>
+        <text x="176" y="586" fill="rgba(211,47,47,0.8)" font-size="8" font-family="Inter">DETALLE PUENTE</text>
+        <circle cx="194" cy="426" r="7" fill="none" stroke="rgba(211,47,47,0.8)" stroke-width="0.8"/>
+        <text x="194" y="429" fill="rgba(211,47,47,0.8)" font-size="8" font-family="Inter" text-anchor="middle">2</text>
+        <circle cx="172" cy="200" r="7" fill="none" stroke="rgba(211,47,47,0.8)" stroke-width="0.8"/>
+        <text x="172" y="203" fill="rgba(211,47,47,0.8)" font-size="8" font-family="Inter" text-anchor="middle">3</text>
+      </svg>
+    </div>
+
+    <!-- Columna derecha: titular + CTA -->
+    <div class="hero-headline">
+      <h1 class="hero-title animate-fade-up delay-1">
+        <span class="hero-title-line">CONSTRUÍ</span>
+        <span class="hero-title-line">TU PROPIA</span>
+        <span class="hero-title-line accent-text">REVOLUCIÓN</span>
+        <span class="hero-title-line">SONORA</span>
+      </h1>
+      <p class="hero-subtitle animate-fade-up delay-2">
+        Forjá tu propia guitarra eléctrica desde cero. Con tus manos. Con tu idea.
+      </p>
+      <div class="hero-ctas animate-fade-up delay-3">
+        <a href="#configurador" class="btn btn-primary">Forjar mi instrumento <span aria-hidden="true">→</span></a>
+        <a href="#legado" class="btn btn-ghost">El legado</a>
+      </div>
     </div>
   </div>
+
+  <!-- Onda de sonido inferior -->
+  <div class="hero-waveform" aria-hidden="true">
+    <svg viewBox="0 0 1440 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="wave-bars" width="240" height="120" patternUnits="userSpaceOnUse">
+          <g fill="#D32F2F">
+            <rect x="2"   y="53" width="3" height="14"/>
+            <rect x="12"  y="45" width="3" height="30"/>
+            <rect x="22"  y="56" width="3" height="8"/>
+            <rect x="32"  y="37" width="3" height="46"/>
+            <rect x="42"  y="49" width="3" height="22"/>
+            <rect x="52"  y="30" width="3" height="60"/>
+            <rect x="62"  y="52" width="3" height="16"/>
+            <rect x="72"  y="41" width="3" height="38"/>
+            <rect x="82"  y="55" width="3" height="10"/>
+            <rect x="92"  y="34" width="3" height="52"/>
+            <rect x="102" y="47" width="3" height="26"/>
+            <rect x="112" y="25" width="3" height="70"/>
+            <rect x="122" y="51" width="3" height="18"/>
+            <rect x="132" y="43" width="3" height="34"/>
+            <rect x="142" y="54" width="3" height="12"/>
+            <rect x="152" y="36" width="3" height="48"/>
+            <rect x="162" y="48" width="3" height="24"/>
+            <rect x="172" y="28" width="3" height="64"/>
+            <rect x="182" y="50" width="3" height="20"/>
+            <rect x="192" y="40" width="3" height="40"/>
+            <rect x="202" y="53" width="3" height="14"/>
+            <rect x="212" y="45" width="3" height="30"/>
+            <rect x="222" y="56" width="3" height="8"/>
+            <rect x="232" y="38" width="3" height="44"/>
+          </g>
+        </pattern>
+      </defs>
+      <rect width="1440" height="120" fill="url(#wave-bars)"/>
+    </svg>
+  </div>
+
   <div class="hero-scroll-hint" aria-hidden="true">
     <span class="scroll-line"></span>
     <span class="scroll-text">SCROLL</span>
