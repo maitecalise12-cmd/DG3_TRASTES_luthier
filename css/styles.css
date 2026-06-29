@@ -1187,6 +1187,119 @@ body::after {
   box-shadow: 0 24px 64px rgba(0,0,0,0.22);
 }
 
+/* ── Flip-cards de maderas ── */
+.maderas-showcase {
+  max-width: 1200px;
+  margin: clamp(3rem, 6vw, 5rem) auto 0;
+}
+.maderas-hint {
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-dark);
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+.maderas-hint span { color: #8A7A66; font-weight: 400; }
+
+.maderas-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+}
+
+.madera-card {
+  perspective: 1200px;
+  cursor: pointer;
+  outline: none;
+}
+.madera-card-inner {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  transform-style: preserve-3d;
+  transition: transform 0.7s cubic-bezier(.22,1,.36,1);
+}
+.madera-card.flipped .madera-card-inner { transform: rotateY(180deg); }
+
+.madera-card-front,
+.madera-card-back {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid rgba(0,0,0,0.12);
+}
+
+/* Cara frontal: foto de la madera */
+.madera-card-front img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.madera-card-front .madera-num {
+  position: absolute;
+  top: 0.6rem; left: 0.75rem;
+  z-index: 2;
+  font-family: var(--ff-display);
+  font-size: 1.4rem;
+  color: #fff;
+  text-shadow: 0 1px 6px rgba(0,0,0,0.7);
+}
+.madera-card-front .madera-name {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  z-index: 2;
+  padding: 1.5rem 0.85rem 0.75rem;
+  font-family: var(--ff-display);
+  font-size: 1.4rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #fff;
+  background: linear-gradient(to top, rgba(0,0,0,0.75), transparent);
+}
+
+/* Cara trasera: descripción */
+.madera-card-back {
+  transform: rotateY(180deg);
+  background: var(--bg-card);
+  border-color: var(--red);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 1.5rem;
+}
+.madera-card-back .madera-num {
+  font-family: var(--ff-display);
+  font-size: 1.6rem;
+  color: rgba(211,47,47,0.5);
+  line-height: 1;
+}
+.madera-card-back h4 {
+  font-family: var(--ff-display);
+  font-size: 1.5rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+}
+.madera-card-back p {
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+/* Hover: leve elevación + brillo + zoom de la foto */
+.madera-card:hover .madera-card-inner,
+.madera-card:focus-visible .madera-card-inner {
+  box-shadow: 0 18px 40px rgba(0,0,0,0.3), 0 0 24px rgba(211,47,47,0.18);
+}
+.madera-card:hover .madera-card-front img { transform: scale(1.06); }
+.madera-card:focus-visible { outline: 2px solid var(--red); outline-offset: 3px; border-radius: var(--radius); }
+
 
 /* ════════════════════════════════════════════════
    §5 · ANATOMÍA
@@ -1946,6 +2059,7 @@ details[open] .faq-question::after { transform: rotate(45deg); }
     grid-template-columns: 1fr;
   }
   .wood-grain-svg { max-height: 260px; object-fit: cover; }
+  .maderas-cards { grid-template-columns: repeat(2, 1fr); }
 
   .newsletter-inner {
     grid-template-columns: 1fr;
