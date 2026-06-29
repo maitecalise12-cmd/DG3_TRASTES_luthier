@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Trastes de Luthería de Autor — Instrumentos únicos forjados a mano. Configurador interactivo, madera noble, construcción personalizada." />
+  <title>TRASTES ★ Luthería de Autor · Custom Builds</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════
+     NAVEGACIÓN
+═══════════════════════════════════════════════ -->
+<header class="site-header" role="banner">
+  <nav class="nav-container" aria-label="Navegación principal">
+    <a href="#inicio" class="nav-logo" aria-label="Inicio — Trastes Luthería de Autor">TRASTES <span class="accent">★</span></a>
+    <ul class="nav-links" role="list" id="nav-links-mobile">
+      <li><a href="#configurador">Configurador</a></li>
+      <li><a href="#anatomia">Anatomía</a></li>
+      <li><a href="#precios">Precios</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#configurador" class="nav-cta">Forjar mi instrumento</a></li>
+    </ul>
+    <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-links-mobile">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<!-- ═══════════════════════════════════════════════
+     §1 · HERO — EL MANIFIESTO
+═══════════════════════════════════════════════ -->
+<section class="hero" id="inicio" aria-label="Sección principal — El Manifiesto">
+  <div class="hero-bg" aria-hidden="true">
+    <div class="hero-grain"></div>
+    <div class="hero-lines" aria-hidden="true"></div>
+    <svg class="hero-bg-guitar" viewBox="0 0 400 700" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <ellipse cx="200" cy="530" rx="130" ry="170" fill="none" stroke="rgba(211,47,47,0.08)" stroke-width="1"/>
+      <ellipse cx="200" cy="415" rx="95" ry="110" fill="none" stroke="rgba(211,47,47,0.08)" stroke-width="1"/>
+      <rect x="183" y="90" width="34" height="330" fill="none" stroke="rgba(211,47,47,0.08)" stroke-width="1"/>
+      <rect x="178" y="40" width="44" height="55" rx="4" fill="none" stroke="rgba(211,47,47,0.08)" stroke-width="1"/>
+      <line x1="183" y1="150" x2="217" y2="150" stroke="rgba(211,47,47,0.06)" stroke-width="0.8"/>
+      <line x1="183" y1="185" x2="217" y2="185" stroke="rgba(211,47,47,0.06)" stroke-width="0.8"/>
+      <line x1="183" y1="217" x2="217" y2="217" stroke="rgba(211,47,47,0.06)" stroke-width="0.8"/>
+      <line x1="183" y1="245" x2="217" y2="245" stroke="rgba(211,47,47,0.06)" stroke-width="0.8"/>
+      <line x1="183" y1="270" x2="217" y2="270" stroke="rgba(211,47,47,0.06)" stroke-width="0.8"/>
+      <line x1="183" y1="292" x2="217" y2="292" stroke="rgba(211,47,47,0.06)" stroke-width="0.8"/>
+      <line x1="183" y1="312" x2="217" y2="312" stroke="rgba(211,47,47,0.06)" stroke-width="0.8"/>
+    </svg>
+  </div>
+  <div class="hero-content">
+    <p class="hero-eyebrow animate-fade-up">Luthería Artesanal · Custom Builds · Est. Taller de Autor</p>
+    <h1 class="hero-title animate-fade-up delay-1">
+      <span class="hero-title-line">CONSTRUÍ</span>
+      <span class="hero-title-line accent-text">TU PROPIA</span>
+      <span class="hero-title-line">REVOLUCIÓN</span>
+      <span class="hero-title-line">SONORA</span>
+    </h1>
+    <p class="hero-subtitle animate-fade-up delay-2">
+      Cada instrumento es una obra única. Madera viva, trastes nivelados a mano,<br>
+      calibración de por vida. Sin series. Sin fábricas. Solo tu sonido.
+    </p>
+    <div class="hero-ctas animate-fade-up delay-3">
+      <a href="#configurador" class="btn btn-primary">Forjar mi instrumento</a>
+      <a href="#legado" class="btn btn-ghost">El legado ↓</a>
+    </div>
+  </div>
+  <div class="hero-scroll-hint" aria-hidden="true">
+    <span class="scroll-line"></span>
+    <span class="scroll-text">SCROLL</span>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     §2 · EL ATELIER VIRTUAL — CONFIGURADOR
+═══════════════════════════════════════════════ -->
+<section class="configurador reveal-section" id="configurador" aria-label="Configurador interactivo de instrumento">
+  <div class="section-header">
+    <span class="section-tag">★ Atelier Virtual</span>
+    <h2 class="section-title">DISEÑA TU<br>INSTRUMENTO</h2>
+    <p class="section-desc">Cada elección transforma la pieza. El precio se actualiza en tiempo real.</p>
+  </div>
+  <div class="configurador-inner">
+
+    <!-- Render SVG del instrumento -->
+    <div class="guitar-preview" aria-label="Previsualización del instrumento configurado">
+      <svg class="guitar-svg" viewBox="0 0 300 600" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" id="guitar-render">
+        <g class="guitar-body">
+          <ellipse cx="150" cy="440" rx="100" ry="128" fill="var(--guitar-body-color,#5C3A1E)" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+          <ellipse cx="150" cy="368" rx="74" ry="82" fill="var(--guitar-body-color,#5C3A1E)" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+          <ellipse cx="150" cy="440" rx="93" ry="121" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
+          <rect x="128" y="410" width="44" height="13" rx="3" fill="#111" stroke="#D32F2F" stroke-width="0.8" id="pickup-neck"/>
+          <rect x="128" y="458" width="44" height="13" rx="3" fill="#111" stroke="#D32F2F" stroke-width="0.8" id="pickup-bridge"/>
+          <rect x="118" y="510" width="64" height="9" rx="2" fill="#777" stroke="#999" stroke-width="0.5"/>
+          <circle cx="150" cy="376" r="6" fill="none" stroke="#555" stroke-width="0.8" opacity="0.5"/>
+        </g>
+        <g class="guitar-neck" id="guitar-neck">
+          <rect x="135" y="78" width="30" height="300" rx="5" fill="var(--guitar-neck-color,#8B5E3C)" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/>
+          <line x1="135" y1="128" x2="165" y2="128" stroke="var(--fret-color,#C0C0C0)" stroke-width="1.2"/>
+          <line x1="135" y1="153" x2="165" y2="153" stroke="var(--fret-color,#C0C0C0)" stroke-width="1.2"/>
+          <line x1="135" y1="176" x2="165" y2="176" stroke="var(--fret-color,#C0C0C0)" stroke-width="1.2"/>
+          <line x1="135" y1="196" x2="165" y2="196" stroke="var(--fret-color,#C0C0C0)" stroke-width="1.2"/>
+          <line x1="135" y1="214" x2="165" y2="214" stroke="var(--fret-color,#C0C0C0)" stroke-width="1.2"/>
+          <line x1="135" y1="230" x2="165" y2="230" stroke="var(--fret-color,#C0C0C0)" stroke-width="1.2"/>
+          <line x1="135" y1="244" x2="165" y2="244" stroke="var(--fret-color,#C0C0C0)" stroke-width="1.2"/>
+          <line x1="135" y1="257" x2="165" y2="257" stroke="var(--fret-color,#C0C0C0)" stroke-width="1.2"/>
+          <line x1="135" y1="268" x2="165" y2="268" stroke="var(--fret-color,#C0C0C0)" stroke-width="1.2"/>
+          <line x1="135" y1="278" x2="165" y2="278" stroke="var(--fret-color,#C0C0C0)" stroke-width="1.2"/>
+          <line x1="135" y1="287" x2="165" y2="287" stroke="var(--fret-color,#C0C0C0)" stroke-width="1.2"/>
+          <line x1="135" y1="295" x2="165" y2="295" stroke="var(--fret-color,#C0C0C0)" stroke-width="1.2"/>
+          <circle cx="150" cy="165" r="3" fill="rgba(255,255,255,0.45)"/>
+          <circle cx="150" cy="206" r="3" fill="rgba(255,255,255,0.45)"/>
+          <circle cx="150" cy="238" r="3" fill="rgba(255,255,255,0.45)"/>
+          <circle cx="147" cy="262" r="2.5" fill="rgba(255,255,255,0.45)"/>
+          <circle cx="153" cy="262" r="2.5" fill="rgba(255,255,255,0.45)"/>
+        </g>
+        <g class="guitar-headstock">
+          <rect x="129" y="28" width="42" height="54" rx="6" fill="var(--guitar-neck-color,#8B5E3C)" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/>
+          <circle cx="137" cy="40" r="4" fill="#444" stroke="#777" stroke-width="0.5"/>
+          <circle cx="163" cy="40" r="4" fill="#444" stroke="#777" stroke-width="0.5"/>
+          <circle cx="137" cy="56" r="4" fill="#444" stroke="#777" stroke-width="0.5"/>
+          <circle cx="163" cy="56" r="4" fill="#444" stroke="#777" stroke-width="0.5"/>
+          <circle cx="137" cy="72" r="4" fill="#444" stroke="#777" stroke-width="0.5"/>
+          <circle cx="163" cy="72" r="4" fill="#444" stroke="#777" stroke-width="0.5"/>
+        </g>
+        <g class="guitar-strings" id="guitar-strings" opacity="0.65">
+          <line x1="140" y1="38" x2="140" y2="514" stroke="#C8B97A" stroke-width="0.5"/>
+          <line x1="144" y1="38" x2="144" y2="514" stroke="#C8B97A" stroke-width="0.7"/>
+          <line x1="148" y1="38" x2="148" y2="514" stroke="#C8B97A" stroke-width="0.9"/>
+          <line x1="152" y1="38" x2="152" y2="514" stroke="#C8B97A" stroke-width="1.1"/>
+          <line x1="156" y1="38" x2="156" y2="514" stroke="#C8B97A" stroke-width="1.3"/>
+          <line x1="160" y1="38" x2="160" y2="514" stroke="#C8B97A" stroke-width="1.5"/>
+        </g>
+        <g class="cota" opacity="0.3" aria-hidden="true">
+          <line x1="28" y1="78" x2="28" y2="378" stroke="#D32F2F" stroke-width="0.5" stroke-dasharray="3,3"/>
+          <line x1="23" y1="78" x2="33" y2="78" stroke="#D32F2F" stroke-width="0.5"/>
+          <line x1="23" y1="378" x2="33" y2="378" stroke="#D32F2F" stroke-width="0.5"/>
+          <text x="16" y="232" fill="#D32F2F" font-size="7" transform="rotate(-90,16,232)" font-family="Inter">648mm</text>
+        </g>
+      </svg>
+      <div class="guitar-label" id="guitar-config-label" aria-live="polite">
+        <span>Cuerpo: <strong id="label-body-wood">Caoba oscura</strong></span>
+        <span>Mástil: <strong id="label-neck-wood">Arce flameado</strong></span>
+        <span>Trastes: <strong id="label-frets-type">Níquel-Plata</strong></span>
+      </div>
+    </div>
+
+    <!-- Panel de opciones -->
+    <div class="config-panel">
+      <div class="price-display" aria-live="polite" aria-atomic="true" aria-label="Precio total actualizado">
+        <span class="price-label">Precio base configurado</span>
+        <span class="price-value" id="total-price">$2,499.00</span>
+        <span class="price-note">IVA no incluido · Depósito inicial 20%</span>
+      </div>
+
+      <div class="config-group">
+        <p class="config-label" id="label-dex">Dexteridad</p>
+        <div class="config-options" role="group" aria-labelledby="label-dex">
+          <button class="config-btn active" data-group="dex" data-value="0">Diestro</button>
+          <button class="config-btn" data-group="dex" data-value="0">Zurdo</button>
+        </div>
+      </div>
+
+      <div class="config-group">
+        <p class="config-label" id="label-strings">Cuerdas y escala</p>
+        <div class="config-options" role="group" aria-labelledby="label-strings">
+          <button class="config-btn active" data-group="strings" data-value="0">6 cuerdas estándar</button>
+          <button class="config-btn" data-group="strings" data-value="200">7 cuerdas fanned-frets <span class="price-add" aria-label="adicional $200">+$200</span></button>
+          <button class="config-btn" data-group="strings" data-value="300">8 cuerdas multiescala <span class="price-add" aria-label="adicional $300">+$300</span></button>
+        </div>
+      </div>
+
+      <div class="config-group">
+        <p class="config-label" id="label-body">Madera del cuerpo</p>
+        <div class="config-options swatches" role="group" aria-labelledby="label-body">
+          <button class="config-btn swatch active" data-group="body" data-value="0" data-color="#5C3A1E" data-body-label="Caoba oscura">
+            <span class="swatch-dot" style="background:#5C3A1E;" aria-hidden="true"></span>Caoba oscura
+          </button>
+          <button class="config-btn swatch" data-group="body" data-value="0" data-color="#8B6914" data-body-label="Arce flameado">
+            <span class="swatch-dot" style="background:#8B6914;" aria-hidden="true"></span>Arce flameado
+          </button>
+          <button class="config-btn swatch" data-group="body" data-value="180" data-color="#2C1810" data-body-label="Wenge exótico">
+            <span class="swatch-dot" style="background:#2C1810;" aria-hidden="true"></span>Wenge exótico <span class="price-add" aria-label="adicional $180">+$180</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="config-group">
+        <p class="config-label" id="label-neck">Madera del mástil</p>
+        <div class="config-options swatches" role="group" aria-labelledby="label-neck">
+          <button class="config-btn swatch active" data-group="neck" data-value="0" data-neck-color="#8B5E3C" data-neck-label="Arce flameado">
+            <span class="swatch-dot" style="background:#8B5E3C;" aria-hidden="true"></span>Arce flameado
+          </button>
+          <button class="config-btn swatch" data-group="neck" data-value="0" data-neck-color="#6B4226" data-neck-label="Caoba satinada">
+            <span class="swatch-dot" style="background:#6B4226;" aria-hidden="true"></span>Caoba satinada
+          </button>
+          <button class="config-btn swatch" data-group="neck" data-value="150" data-neck-color="#1C1008" data-neck-label="Wenge exótico">
+            <span class="swatch-dot" style="background:#1C1008;border:1px solid #555;" aria-hidden="true"></span>Wenge exótico <span class="price-add" aria-label="adicional $150">+$150</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="config-group">
+        <p class="config-label" id="label-frets">Trastes</p>
+        <div class="config-options" role="group" aria-labelledby="label-frets">
+          <button class="config-btn active" data-group="frets" data-value="0" data-fret-color="#C0C0C0" data-fret-label="Níquel-Plata">Níquel-Plata</button>
+          <button class="config-btn" data-group="frets" data-value="120" data-fret-color="#E8E8E8" data-fret-label="Acero Inox. Premium">Acero Inox. Premium <span class="price-add" aria-label="adicional $120">+$120</span></button>
+        </div>
+      </div>
+
+      <div class="config-actions">
+        <button class="btn btn-primary config-submit" id="reserve-btn">Reservar este instrumento</button>
+        <button class="btn btn-ghost config-reset" id="reset-btn">Restablecer configuración</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     §3 · LA CONVOCATORIA DEL LUTHIER — SLOTS
+═══════════════════════════════════════════════ -->
+<section class="slots reveal-section" id="legado" aria-label="Slots de producción disponibles">
+  <div class="section-header">
+    <span class="section-tag">★ Convocatoria del Luthier</span>
+    <h2 class="section-title">SLOTS DE<br>PRODUCCIÓN 2026</h2>
+    <p class="section-desc">Solo se abren <strong>12 slots anuales</strong>. Esta es la realidad del oficio, no una táctica de marketing.</p>
+  </div>
+  <div class="slots-grid" role="list" aria-label="Estado de los doce slots de producción anual">
+    <article class="slot slot--taken" role="listitem" aria-label="Slot 01 ocupado, Q1 2025">
+      <span class="slot-num" aria-hidden="true">01</span>
+      <span class="slot-badge">FORJADO</span>
+      <span class="slot-quarter">Q1 · 2025</span>
+    </article>
+    <article class="slot slot--taken" role="listitem" aria-label="Slot 02 ocupado, Q1 2025">
+      <span class="slot-num" aria-hidden="true">02</span>
+      <span class="slot-badge">FORJADO</span>
+      <span class="slot-quarter">Q1 · 2025</span>
+    </article>
+    <article class="slot slot--taken" role="listitem" aria-label="Slot 03 ocupado, Q2 2025">
+      <span class="slot-num" aria-hidden="true">03</span>
+      <span class="slot-badge">FORJADO</span>
+      <span class="slot-quarter">Q2 · 2025</span>
+    </article>
+    <article class="slot slot--taken" role="listitem" aria-label="Slot 04 ocupado, Q2 2025">
+      <span class="slot-num" aria-hidden="true">04</span>
+      <span class="slot-badge">FORJADO</span>
+      <span class="slot-quarter">Q2 · 2025</span>
+    </article>
+    <article class="slot slot--taken" role="listitem" aria-label="Slot 05 ocupado, Q3 2025">
+      <span class="slot-num" aria-hidden="true">05</span>
+      <span class="slot-badge">FORJADO</span>
+      <span class="slot-quarter">Q3 · 2025</span>
+    </article>
+    <article class="slot slot--taken" role="listitem" aria-label="Slot 06 ocupado, Q3 2025">
+      <span class="slot-num" aria-hidden="true">06</span>
+      <span class="slot-badge">FORJADO</span>
+      <span class="slot-quarter">Q3 · 2025</span>
+    </article>
+    <article class="slot slot--taken" role="listitem" aria-label="Slot 07 ocupado, Q4 2025">
+      <span class="slot-num" aria-hidden="true">07</span>
+      <span class="slot-badge">FORJADO</span>
+      <span class="slot-quarter">Q4 · 2025</span>
+    </article>
+    <article class="slot slot--taken" role="listitem" aria-label="Slot 08 ocupado, Q4 2025">
+      <span class="slot-num" aria-hidden="true">08</span>
+      <span class="slot-badge">FORJADO</span>
+      <span class="slot-quarter">Q4 · 2025</span>
+    </article>
+    <article class="slot slot--taken" role="listitem" aria-label="Slot 09 ocupado, Q1 2026">
+      <span class="slot-num" aria-hidden="true">09</span>
+      <span class="slot-badge">FORJADO</span>
+      <span class="slot-quarter">Q1 · 2026</span>
+    </article>
+    <article class="slot slot--available" role="listitem" aria-label="Slot 10 disponible, Q2 2026">
+      <span class="slot-num" aria-hidden="true">10</span>
+      <span class="slot-quarter">Q2 · 2026</span>
+      <a href="#configurador" class="btn btn-primary slot-cta">Reservar</a>
+    </article>
+    <article class="slot slot--available" role="listitem" aria-label="Slot 11 disponible, Q3 2026">
+      <span class="slot-num" aria-hidden="true">11</span>
+      <span class="slot-quarter">Q3 · 2026</span>
+      <a href="#configurador" class="btn btn-primary slot-cta">Reservar</a>
+    </article>
+    <article class="slot slot--available" role="listitem" aria-label="Slot 12 disponible, Q4 2026">
+      <span class="slot-num" aria-hidden="true">12</span>
+      <span class="slot-quarter">Q4 · 2026</span>
+      <a href="#configurador" class="btn btn-primary slot-cta">Reservar</a>
+    </article>
+  </div>
+  <p class="slots-note">Solo 3 slots disponibles para 2026. El depósito del 20% asegura tu posición en la lista de producción.</p>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     §4 · LA PARADOJA DE LA MATERIA — STORYTELLING
+═══════════════════════════════════════════════ -->
+<section class="materia reveal-section" id="materia" aria-label="La historia de la materia prima">
+  <div class="materia-inner">
+    <div class="materia-text">
+      <span class="section-tag dark">★ La Paradoja de la Materia</span>
+      <h2 class="section-title dark">LA MADERA<br>NO MIENTE</h2>
+      <p>Un árbol que creció durante décadas en condiciones adversas desarrolla una densidad de fibra que ningún proceso industrial puede replicar. El luthier de autor sabe leerlo.</p>
+      <p>Cada pieza pasa por un mínimo de <strong>18 meses de secado natural</strong> antes de ser trabajada. El tiempo es el primer instrumento del taller.</p>
+      <p>La elección de la madera define el 60% del carácter tonal del instrumento. El otro 40% lo forja el músico que lo toca.</p>
+      <div class="materia-stats" aria-label="Datos del proceso artesanal">
+        <div class="stat">
+          <span class="stat-num">18</span>
+          <span class="stat-label">meses mínimos de secado</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">4</span>
+          <span class="stat-label">especies de madera premium</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">200+</span>
+          <span class="stat-label">horas por instrumento</span>
+        </div>
+      </div>
+    </div>
+    <div class="materia-visual" aria-hidden="true">
+      <svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="wood-grain-svg">
+        <rect width="400" height="500" fill="#3D1F0A" rx="6"/>
+        <path d="M0,40 Q200,22 400,48" stroke="#6B3A15" stroke-width="2.5" fill="none" opacity="0.7"/>
+        <path d="M0,72 Q160,55 400,80" stroke="#7A4520" stroke-width="1.5" fill="none" opacity="0.5"/>
+        <path d="M0,108 Q230,90 400,115" stroke="#6B3A15" stroke-width="1" fill="none" opacity="0.4"/>
+        <path d="M0,152 Q190,135 400,158" stroke="#8A5528" stroke-width="2" fill="none" opacity="0.6"/>
+        <path d="M0,196 Q170,178 400,202" stroke="#6B3A15" stroke-width="1.5" fill="none" opacity="0.5"/>
+        <path d="M0,240 Q215,222 400,246" stroke="#7A4520" stroke-width="1" fill="none" opacity="0.4"/>
+        <path d="M0,288 Q195,270 400,294" stroke="#6B3A15" stroke-width="2.5" fill="none" opacity="0.7"/>
+        <path d="M0,334 Q175,316 400,340" stroke="#7A4520" stroke-width="1.5" fill="none" opacity="0.5"/>
+        <path d="M0,380 Q205,362 400,386" stroke="#6B3A15" stroke-width="1" fill="none" opacity="0.4"/>
+        <path d="M0,428 Q185,410 400,434" stroke="#8A5528" stroke-width="2" fill="none" opacity="0.6"/>
+        <path d="M0,474 Q200,456 400,480" stroke="#6B3A15" stroke-width="1.5" fill="none" opacity="0.5"/>
+        <rect width="400" height="500" fill="rgba(0,0,0,0.12)" rx="6"/>
+        <text x="16" y="490" fill="#D32F2F" font-size="9" font-family="Inter" opacity="0.7">CAOBA HONDUREÑA · CORTE CUARTERSAWN · 18 meses secado natural</text>
+        <line x1="8" y1="468" x2="392" y2="468" stroke="#D32F2F" stroke-width="0.5" opacity="0.3"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     §5 · ANATOMÍA ACÚSTICA — INFOGRAFÍA INTERACTIVA
+═══════════════════════════════════════════════ -->
+<section class="anatomia reveal-section" id="anatomia" aria-label="Anatomía acústica interactiva del instrumento">
+  <div class="section-header">
+    <span class="section-tag">★ Anatomía Acústica</span>
+    <h2 class="section-title">INGENIERÍA<br>DEL SONIDO</h2>
+    <p class="section-desc">Toca los puntos rojos para explorar cada componente. Ingeniería al servicio del arte.</p>
+  </div>
+  <div class="anatomia-inner">
+    <div class="blueprint-container">
+      <svg viewBox="0 0 500 700" xmlns="http://www.w3.org/2000/svg" class="blueprint-svg" role="img" aria-label="Plano técnico interactivo de la guitarra">
+        <rect width="500" height="700" fill="#0D1F35"/>
+        <defs>
+          <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+            <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(100,160,255,0.08)" stroke-width="0.5"/>
+          </pattern>
+        </defs>
+        <rect width="500" height="700" fill="url(#grid)"/>
+        <!-- Cuerpo -->
+        <ellipse cx="250" cy="505" rx="145" ry="170" fill="none" stroke="rgba(100,180,255,0.75)" stroke-width="1.2"/>
+        <ellipse cx="250" cy="395" rx="108" ry="105" fill="none" stroke="rgba(100,180,255,0.75)" stroke-width="1.2"/>
+        <!-- Mástil -->
+        <rect x="223" y="100" width="54" height="315" fill="none" stroke="rgba(100,180,255,0.75)" stroke-width="1.2"/>
+        <!-- Clavijero -->
+        <rect x="218" y="46" width="64" height="58" rx="6" fill="none" stroke="rgba(100,180,255,0.75)" stroke-width="1.2"/>
+        <!-- Trastes blueprint -->
+        <line x1="223" y1="155" x2="277" y2="155" stroke="rgba(200,230,255,0.85)" stroke-width="1"/>
+        <line x1="223" y1="184" x2="277" y2="184" stroke="rgba(200,230,255,0.85)" stroke-width="1"/>
+        <line x1="223" y1="210" x2="277" y2="210" stroke="rgba(200,230,255,0.85)" stroke-width="1"/>
+        <line x1="223" y1="234" x2="277" y2="234" stroke="rgba(200,230,255,0.85)" stroke-width="1"/>
+        <line x1="223" y1="255" x2="277" y2="255" stroke="rgba(200,230,255,0.85)" stroke-width="1"/>
+        <line x1="223" y1="274" x2="277" y2="274" stroke="rgba(200,230,255,0.85)" stroke-width="1"/>
+        <line x1="223" y1="291" x2="277" y2="291" stroke="rgba(200,230,255,0.85)" stroke-width="1"/>
+        <line x1="223" y1="306" x2="277" y2="306" stroke="rgba(200,230,255,0.85)" stroke-width="1"/>
+        <!-- Pastillas -->
+        <rect x="218" y="430" width="64" height="18" rx="3" fill="none" stroke="#D32F2F" stroke-width="1.2"/>
+        <rect x="218" y="478" width="64" height="18" rx="3" fill="none" stroke="#D32F2F" stroke-width="1.2"/>
+        <!-- Cotas -->
+        <line x1="175" y1="100" x2="175" y2="415" stroke="rgba(200,230,255,0.3)" stroke-width="0.5" stroke-dasharray="4,3"/>
+        <line x1="169" y1="100" x2="181" y2="100" stroke="rgba(200,230,255,0.3)" stroke-width="0.5"/>
+        <line x1="169" y1="415" x2="181" y2="415" stroke="rgba(200,230,255,0.3)" stroke-width="0.5"/>
+        <text x="155" y="262" fill="rgba(200,230,255,0.5)" font-size="8" font-family="Inter" transform="rotate(-90,155,262)">648 mm scale</text>
+        <!-- Cuerdas blueprint -->
+        <line x1="237" y1="50" x2="237" y2="520" stroke="rgba(200,200,150,0.25)" stroke-width="0.5"/>
+        <line x1="244" y1="50" x2="244" y2="520" stroke="rgba(200,200,150,0.25)" stroke-width="0.7"/>
+        <line x1="250" y1="50" x2="250" y2="520" stroke="rgba(200,200,150,0.25)" stroke-width="0.9"/>
+        <line x1="256" y1="50" x2="256" y2="520" stroke="rgba(200,200,150,0.25)" stroke-width="1.1"/>
+        <line x1="262" y1="50" x2="262" y2="520" stroke="rgba(200,200,150,0.25)" stroke-width="1.3"/>
+        <line x1="268" y1="50" x2="268" y2="520" stroke="rgba(200,200,150,0.25)" stroke-width="1.5"/>
+        <!-- Hotspots -->
+        <circle cx="282" cy="180" r="9" fill="#D32F2F" opacity="0.95" class="hotspot" data-target="info-trastes" tabindex="0" role="button" aria-label="Info sobre trastes — activar" aria-expanded="false"/>
+        <text x="282" y="185" fill="white" font-size="11" text-anchor="middle" font-weight="bold" pointer-events="none">+</text>
+        <circle cx="218" cy="128" r="9" fill="#D32F2F" opacity="0.95" class="hotspot" data-target="info-cejilla" tabindex="0" role="button" aria-label="Info sobre cejilla — activar" aria-expanded="false"/>
+        <text x="218" y="133" fill="white" font-size="11" text-anchor="middle" font-weight="bold" pointer-events="none">+</text>
+        <circle cx="295" cy="440" r="9" fill="#D32F2F" opacity="0.95" class="hotspot" data-target="info-pastillas" tabindex="0" role="button" aria-label="Info sobre pastillas — activar" aria-expanded="false"/>
+        <text x="295" y="445" fill="white" font-size="11" text-anchor="middle" font-weight="bold" pointer-events="none">+</text>
+        <circle cx="250" cy="68" r="9" fill="#D32F2F" opacity="0.95" class="hotspot" data-target="info-alma" tabindex="0" role="button" aria-label="Info sobre alma — activar" aria-expanded="false"/>
+        <text x="250" y="73" fill="white" font-size="11" text-anchor="middle" font-weight="bold" pointer-events="none">+</text>
+        <circle cx="295" cy="565" r="9" fill="#D32F2F" opacity="0.95" class="hotspot" data-target="info-puente" tabindex="0" role="button" aria-label="Info sobre puente — activar" aria-expanded="false"/>
+        <text x="295" y="570" fill="white" font-size="11" text-anchor="middle" font-weight="bold" pointer-events="none">+</text>
+      </svg>
+
+      <div class="hotspot-info" id="info-trastes" role="tooltip" aria-live="polite" hidden>
+        <button class="info-close" aria-label="Cerrar información sobre trastes">✕</button>
+        <h4>Trastes de Precisión</h4>
+        <p>Nivel y coronado manual con piedra de agua japonesa. Tolerancia de ±0.01mm. Disponibles en níquel-plata o acero inoxidable 18%.</p>
+      </div>
+      <div class="hotspot-info" id="info-cejilla" role="tooltip" aria-live="polite" hidden>
+        <button class="info-close" aria-label="Cerrar información sobre cejilla">✕</button>
+        <h4>Cejilla de Hueso Natural</h4>
+        <p>Tallada a mano desde hueso bovino de alta densidad. Cada ranura calibrada al diámetro exacto de las cuerdas elegidas.</p>
+      </div>
+      <div class="hotspot-info" id="info-pastillas" role="tooltip" aria-live="polite" hidden>
+        <button class="info-close" aria-label="Cerrar información sobre pastillas">✕</button>
+        <h4>Pastillas Bobinadas a Mano</h4>
+        <p>Devanado artesanal con tensión de hilo controlada. Cada bobina produce un carácter sonoro único, no reproducible industrialmente.</p>
+      </div>
+      <div class="hotspot-info" id="info-alma" role="tooltip" aria-live="polite" hidden>
+        <button class="info-close" aria-label="Cerrar información sobre alma">✕</button>
+        <h4>Alma de Doble Acción</h4>
+        <p>Barra de acero de doble acción que permite ajustar la curvatura del mástil en ambas direcciones. Incluye calibración gratuita de por vida.</p>
+      </div>
+      <div class="hotspot-info" id="info-puente" role="tooltip" aria-live="polite" hidden>
+        <button class="info-close" aria-label="Cerrar información sobre puente">✕</button>
+        <h4>Puente de Alta Densidad</h4>
+        <p>Mecanizado en bloque de aluminio aeronáutico o latón macizo. Silletas individualmente ajustables para intonación perfecta por cuerda.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     §6 · VOCES DEL ESCENARIO — TESTIMONIOS
+═══════════════════════════════════════════════ -->
+<section class="testimonios reveal-section" id="testimonios" aria-label="Testimonios de artistas profesionales">
+  <div class="section-header">
+    <span class="section-tag">★ Voces del Escenario</span>
+    <h2 class="section-title">LO QUE DICEN<br>LOS QUE TOCAN</h2>
+  </div>
+  <div class="testimonios-track-wrap">
+    <div class="testimonios-track" id="testimonios-track" role="list">
+      <article class="testimonio-card" role="listitem">
+        <blockquote>
+          <p>"Tres años de gira con este instrumento. Humedad extrema en Brasil, frío en Islandia. Ni una desafinación estructural. Es una obra de ingeniería."</p>
+          <footer>
+            <strong>— Rodrigo V.</strong>
+            <span>Guitarrista, gira latinoamericana 2023–2025</span>
+          </footer>
+        </blockquote>
+      </article>
+      <article class="testimonio-card" role="listitem">
+        <blockquote>
+          <p>"El nivel de los trastes es quirúrgico. Cero ruido fantasma. Los técnicos de estudio preguntan qué guitarra es cuando escuchan el raw track."</p>
+          <footer>
+            <strong>— Camila S.</strong>
+            <span>Sesionista de estudio, Buenos Aires</span>
+          </footer>
+        </blockquote>
+      </article>
+      <article class="testimonio-card" role="listitem">
+        <blockquote>
+          <p>"Encargué la versión de 7 cuerdas fanned frets para mi proyecto progresivo. La tensión entre cuerdas es perfectamente equilibrada. Te obliga a tocar mejor."</p>
+          <footer>
+            <strong>— Martín L.</strong>
+            <span>Músico de metal progresivo</span>
+          </footer>
+        </blockquote>
+      </article>
+      <article class="testimonio-card" role="listitem">
+        <blockquote>
+          <p>"El proceso de personalización fue transparente desde el primer depósito hasta la entrega. Seis meses de espera que valieron exactamente lo que prometieron."</p>
+          <footer>
+            <strong>— Felipe R.</strong>
+            <span>Coleccionista y guitarrista de jazz</span>
+          </footer>
+        </blockquote>
+      </article>
+    </div>
+    <div class="testimonios-controls" aria-label="Controles del carrusel de testimonios">
+      <button class="track-btn" id="track-prev" aria-label="Testimonio anterior">←</button>
+      <div class="track-dots" id="track-dots" role="tablist" aria-label="Selector de testimonio"></div>
+      <button class="track-btn" id="track-next" aria-label="Siguiente testimonio">→</button>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     §7 · LA GÉNESIS DE UNA OBRA — TIMELINE
+═══════════════════════════════════════════════ -->
+<section class="timeline-sec reveal-section" id="proceso" aria-label="Proceso de fabricación del instrumento">
+  <div class="section-header">
+    <span class="section-tag">★ La Génesis de una Obra</span>
+    <h2 class="section-title">EL PROCESO<br>DE FORJA</h2>
+    <p class="section-desc">Desde la selección de la madera hasta la calibración final. Sin atajos.</p>
+  </div>
+  <ol class="timeline-list" aria-label="Fases del proceso de fabricación artesanal">
+    <li class="timeline-item">
+      <div class="timeline-dot" aria-hidden="true"></div>
+      <div class="timeline-content">
+        <span class="timeline-tag">Semana 1–2</span>
+        <h3>Diseño y Consulta</h3>
+        <p>Sesión de 2 horas con el luthier para definir especificaciones técnicas, ergonomía y estética. Planos digitales aprobados antes de tocar la madera.</p>
+      </div>
+    </li>
+    <li class="timeline-item">
+      <div class="timeline-dot" aria-hidden="true"></div>
+      <div class="timeline-content">
+        <span class="timeline-tag">Semana 2–4</span>
+        <h3>Selección y Corte de Madera</h3>
+        <p>Elección personal del luthier de las piezas del stock con humedad medida. Corte CNC de alta precisión de cuerpo y mástil.</p>
+      </div>
+    </li>
+    <li class="timeline-item">
+      <div class="timeline-dot" aria-hidden="true"></div>
+      <div class="timeline-content">
+        <span class="timeline-tag">Semana 4–10</span>
+        <h3>Ensamblaje Artesanal</h3>
+        <p>Encolado con adhesivos de temperatura controlada, instalación del alma, incrustación de trastes y trabajo de cejilla.</p>
+      </div>
+    </li>
+    <li class="timeline-item">
+      <div class="timeline-dot" aria-hidden="true"></div>
+      <div class="timeline-content">
+        <span class="timeline-tag">Semana 10–14</span>
+        <h3>Acabado y Pintado</h3>
+        <p>Lijado progresivo de grano 80 a 2000. Aplicación de acabado en capas con 72h de curado entre capas.</p>
+      </div>
+    </li>
+    <li class="timeline-item">
+      <div class="timeline-dot" aria-hidden="true"></div>
+      <div class="timeline-content">
+        <span class="timeline-tag">Semana 14–16</span>
+        <h3>Electrónica y Pastillas</h3>
+        <p>Instalación y bobinado manual de pastillas. Soldadura de plata con materiales de audiophile grade.</p>
+      </div>
+    </li>
+    <li class="timeline-item">
+      <div class="timeline-dot" aria-hidden="true"></div>
+      <div class="timeline-content">
+        <span class="timeline-tag">Semana 16–18</span>
+        <h3>Setup y Calibración Final</h3>
+        <p>Nivelado de trastes, ajuste de acción, intonación por cuerda, prueba de resonancia con analizador espectral. El instrumento sale listo para grabar.</p>
+      </div>
+    </li>
+  </ol>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     §8 · LOS TRES NIVELES — PRECIOS
+═══════════════════════════════════════════════ -->
+<section class="precios reveal-section" id="precios" aria-label="Opciones y precios de los instrumentos">
+  <div class="section-header">
+    <span class="section-tag">★ Los Tres Niveles</span>
+    <h2 class="section-title">ELIGE TU<br>NIVEL DE OBRA</h2>
+    <p class="section-desc">Precios cerrados. Sin costos ocultos. Sin sorpresas en el checkout.</p>
+  </div>
+  <div class="precios-grid" role="list">
+    <article class="precio-card" role="listitem" aria-label="Plan Core Custom — $2,499">
+      <div class="precio-header">
+        <span class="precio-tier">Core Custom</span>
+        <div class="precio-amount"><span class="precio-currency">$</span><span class="precio-num">2,499</span></div>
+        <span class="precio-note">Depósito inicial: $499</span>
+      </div>
+      <ul class="precio-features" aria-label="Características del plan Core Custom">
+        <li>6 cuerdas estándar</li>
+        <li>Madera de cuerpo a elección (caoba u arce)</li>
+        <li>Trastes de níquel-plata nivelados a mano</li>
+        <li>Cejilla de hueso tallada</li>
+        <li>Acabado satinado o brillante</li>
+        <li>Setup completo incluido</li>
+        <li>Estuche semi-rígido incluido</li>
+      </ul>
+      <a href="#configurador" class="btn btn-ghost precio-cta">Configurar Core</a>
+    </article>
+
+    <article class="precio-card precio-card--featured" role="listitem" aria-label="Plan Artisan Series — $3,299, más elegido">
+      <div class="precio-featured-badge" aria-label="Más elegido">★ Más elegido</div>
+      <div class="precio-header">
+        <span class="precio-tier">Artisan Series</span>
+        <div class="precio-amount"><span class="precio-currency">$</span><span class="precio-num">3,299</span></div>
+        <span class="precio-note">Depósito inicial: $659</span>
+      </div>
+      <ul class="precio-features" aria-label="Características del plan Artisan Series">
+        <li>6, 7 u 8 cuerdas (fanned-frets incluido)</li>
+        <li>Madera exótica a elección (wenge disponible)</li>
+        <li>Trastes de acero inoxidable premium</li>
+        <li>Pastillas bobinadas a mano</li>
+        <li>Acabado a medida (burst, natural, relic disponibles)</li>
+        <li>Estuche rígido blindado incluido</li>
+        <li>Calibración gratuita de por vida</li>
+      </ul>
+      <a href="#configurador" class="btn btn-primary precio-cta">Configurar Artisan</a>
+    </article>
+
+    <article class="precio-card" role="listitem" aria-label="Plan Master Reserve — desde $5,500">
+      <div class="precio-header">
+        <span class="precio-tier">Master Reserve</span>
+        <div class="precio-amount"><span class="precio-currency">$</span><span class="precio-num">5,500<span class="precio-plus">+</span></span></div>
+        <span class="precio-note">Presupuesto a medida · Visita al taller</span>
+      </div>
+      <ul class="precio-features" aria-label="Características del plan Master Reserve">
+        <li>Diseño completamente a medida</li>
+        <li>Maderas de primera selección de stock reservado</li>
+        <li>Hardware de latón macizo o titanio</li>
+        <li>Incrustaciones personalizadas (MOP, abalone)</li>
+        <li>Pastillas de bobina única artesanales</li>
+        <li>Acabado museum-grade (nitrocelulosa vintage)</li>
+        <li>Estuche de aluminio mecanizado personalizado</li>
+      </ul>
+      <a href="#faq" class="btn btn-ghost precio-cta">Consultar disponibilidad</a>
+    </article>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     §9 · LA ARMADURA DEL TONO — GARANTÍAS
+═══════════════════════════════════════════════ -->
+<section class="garantias reveal-section" id="garantias" aria-label="Garantías y protección del instrumento">
+  <div class="section-header">
+    <span class="section-tag">★ La Armadura del Tono</span>
+    <h2 class="section-title">PROTEGIDO<br>PARA SIEMPRE</h2>
+    <p class="section-desc">El instrumento llega en perfectas condiciones. La calibración se mantiene de por vida.</p>
+  </div>
+  <div class="garantias-grid">
+    <div class="garantia-item reveal-item">
+      <div class="garantia-icon" aria-hidden="true">
+        <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="5" y="8" width="50" height="44" rx="4" stroke="#D32F2F" stroke-width="1.5"/>
+          <path d="M18 30 L26 38 L42 22" stroke="#D32F2F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <h3>Estuche Blindado</h3>
+      <p>Estuche rígido de alta densidad con espuma de polietileno de celda cerrada. Resistente a impactos, humedad y variaciones térmicas de hasta 35°C.</p>
+    </div>
+    <div class="garantia-item reveal-item">
+      <div class="garantia-icon" aria-hidden="true">
+        <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="30" cy="30" r="22" stroke="#D32F2F" stroke-width="1.5"/>
+          <path d="M30 16 L30 30 L40 38" stroke="#D32F2F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <h3>Calibración de por Vida</h3>
+      <p>Ajuste anual gratuito de acción, intonación y curvatura del mástil. Disponible para instrumentos Artisan y Master Reserve.</p>
+    </div>
+    <div class="garantia-item reveal-item">
+      <div class="garantia-icon" aria-hidden="true">
+        <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M30 8 L52 20 L52 38 Q52 52 30 58 Q8 52 8 38 L8 20 Z" stroke="#D32F2F" stroke-width="1.5" fill="none"/>
+          <path d="M20 30 L27 37 L40 24" stroke="#D32F2F" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <h3>Higrómetro Integrado</h3>
+      <p>Sensor de humedad incluido en el estuche para monitoring continuo. Rango óptimo de conservación 45–55% HR garantizado.</p>
+    </div>
+    <div class="garantia-item reveal-item">
+      <div class="garantia-icon" aria-hidden="true">
+        <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="8" y="16" width="44" height="28" rx="3" stroke="#D32F2F" stroke-width="1.5"/>
+          <path d="M20 44 L20 50 M40 44 L40 50" stroke="#D32F2F" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M14 50 L46 50" stroke="#D32F2F" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="30" cy="30" r="6" stroke="#D32F2F" stroke-width="1"/>
+        </svg>
+      </div>
+      <h3>Envío Internacional Asegurado</h3>
+      <p>Despacho con seguro a valor declarado completo. Embalaje de doble caja con absorbentes de impacto. Tracking en tiempo real.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     §10 · LA HERMANDAD DEL TONO — NEWSLETTER
+═══════════════════════════════════════════════ -->
+<section class="newsletter reveal-section" id="hermandad" aria-label="Suscripción a alertas de maderas raras">
+  <div class="newsletter-inner">
+    <div class="newsletter-text">
+      <span class="section-tag">★ La Hermandad del Tono</span>
+      <h2 class="section-title">MADERAS RARAS<br>ANTES QUE NADIE</h2>
+      <p>Cuando el luthier adquiere un lote excepcional de wenge africano, ebony gabonés o sitka spruce de primer corte, los miembros de la lista son los primeros en saberlo.</p>
+      <p class="newsletter-legal">Sin spam. Sin newsletters semanales. Solo alertas de oportunidades reales. Baja cuando quieras con un clic.</p>
+    </div>
+    <form class="newsletter-form" id="newsletter-form" novalidate aria-label="Formulario de suscripción a la Hermandad del Tono">
+      <div class="newsletter-field">
+        <label for="newsletter-email" class="sr-only">Tu correo electrónico</label>
+        <input
+          type="email"
+          id="newsletter-email"
+          name="email"
+          placeholder="tu@correo.com"
+          autocomplete="email"
+          required
+          aria-required="true"
+          aria-describedby="newsletter-error"
+        />
+        <span class="newsletter-error" id="newsletter-error" role="alert" aria-live="polite"></span>
+      </div>
+      <div class="newsletter-consent">
+        <input type="checkbox" id="newsletter-consent" name="consent" required aria-required="true"/>
+        <label for="newsletter-consent">Acepto recibir alertas de disponibilidad de maderas. Puedo darme de baja en cualquier momento desde el enlace en cada email.</label>
+      </div>
+      <div class="newsletter-actions">
+        <button type="submit" class="btn btn-primary">Unirme a la hermandad</button>
+        <button type="button" class="btn btn-ghost" id="newsletter-dismiss">Continuar sin suscribirme</button>
+      </div>
+      <div class="newsletter-success" id="newsletter-success" role="status" aria-live="polite" hidden>
+        <span>✓ Estás dentro. Te avisamos cuando llegue algo especial.</span>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     §11 · DIÁLOGOS DE PRECISIÓN — FAQ
+═══════════════════════════════════════════════ -->
+<section class="faq reveal-section" id="faq" aria-label="Preguntas frecuentes">
+  <div class="section-header">
+    <span class="section-tag">★ Diálogos de Precisión</span>
+    <h2 class="section-title">PREGUNTAS<br>FRECUENTES</h2>
+  </div>
+  <div class="faq-list">
+    <details class="faq-item">
+      <summary class="faq-question">¿Cómo funciona el sistema de depósito y pagos?</summary>
+      <div class="faq-answer">
+        <p>Al confirmar el slot de producción se realiza un depósito del <strong>20% del precio total</strong>. El 80% restante se abona en dos cuotas: 40% a mitad del proceso y 40% final al aprobar el instrumento terminado. El depósito es reembolsable al 100% si el luthier no puede cumplir con el slot comprometido.</p>
+      </div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-question">¿Cuánto tiempo tarda la construcción de mi instrumento?</summary>
+      <div class="faq-answer">
+        <p>El proceso completo toma entre <strong>4 y 5 meses</strong> desde la apertura del slot. El cliente recibe actualizaciones fotográficas en cada fase con acceso a un panel de seguimiento privado.</p>
+      </div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-question">¿Puedo modificar la especificación después de confirmar el pedido?</summary>
+      <div class="faq-answer">
+        <p>Sí, durante las primeras <strong>2 semanas posteriores al depósito</strong> es posible modificar sin costo adicional. Una vez iniciado el corte de madera, los cambios estructurales tienen un cargo según el alcance. Los cambios de hardware o electrónica pueden hacerse hasta la semana 10.</p>
+      </div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-question">¿Realizan envíos internacionales?</summary>
+      <div class="faq-answer">
+        <p>Sí, enviamos a todo el mundo. El costo de envío con seguro a valor declarado completo se calcula según el destino y se añade al presupuesto de forma transparente antes del depósito. Tiempos estimados: <strong>7 a 14 días hábiles</strong>.</p>
+      </div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-question">¿Qué incluye la calibración gratuita de por vida?</summary>
+      <div class="faq-answer">
+        <p>Incluye: ajuste de curvatura de mástil, ajuste de acción en cejilla y puente, intonación por cuerda y revisión de electrónica. Disponible para instrumentos Artisan Series y Master Reserve. <strong>Una vez al año</strong>, envío de retorno cubierto por el taller.</p>
+      </div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-question">¿Puedo cancelar mi pedido?</summary>
+      <div class="faq-answer">
+        <p>Sí. La cancelación es posible en cualquier momento. Antes del inicio de corte de madera se reembolsa el <strong>100% del depósito</strong>. Durante la fabricación, el reembolso es proporcional a las horas ya trabajadas. El proceso de cancelación está disponible desde el panel de cliente con un solo clic.</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     §12 · FOOTER — EL MANIFIESTO FINAL
+═══════════════════════════════════════════════ -->
+<footer class="site-footer" id="footer" role="contentinfo">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="footer-logo">TRASTES <span class="accent">★</span></span>
+      <p class="footer-tagline">Luthería de Autor · Instrumentos únicos forjados a mano</p>
+      <div class="footer-social" aria-label="Redes sociales de Trastes Luthería">
+        <a href="#" aria-label="Instagram de Trastes Luthería" rel="noopener noreferrer">IG</a>
+        <a href="#" aria-label="YouTube de Trastes Luthería" rel="noopener noreferrer">YT</a>
+        <a href="#" aria-label="SoundCloud de Trastes Luthería" rel="noopener noreferrer">SC</a>
+      </div>
+    </div>
+    <nav class="footer-nav" aria-label="Navegación del pie de página">
+      <div class="footer-nav-col">
+        <h4>Instrumento</h4>
+        <ul role="list">
+          <li><a href="#configurador">Configurador</a></li>
+          <li><a href="#anatomia">Anatomía acústica</a></li>
+          <li><a href="#proceso">Proceso de fabricación</a></li>
+          <li><a href="#garantias">Garantías</a></li>
+        </ul>
+      </div>
+      <div class="footer-nav-col">
+        <h4>Marca</h4>
+        <ul role="list">
+          <li><a href="#testimonios">Artistas</a></li>
+          <li><a href="#precios">Precios</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#hermandad">Newsletter</a></li>
+        </ul>
+      </div>
+      <div class="footer-nav-col">
+        <h4>Legal</h4>
+        <ul role="list">
+          <li><a href="#">Términos de servicio</a></li>
+          <li><a href="#">Política de privacidad</a></li>
+          <li><a href="#">Política de cookies</a></li>
+          <li><a href="#">Política de cancelación</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="footer-theme" aria-label="Selector de modo visual">
+      <span class="footer-theme-label">Modo visual</span>
+      <div class="theme-switcher" role="group" aria-label="Seleccionar modo de color">
+        <button class="theme-btn" data-theme="dark" aria-pressed="false">Oscuro</button>
+        <button class="theme-btn" data-theme="light" aria-pressed="false">Claro</button>
+        <button class="theme-btn active" data-theme="system" aria-pressed="true">Sistema</button>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Trastes Luthería de Autor. Todos los derechos reservados.</p>
+    <p class="footer-certif">
+      <span>WCAG AA</span>
+      <span>DSA Compliant</span>
+      <span>GDPR Ready</span>
+    </p>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>
