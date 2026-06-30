@@ -2101,6 +2101,85 @@ details[open] .faq-question::after { transform: rotate(45deg); }
 /* ════════════════════════════════════════════════
    §12 · FOOTER
 ════════════════════════════════════════════════ */
+/* ════════════════════════════════════════════════
+   §11.5 · CONTACTO
+════════════════════════════════════════════════ */
+.contacto {
+  background: var(--bg-deep);
+  padding: var(--sp-section) var(--sp-side);
+  border-top: 1px solid var(--bg-border);
+}
+.contacto-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2.5rem, 6vw, 5rem);
+  align-items: start;
+}
+.contacto-info .section-title { font-size: clamp(2.4rem, 5vw, 4rem); margin: 0.75rem 0 1.25rem; }
+.contacto-lead {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-muted);
+  max-width: 420px;
+  margin-bottom: 2.5rem;
+}
+.contacto-list { display: flex; flex-direction: column; gap: 1.25rem; }
+.contacto-list li { display: flex; flex-direction: column; gap: 0.2rem; }
+.contacto-label {
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--red);
+  font-weight: 700;
+}
+.contacto-list a, .contacto-list li > span:last-child {
+  font-size: 1.05rem;
+  color: var(--text-primary);
+  transition: color var(--transition);
+}
+.contacto-list a:hover { color: var(--red); }
+
+/* Formulario */
+.contacto-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  background: var(--bg-card);
+  border: 1px solid var(--bg-border);
+  border-radius: var(--radius);
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+}
+.form-field { display: flex; flex-direction: column; gap: 0.4rem; }
+.form-field label {
+  font-size: 0.65rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+.form-field input,
+.form-field textarea {
+  font-family: var(--ff-sans);
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  background: var(--bg-mid);
+  border: 1px solid var(--bg-border);
+  border-radius: var(--radius);
+  padding: 0.8rem 1rem;
+  transition: border-color var(--transition), box-shadow var(--transition);
+  resize: vertical;
+}
+.form-field input:focus,
+.form-field textarea:focus {
+  outline: none;
+  border-color: var(--red);
+  box-shadow: 0 0 0 3px rgba(211,47,47,0.18);
+}
+.contacto-form .btn { width: max-content; }
+.form-note { font-size: 0.85rem; color: var(--red); min-height: 1.2em; }
+
 .site-footer {
   background: #050505;
   border-top: 1px solid var(--bg-border);
@@ -2240,6 +2319,9 @@ details[open] .faq-question::after { transform: rotate(45deg); }
   .guitar-svg { max-width: 180px; }
 
   .materia-inner {
+    grid-template-columns: 1fr;
+  }
+  .contacto-inner {
     grid-template-columns: 1fr;
   }
   .wood-grain-svg { max-height: 260px; object-fit: cover; }

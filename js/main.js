@@ -444,6 +444,36 @@ qsa('.timeline-item').forEach((item, i) => {
 
 
 /* ════════════════════════════════════════════════
+   8.5 · FORMULARIO DE CONTACTO (mailto)
+════════════════════════════════════════════════ */
+const contactoForm = qs('#contacto-form');
+if (contactoForm) {
+  const CONTACT_EMAIL = 'taller@trastes.com'; // ← cambiar por el email real
+  contactoForm.addEventListener('submit', e => {
+    e.preventDefault();
+    const nombre  = qs('#c-nombre', contactoForm).value.trim();
+    const email   = qs('#c-email', contactoForm).value.trim();
+    const mensaje = qs('#c-mensaje', contactoForm).value.trim();
+    const note    = qs('#contacto-note', contactoForm);
+
+    if (!nombre || !email || !mensaje) {
+      if (note) note.textContent = 'Completá todos los campos para enviar tu mensaje.';
+      return;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      if (note) note.textContent = 'Ingresá un email válido.';
+      return;
+    }
+
+    const subject = encodeURIComponent(`Consulta de ${nombre} — Trastes`);
+    const body    = encodeURIComponent(`${mensaje}\n\n— ${nombre} (${email})`);
+    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
+    if (note) note.textContent = 'Abrimos tu correo para que envíes el mensaje. ¡Gracias por escribir!';
+  });
+}
+
+
+/* ════════════════════════════════════════════════
    9 · NEWSLETTER
 ════════════════════════════════════════════════ */
 const newsletterForm    = qs('#newsletter-form');
