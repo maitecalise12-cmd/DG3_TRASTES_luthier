@@ -518,7 +518,7 @@ body::after {
   pointer-events: none;
   opacity: 0.9;
 }
-.hero-waveform svg { width: 100%; height: 100%; display: block; }
+.hero-waveform svg { width: 100%; height: 100%; display: block; filter: url(#doodle-rough); }
 
 /* ── Scroll hint ── */
 .hero-scroll-hint {
@@ -895,9 +895,12 @@ body::after {
 ════════════════════════════════════════════════ */
 .cursos {
   padding: var(--sp-section) var(--sp-side);
-  background: var(--bg-deep);
-  border-top: 1px solid var(--bg-border);
+  background: #FFFFFF;
+  border-top: 1px solid rgba(0,0,0,0.1);
 }
+/* Encabezado sobre el fondo blanco */
+.cursos .section-title { color: var(--red); white-space: nowrap; }
+.cursos .section-desc { color: #4A4A4A; }
 .cursos-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
