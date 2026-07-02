@@ -550,6 +550,18 @@ body::after {
 /* ════════════════════════════════════════════════
    §1.5 · MANIFIESTO DE IDENTIDAD
 ════════════════════════════════════════════════ */
+/* Zona por la que "caen" los doodles (manifiesto → CONTRA LO PREFABRICADO) */
+.doodle-zone {
+  position: relative;
+  overflow: hidden;
+  background: var(--bg-deep);
+}
+.doodle-zone .manifiesto,
+.doodle-zone .versus { background: transparent; }
+/* El contenido queda por encima de los doodles */
+.doodle-zone .marquee { position: relative; z-index: 1; }
+.versus-intro, .versus-compare, .versus-cta { position: relative; z-index: 1; }
+
 .manifiesto {
   background: var(--bg-deep);
   padding: var(--sp-section) var(--sp-side);
@@ -564,8 +576,12 @@ body::after {
   z-index: 0;
   pointer-events: none;
   color: var(--cream);
-  opacity: 0.34;
+  opacity: 0.55;
   will-change: transform;
+}
+/* En pantallas chicas mostramos la mitad para que no se amontonen */
+@media (max-width: 820px) {
+  .doodle-zone .doodle:nth-of-type(2n) { display: none; }
 }
 .doodle svg {
   width: 100%;

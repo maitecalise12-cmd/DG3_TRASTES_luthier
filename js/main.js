@@ -348,33 +348,52 @@ if (tonoBlock) {
 /* ════════════════════════════════════════════════
    6.7 · DOODLES ROCKEROS — PARALLAX AL SCROLL
 ════════════════════════════════════════════════ */
-const doodles = qsa('.doodle');
-if (doodles.length) {
+const doodleZone = qs('.doodle-zone');
+const doodleEls  = qsa('.doodle');
+if (doodleZone && doodleEls.length) {
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let ticking = false;
+  const items = doodleEls.map((el, i) => ({
+    el,
+    rot:   parseFloat(el.dataset.rot)   || 0,
+    drift: parseFloat(el.dataset.speed) || 30,   // amplitud del parallax
+    cur: 0, target: 0, base: 0, h: 0,
+    wAmp:  4 + (i % 4) * 2,          // giro suave sobre su eje (4–10°)
+    wFreq: 0.35 + (i % 3) * 0.12,
+    phase: i * 1.3
+  }));
 
-  const updateDoodles = () => {
+  // Posición base de cada doodle dentro de la zona (independiente del transform)
+  const measure = () => items.forEach(it => { it.base = it.el.offsetTop; it.h = it.el.offsetHeight; });
+
+  const computeTargets = () => {
+    const zoneTop = doodleZone.getBoundingClientRect().top;
     const vh = window.innerHeight;
-    doodles.forEach(d => {
-      const rot = parseFloat(d.dataset.rot) || 0;
-      if (reduce) { d.style.transform = `rotate(${rot}deg)`; return; }
-      const rect = d.getBoundingClientRect();
-      const center = rect.top + rect.height / 2;
-      const progress = (center - vh / 2) / vh;         // -~0.7 .. ~0.7
-      const speed = parseFloat(d.dataset.speed) || 30;
-      const MULT = 3.2;                                 // más movimiento
-      d.style.transform = `translateY(${(-progress * speed * MULT).toFixed(1)}px) rotate(${rot}deg)`;
+    items.forEach(it => {
+      const center = zoneTop + it.base + it.h / 2;
+      const fromCenter = (center - vh / 2) / vh;   // -~1 (arriba) .. ~1 (abajo)
+      it.target = fromCenter * -it.drift * 1.6;    // parallax muy suave (flotan/caen levemente)
     });
-    ticking = false;
   };
 
-  const onScroll = () => {
-    if (!ticking) { ticking = true; requestAnimationFrame(updateDoodles); }
-  };
-
-  window.addEventListener('scroll', onScroll, { passive: true });
-  window.addEventListener('resize', onScroll, { passive: true });
-  updateDoodles();
+  if (reduce) {
+    items.forEach(it => { it.el.style.transform = `rotate(${it.rot}deg)`; });
+  } else {
+    const loop = (now) => {
+      const t = now / 1000;
+      items.forEach(it => {
+        it.cur += (it.target - it.cur) * 0.07;                        // interpolación → fluidez
+        const wobble = Math.sin(t * it.wFreq + it.phase) * it.wAmp;   // giro sobre su eje
+        it.el.style.transform =
+          `translate3d(0, ${it.cur.toFixed(1)}px, 0) rotate(${(it.rot + wobble).toFixed(1)}deg)`;
+      });
+      requestAnimationFrame(loop);
+    };
+    window.addEventListener('scroll', computeTargets, { passive: true });
+    window.addEventListener('resize', () => { measure(); computeTargets(); }, { passive: true });
+    measure();
+    computeTargets();
+    requestAnimationFrame(loop);
+  }
 }
 
 
