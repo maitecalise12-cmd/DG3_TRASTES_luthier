@@ -580,12 +580,13 @@ body::after {
 
 .manifiesto-frase {
   font-family: var(--ff-display);
-  font-size: clamp(2.6rem, 7vw, 6.5rem);
+  font-size: clamp(1.5rem, 5.5vw, 4.4rem);
   line-height: 0.95;
   letter-spacing: 0.02em;
   text-transform: uppercase;
   color: var(--cream);
   margin-bottom: 2rem;
+  white-space: nowrap;
 }
 .manifiesto-frase .accent-text { color: var(--red); }
 
