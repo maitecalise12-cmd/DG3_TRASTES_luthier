@@ -361,6 +361,7 @@ body::after {
   max-width: 1500px;
   margin: 0 auto;
   padding: 2rem var(--sp-side) 6rem;
+  transform: translateY(-6vh);
 }
 .hero-content .hero-headline { max-width: 760px; }
 
