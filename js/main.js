@@ -346,6 +346,39 @@ if (tonoBlock) {
 
 
 /* ════════════════════════════════════════════════
+   6.7 · DOODLES ROCKEROS — PARALLAX AL SCROLL
+════════════════════════════════════════════════ */
+const doodles = qsa('.doodle');
+if (doodles.length) {
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let ticking = false;
+
+  const updateDoodles = () => {
+    const vh = window.innerHeight;
+    doodles.forEach(d => {
+      const rot = parseFloat(d.dataset.rot) || 0;
+      if (reduce) { d.style.transform = `rotate(${rot}deg)`; return; }
+      const rect = d.getBoundingClientRect();
+      const center = rect.top + rect.height / 2;
+      const progress = (center - vh / 2) / vh;         // -~0.7 .. ~0.7
+      const speed = parseFloat(d.dataset.speed) || 30;
+      const MULT = 3.2;                                 // más movimiento
+      d.style.transform = `translateY(${(-progress * speed * MULT).toFixed(1)}px) rotate(${rot}deg)`;
+    });
+    ticking = false;
+  };
+
+  const onScroll = () => {
+    if (!ticking) { ticking = true; requestAnimationFrame(updateDoodles); }
+  };
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll, { passive: true });
+  updateDoodles();
+}
+
+
+/* ════════════════════════════════════════════════
    7 · CARRUSEL DE TESTIMONIOS
 ════════════════════════════════════════════════ */
 const track    = qs('#testimonios-track');

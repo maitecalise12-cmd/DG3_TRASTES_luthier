@@ -557,6 +557,30 @@ body::after {
   position: relative;
   overflow: hidden;
 }
+
+/* ── Doodles rockeros (se mueven con el scroll) ── */
+.doodle {
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+  color: var(--cream);
+  opacity: 0.34;
+  will-change: transform;
+}
+.doodle svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: url(#doodle-rough);
+}
+.doodle-text {
+  font-family: var(--ff-display);
+  font-size: clamp(1.4rem, 3vw, 2.4rem);
+  letter-spacing: 0.05em;
+  color: var(--cream);
+  white-space: nowrap;
+  filter: url(#doodle-rough);
+}
 .manifiesto::before {
   content: '★';
   position: absolute;
