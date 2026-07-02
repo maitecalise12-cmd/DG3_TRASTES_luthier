@@ -2474,7 +2474,8 @@ details[open] .faq-question::after { transform: rotate(45deg); }
 ════════════════════════════════════════════════ */
 .curso-hero {
   background:
-    radial-gradient(ellipse 70% 60% at 75% 30%, rgba(120,15,15,0.3) 0%, transparent 60%),
+    linear-gradient(90deg, rgba(0,0,0,0.86) 0%, rgba(0,0,0,0.62) 55%, rgba(0,0,0,0.45) 100%),
+    url("../assets/taller.jpg") center / cover no-repeat,
     var(--bg-deep);
   padding: calc(64px + var(--sp-section)) var(--sp-side) var(--sp-section);
   border-bottom: 1px solid var(--bg-border);
