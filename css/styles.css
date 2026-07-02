@@ -282,14 +282,15 @@ body::after {
 .nav-links a:hover { color: var(--text-primary); }
 
 .nav-cta {
-  color: var(--red) !important;
+  background: var(--red);
+  color: #fff !important;
   border: 1px solid var(--red);
-  padding: 0.45rem 1rem;
+  padding: 0.45rem 1.1rem;
   border-radius: var(--radius);
-  transition: background var(--transition), color var(--transition) !important;
+  transition: background var(--transition), box-shadow var(--transition) !important;
 }
 .nav-cta:hover {
-  background: var(--red);
+  background: #B71C1C;
   color: #fff !important;
 }
 
