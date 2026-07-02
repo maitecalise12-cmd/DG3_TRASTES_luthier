@@ -337,9 +337,9 @@ body::after {
   z-index: 0;
   background: var(--bg-deep);
 }
-/* Realce de la imagen para que el hero sea más pregnante */
+/* La foto tal cual, con un poco más de exposición */
 .hero-img {
-  filter: contrast(1.22) saturate(1.4) brightness(1.08);
+  filter: brightness(1.15);
 }
 
 /* Capa oscura sobre el video para legibilidad del texto */
@@ -349,9 +349,8 @@ body::after {
   z-index: 1;
   pointer-events: none;
   background:
-    radial-gradient(ellipse 85% 100% at 74% 48%, rgba(229,0,0,0.34) 0%, rgba(229,0,0,0.1) 42%, transparent 66%),
-    linear-gradient(90deg, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.62) 50%, rgba(0,0,0,0.42) 100%),
-    linear-gradient(0deg, rgba(0,0,0,0.85) 0%, transparent 45%);
+    linear-gradient(90deg, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.15) 100%),
+    linear-gradient(0deg, rgba(0,0,0,0.55) 0%, transparent 42%);
 }
 
 /* Contenedor del titular (alineado a la izquierda) */
