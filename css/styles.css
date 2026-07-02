@@ -710,7 +710,7 @@ body::after {
 
 .versus {
   background: var(--bg-deep);
-  padding: var(--sp-section) var(--sp-side);
+  padding: var(--sp-section) var(--sp-side) clamp(2rem, 4vw, 3.5rem);
   border-top: 1px solid var(--bg-border);
 }
 /* Fondo negro con palabras destacadas en rojo */
@@ -1220,6 +1220,27 @@ body::after {
   background: var(--cream);
   padding: var(--sp-section) var(--sp-side);
   position: relative;
+}
+
+/* Borde de papel rasgado (transición grunge hacia la sección de maderas) */
+.paper-tear {
+  position: absolute;
+  top: -3px; left: 0; right: 0;
+  height: clamp(63px, 9vw, 133px);
+  z-index: 2;
+  pointer-events: none;
+  line-height: 0;
+}
+.paper-tear svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+/* Rasgado de cierre: al fondo e invertido (crema → rojo → negro/anatomía) */
+.paper-tear--bottom {
+  top: auto;
+  bottom: -3px;
+  transform: scaleY(-1);
 }
 
 /* Textura de madera al tope, superpuesta con el título y difuminada al crema */
