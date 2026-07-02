@@ -902,15 +902,18 @@ body::after {
 .cursos .section-title { color: var(--red); white-space: nowrap; }
 .cursos .section-desc { color: #4A4A4A; }
 .cursos-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-  max-width: 1100px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: clamp(1rem, 2vw, 1.75rem);
+  max-width: 1180px;
   margin: 0 auto;
-  align-items: stretch;
+  padding-top: 2rem;
 }
 .curso-card {
   position: relative;
+  flex: 1 1 340px;
+  min-width: 0;
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -918,11 +921,17 @@ body::after {
   border: 1px solid var(--bg-border);
   border-radius: var(--radius);
   padding: 2.25rem;
-  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+  transition: transform 0.4s cubic-bezier(.22,1,.36,1), box-shadow var(--transition), border-color var(--transition);
 }
-.curso-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 16px 48px rgba(0,0,0,0.4);
+/* Levemente torcidas y con distinta altura (desorden rockero) */
+.curso-card:nth-child(1) { transform: rotate(-3deg) translateY(10px);  }
+.curso-card:nth-child(2) { transform: rotate(2.2deg) translateY(-14px); z-index: 2; }
+.curso-card:nth-child(3) { transform: rotate(-1.5deg) translateY(16px); }
+/* Al pasar el mouse se enderezan y suben */
+.cursos-grid .curso-card:hover {
+  transform: rotate(0deg) translateY(-14px) scale(1.04);
+  z-index: 10;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.45);
 }
 .curso-card--featured {
   border-color: var(--red);
@@ -2476,7 +2485,9 @@ details[open] .faq-question::after { transform: rotate(45deg); }
   .guitar-preview { flex-direction: column; }
 
   .precios-grid { grid-template-columns: 1fr; }
-  .cursos-grid { grid-template-columns: 1fr; }
+  .cursos-grid { flex-direction: column; gap: 1.5rem; }
+  .curso-card { flex-basis: auto; width: 100%; margin: 0 !important; transform: none !important; }
+  .cursos-grid .curso-card:hover { transform: translateY(-6px) !important; }
   .garantias-grid { grid-template-columns: 1fr 1fr; }
 
   .footer-inner { grid-template-columns: 1fr; }
