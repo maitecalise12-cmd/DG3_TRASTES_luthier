@@ -1180,8 +1180,8 @@ body::after {
   transform: translateY(-1px);
 }
 .config-btn.active {
-  background: rgba(229,0,0,0.12);
-  color: var(--text-primary);
+  background: var(--red);
+  color: #fff;
   border-color: var(--red);
 }
 
