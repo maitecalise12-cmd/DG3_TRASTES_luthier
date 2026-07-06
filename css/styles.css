@@ -1037,7 +1037,8 @@ body::after {
 
 .configurador-inner {
   display: grid;
-  grid-template-columns: 280px 1fr;
+  grid-template-columns: 300px minmax(0, 560px);
+  justify-content: center;
   gap: clamp(2rem, 5vw, 5rem);
   align-items: start;
   max-width: 1200px;
@@ -1067,31 +1068,25 @@ body::after {
   width: 100%;
   height: auto;
 }
-/* Tinte de color según la madera, enmascarado a la silueta de la guitarra */
+/* Tinte de color según la madera, recortado a la silueta de la guitarra */
 .guitar-tint {
   position: absolute;
   inset: 0;
-  mix-blend-mode: color;
+  mix-blend-mode: multiply;
   pointer-events: none;
   transition: background var(--transition);
-  -webkit-mask-repeat: no-repeat, no-repeat;
-          mask-repeat: no-repeat, no-repeat;
-  -webkit-mask-size: 100% 100%, 100% 100%;
-          mask-size: 100% 100%, 100% 100%;
-  -webkit-mask-composite: source-in;
-          mask-composite: intersect;
+  -webkit-mask: url("../assets/guitarra-config.png") center / 100% 100% no-repeat;
+          mask: url("../assets/guitarra-config.png") center / 100% 100% no-repeat;
 }
-/* Zona mástil (arriba) */
+/* Zona mástil (mitad de arriba) */
 .guitar-tint--neck {
   background: var(--guitar-neck-color, #C9A66B);
-  -webkit-mask-image: url("../assets/guitarra-config.png"), linear-gradient(to bottom, #000 47%, transparent 54%);
-          mask-image: url("../assets/guitarra-config.png"), linear-gradient(to bottom, #000 47%, transparent 54%);
+  clip-path: inset(0 0 50% 0);
 }
-/* Zona cuerpo (abajo) */
+/* Zona cuerpo (mitad de abajo) */
 .guitar-tint--body {
   background: var(--guitar-body-color, #6B2E20);
-  -webkit-mask-image: url("../assets/guitarra-config.png"), linear-gradient(to bottom, transparent 48%, #000 55%);
-          mask-image: url("../assets/guitarra-config.png"), linear-gradient(to bottom, transparent 48%, #000 55%);
+  clip-path: inset(50% 0 0 0);
 }
 
 .guitar-label {
