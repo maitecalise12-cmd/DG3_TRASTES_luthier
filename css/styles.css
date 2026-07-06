@@ -1054,12 +1054,44 @@ body::after {
   gap: 1.5rem;
 }
 
-.guitar-svg {
+.guitar-render {
+  position: relative;
   width: 100%;
-  max-width: 260px;
-  height: auto;
+  max-width: 300px;
+  isolation: isolate;
   filter: drop-shadow(0 20px 60px rgba(229,0,0,0.12));
   transition: filter var(--transition);
+}
+.guitar-photo {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+/* Tinte de color según la madera, enmascarado a la silueta de la guitarra */
+.guitar-tint {
+  position: absolute;
+  inset: 0;
+  mix-blend-mode: color;
+  pointer-events: none;
+  transition: background var(--transition);
+  -webkit-mask-repeat: no-repeat, no-repeat;
+          mask-repeat: no-repeat, no-repeat;
+  -webkit-mask-size: 100% 100%, 100% 100%;
+          mask-size: 100% 100%, 100% 100%;
+  -webkit-mask-composite: source-in;
+          mask-composite: intersect;
+}
+/* Zona mástil (arriba) */
+.guitar-tint--neck {
+  background: var(--guitar-neck-color, #C9A66B);
+  -webkit-mask-image: url("../assets/guitarra-config.png"), linear-gradient(to bottom, #000 47%, transparent 54%);
+          mask-image: url("../assets/guitarra-config.png"), linear-gradient(to bottom, #000 47%, transparent 54%);
+}
+/* Zona cuerpo (abajo) */
+.guitar-tint--body {
+  background: var(--guitar-body-color, #6B2E20);
+  -webkit-mask-image: url("../assets/guitarra-config.png"), linear-gradient(to bottom, transparent 48%, #000 55%);
+          mask-image: url("../assets/guitarra-config.png"), linear-gradient(to bottom, transparent 48%, #000 55%);
 }
 
 .guitar-label {
@@ -1163,6 +1195,8 @@ body::after {
   border-radius: 50%;
   display: inline-block;
   flex-shrink: 0;
+  background-size: cover;
+  background-position: center;
   border: 1px solid rgba(255,255,255,0.15);
 }
 
@@ -2428,7 +2462,7 @@ details[open] .faq-question::after { transform: rotate(45deg); }
     justify-content: center;
     gap: 3rem;
   }
-  .guitar-svg { max-width: 180px; }
+  .guitar-render { max-width: 180px; }
 
   .materia-inner {
     grid-template-columns: 1fr;
