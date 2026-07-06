@@ -1031,9 +1031,17 @@ body::after {
 ════════════════════════════════════════════════ */
 .configurador {
   padding: var(--sp-section) var(--sp-side);
-  background: var(--bg-deep);
-  border-top: 1px solid var(--bg-border);
+  background: #FFFFFF;
+  border-top: 1px solid rgba(0,0,0,0.1);
 }
+/* Textos oscuros sobre el fondo claro del configurador */
+.configurador .section-title { color: var(--text-dark); }
+.configurador .section-desc { color: #4A4A4A; }
+.configurador .config-label { color: #2A2A2A; }
+.configurador .guitar-label { color: #555; }
+.configurador .guitar-label strong { color: var(--text-dark); }
+.configurador .btn-ghost { color: var(--text-dark); border-color: rgba(0,0,0,0.35); }
+.configurador .btn-ghost:hover { color: var(--red); border-color: var(--red); }
 
 .configurador-inner {
   display: grid;
