@@ -1044,36 +1044,37 @@ body::after {
 
 .configurador-inner {
   display: grid;
-  grid-template-columns: 300px minmax(0, 560px);
+  grid-template-columns: minmax(0, 300px) minmax(0, 560px);
   justify-content: center;
   gap: clamp(2rem, 5vw, 5rem);
-  align-items: start;
+  align-items: center;
   max-width: 1200px;
   margin: 0 auto;
 }
 
 /* Guitar preview */
 .guitar-preview {
-  position: sticky;
-  top: 90px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: 1.5rem;
 }
 
 .guitar-render {
   position: relative;
-  width: 100%;
-  max-width: 300px;
+  width: fit-content;
+  max-width: 100%;
   isolation: isolate;
   filter: drop-shadow(0 20px 60px rgba(229,0,0,0.12));
   transition: filter var(--transition);
 }
 .guitar-photo {
   display: block;
-  width: 100%;
+  width: auto;
   height: auto;
+  max-height: 560px;
+  max-width: 100%;
 }
 /* Tinte de color según la madera, recortado a la silueta de la guitarra */
 .guitar-tint {
