@@ -1893,33 +1893,33 @@ body::after {
 .proceso-title { white-space: nowrap; }
 
 .timeline-list {
-  max-width: 780px;
+  max-width: 860px;
   margin: 0 auto;
   position: relative;
-  padding-left: 100px;   /* espacio para el diapasón */
+  padding-left: 130px;    /* espacio para el diapasón */
 }
 /* Diapasón de guitarra: madera + 6 cuerdas */
 .timeline-list::before {
   content: '';
   position: absolute;
-  left: 14px; top: 0; bottom: 0;
-  width: 58px;
-  border-radius: 6px;
+  left: 16px; top: 0; bottom: 0;
+  width: 82px;
+  border-radius: 7px;
   background:
     repeating-linear-gradient(to right,
-      transparent 0 8px,
-      rgba(228,222,205,0.5) 8px 9px,
-      transparent 9px 10px) ,
-    linear-gradient(to right, #201308 0%, #3a2617 45%, #472f1c 55%, #201308 100%);
-  box-shadow: inset 0 0 24px rgba(0,0,0,0.75), 0 0 0 1px rgba(0,0,0,0.5), 0 10px 30px rgba(0,0,0,0.4);
+      transparent 0 12px,
+      rgba(228,222,205,0.5) 12px 13px,
+      transparent 13px 14px) ,
+    linear-gradient(to right, #201308 0%, #3a2617 45%, #4a3120 55%, #201308 100%);
+  box-shadow: inset 0 0 28px rgba(0,0,0,0.8), 0 0 0 1px rgba(0,0,0,0.5), 0 12px 34px rgba(0,0,0,0.45);
 }
 
 .timeline-item {
   position: relative;
-  padding: 0 0 3.4rem 0;
+  padding: 0 0 3rem 0;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.35rem;
 }
 .timeline-item:last-child { padding-bottom: 0; }
 
@@ -1927,34 +1927,62 @@ body::after {
 .timeline-item::before {
   content: '';
   position: absolute;
-  left: -86px; top: 0.55rem;
-  width: 58px; height: 3px;
+  left: -114px; top: 0.9rem;
+  width: 82px; height: 3px;
   border-radius: 2px;
   background: linear-gradient(to right, #6d6d6d, #f2f2f2 50%, #6d6d6d);
   box-shadow: 0 1px 2px rgba(0,0,0,0.7);
 }
 
-/* Nota (punto rojo) sobre el diapasón, cada fase en una cuerda distinta */
+/* Nota numerada sobre el diapasón, cada fase en una cuerda distinta */
 .timeline-dot {
   position: absolute;
   top: 0.1rem;
-  width: 15px; height: 15px;
+  width: 30px; height: 30px;
   border-radius: 50%;
-  background: radial-gradient(circle at 35% 30%, #ff7a7a, var(--red) 60%);
+  background: radial-gradient(circle at 35% 28%, #ff7a7a, var(--red) 62%);
   border: 1px solid rgba(0,0,0,0.5);
-  box-shadow: 0 0 10px rgba(229,0,0,0.85);
+  box-shadow: 0 0 12px rgba(229,0,0,0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--ff-sans);
+  font-size: 1.4rem;
+  font-weight: 300;
+  line-height: 1;
+  color: #fff;
+  cursor: pointer;
   z-index: 2;
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  transition: box-shadow 0.25s ease, transform 0.2s ease;
 }
-.timeline-item.is-visible .timeline-dot {
-  box-shadow: 0 0 16px 3px rgba(229,0,0,0.7);
-}
-.timeline-item:nth-child(1) .timeline-dot { left: -81px; }
-.timeline-item:nth-child(2) .timeline-dot { left: -73px; }
-.timeline-item:nth-child(3) .timeline-dot { left: -65px; }
-.timeline-item:nth-child(4) .timeline-dot { left: -57px; }
-.timeline-item:nth-child(5) .timeline-dot { left: -49px; }
+.timeline-dot::after { content: '+'; }
+.timeline-item.open .timeline-dot::after { content: '−'; }
+.timeline-dot:hover,
+.timeline-dot:focus-visible { transform: scale(1.15); box-shadow: 0 0 18px 4px rgba(229,0,0,0.8); outline: none; }
+.timeline-item.is-visible .timeline-dot { box-shadow: 0 0 16px 3px rgba(229,0,0,0.6); }
+.timeline-item:nth-child(1) .timeline-dot { left: -106px; }
+.timeline-item:nth-child(2) .timeline-dot { left: -93px; }
+.timeline-item:nth-child(3) .timeline-dot { left: -80px; }
+.timeline-item:nth-child(4) .timeline-dot { left: -67px; }
+.timeline-item:nth-child(5) .timeline-dot { left: -54px; }
 .timeline-item:nth-child(6) .timeline-dot { left: -41px; }
+
+/* Título clickeable */
+.timeline-content h3 { cursor: pointer; width: max-content; }
+
+/* Descripción colapsable (aparece al tocar la nota) */
+.timeline-content p {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  margin: 0;
+  transition: max-height 0.45s cubic-bezier(.22,1,.36,1), opacity 0.3s ease, margin-top 0.3s ease;
+}
+.timeline-item.open .timeline-content p {
+  max-height: 260px;
+  opacity: 1;
+  margin-top: 0.4rem;
+}
 
 .timeline-content { display: flex; flex-direction: column; gap: 0.5rem; }
 
@@ -1967,7 +1995,7 @@ body::after {
 }
 .timeline-content h3 {
   font-family: var(--ff-display);
-  font-size: 1.6rem;
+  font-size: 1.9rem;
   letter-spacing: 0.05em;
   color: var(--text-primary);
 }

@@ -489,9 +489,38 @@ const timelineIO = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.25 });
 
-qsa('.timeline-item').forEach((item, i) => {
+const timelineItems = qsa('.timeline-item');
+timelineItems.forEach((item, i) => {
   item.style.transitionDelay = `${i * 0.12}s`;
   timelineIO.observe(item);
+
+  // Cada nota/título despliega su descripción (acordeón: solo una abierta a la vez)
+  const dot = qs('.timeline-dot', item);
+  const h3  = qs('.timeline-content h3', item);
+  const toggle = () => {
+    const willOpen = !item.classList.contains('open');
+    // Cerrar todas
+    timelineItems.forEach(it => {
+      it.classList.remove('open');
+      const d = qs('.timeline-dot', it);
+      if (d) d.setAttribute('aria-expanded', 'false');
+    });
+    if (willOpen) {
+      item.classList.add('open');
+      if (dot) dot.setAttribute('aria-expanded', 'true');
+    }
+  };
+  if (dot) {
+    dot.removeAttribute('aria-hidden');
+    dot.setAttribute('role', 'button');
+    dot.setAttribute('tabindex', '0');
+    dot.setAttribute('aria-expanded', 'false');
+    dot.addEventListener('click', toggle);
+    dot.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
+    });
+  }
+  if (h3) h3.addEventListener('click', toggle);
 });
 
 
