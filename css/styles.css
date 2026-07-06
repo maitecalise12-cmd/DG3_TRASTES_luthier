@@ -1030,12 +1030,11 @@ body::after {
    §2b · CONFIGURADOR (página detalle del curso)
 ════════════════════════════════════════════════ */
 .configurador {
-  padding: var(--sp-section) var(--sp-side);
-  background: #FFFFFF;
-  border-top: 1px solid rgba(0,0,0,0.1);
+  padding: clamp(3rem, 8vw, 7rem) clamp(2rem, 8vw, 8rem);
+  background: var(--bg-deep) url("../assets/interaccion.jpg") center / 100% 100% no-repeat;
 }
 /* Textos oscuros sobre el fondo claro del configurador */
-.configurador .section-title { color: var(--text-dark); }
+.configurador .section-title { color: var(--red); white-space: nowrap; }
 .configurador .section-desc { color: #4A4A4A; }
 .configurador .config-label { color: #2A2A2A; }
 .configurador .guitar-label { color: #555; }
