@@ -211,43 +211,49 @@
 ═══════════════════════════════════════════════ -->
 <section class="versus reveal-section" id="versus" aria-label="Producción en serie versus luthería de autor">
   <div class="versus-intro">
-    <span class="section-tag">02 · Manifiesto</span>
     <h2 class="section-title">CONTRA LO<br><span class="accent-text">PREFABRICADO</span></h2>
     <p class="versus-lead">Mientras la industria fabrica miles de instrumentos idénticos, la luthería sigue apostando por la creación consciente, el oficio y la identidad propia.</p>
-    <p class="versus-punch">Hacelo vos mismo.<br>Adueñate de <span class="accent-text">tu sonido.</span></p>
-    <span class="versus-star" aria-hidden="true">★</span>
   </div>
 
-  <div class="versus-compare">
-    <article class="vs-card vs-card--bad reveal-item">
-      <div class="vs-media">
-        <img src="assets/serie.png" alt="Línea de montaje de guitarras en una fábrica" loading="lazy" />
-        <span class="vs-label">Producción en serie</span>
-      </div>
-      <ul class="vs-list" aria-label="Características de la producción en serie">
-        <li class="vs-no">Masivo</li>
-        <li class="vs-no">Repetitivo</li>
-        <li class="vs-no">Estándar</li>
-        <li class="vs-no">Impersonal</li>
-      </ul>
-    </article>
+  <div class="versus-flipwrap reveal-item">
+    <p class="flip-cta-label">Tocá la tarjeta para descubrir la alternativa <span aria-hidden="true">👆</span></p>
+    <div class="flip-compare" id="flipCompare" role="button" tabindex="0" aria-pressed="false" aria-label="Comparación: tocá para dar vuelta y ver la luthería de autor">
+      <div class="flip-compare-inner">
 
-    <div class="vs-divider" aria-hidden="true">VS.</div>
+        <!-- Cara frontal: producción en serie (apagada) -->
+        <div class="flip-face flip-front">
+          <div class="vs-media">
+            <img src="assets/serie.png" alt="Línea de montaje de guitarras en una fábrica" loading="lazy" />
+            <span class="vs-label">Producción en serie</span>
+          </div>
+          <ul class="vs-list" aria-label="Características de la producción en serie">
+            <li class="vs-no">Masivo</li>
+            <li class="vs-no">Repetitivo</li>
+            <li class="vs-no">Estándar</li>
+            <li class="vs-no">Impersonal</li>
+          </ul>
+          <span class="flip-turn-hint"><span aria-hidden="true">↻</span> Tocá para dar vuelta</span>
+        </div>
 
-    <article class="vs-card vs-card--good reveal-item">
-      <div class="vs-media vs-carousel">
-        <img src="assets/luthier-1.jpeg" class="vs-slide active" alt="Luthier trabajando una guitarra a medida" loading="lazy" />
-        <img src="assets/luthier-2.png" class="vs-slide" alt="Detalle del trabajo artesanal de luthería" loading="lazy" />
-        <img src="assets/luthier-3.jpeg" class="vs-slide" alt="Instrumento de autor terminado a mano" loading="lazy" />
-        <span class="vs-label vs-label--red">Luthería de Autor</span>
+        <!-- Cara trasera: luthería de autor (destacada) -->
+        <div class="flip-face flip-back">
+          <div class="vs-media vs-carousel">
+            <img src="assets/luthier-1.jpeg" class="vs-slide active" alt="Luthier trabajando una guitarra a medida" loading="lazy" />
+            <img src="assets/luthier-2.png" class="vs-slide" alt="Detalle del trabajo artesanal de luthería" loading="lazy" />
+            <img src="assets/luthier-3.jpeg" class="vs-slide" alt="Instrumento de autor terminado a mano" loading="lazy" />
+            <span class="vs-label vs-label--red">★ Luthería de Autor</span>
+          </div>
+          <ul class="vs-list" aria-label="Características de la luthería de autor">
+            <li class="vs-yes">Único</li>
+            <li class="vs-yes">Artesanal</li>
+            <li class="vs-yes">Personal</li>
+            <li class="vs-yes">Consciente</li>
+          </ul>
+          <span class="flip-turn-hint"><span aria-hidden="true">↩</span> Volver</span>
+        </div>
+
       </div>
-      <ul class="vs-list" aria-label="Características de la luthería de autor">
-        <li class="vs-yes">Único</li>
-        <li class="vs-yes">Artesanal</li>
-        <li class="vs-yes">Personal</li>
-        <li class="vs-yes">Consciente</li>
-      </ul>
-    </article>
+    </div>
   </div>
 
   <div class="versus-cta">

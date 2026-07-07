@@ -314,6 +314,19 @@ maderaCards.forEach(card => {
   });
 });
 
+/* Flip card comparación: serie ⇄ luthería */
+const flipCompare = document.getElementById('flipCompare');
+if (flipCompare) {
+  const toggleFlip = () => {
+    const flipped = flipCompare.classList.toggle('flipped');
+    flipCompare.setAttribute('aria-pressed', flipped ? 'true' : 'false');
+  };
+  flipCompare.addEventListener('click', toggleFlip);
+  flipCompare.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleFlip(); }
+  });
+}
+
 
 /* ════════════════════════════════════════════════
    6.6 · GRÁFICO DE CARÁCTER TONAL (60% / 40%)
