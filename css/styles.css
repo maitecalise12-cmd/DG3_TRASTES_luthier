@@ -659,6 +659,11 @@ body::after {
   font-size: 1.4rem;
   color: var(--red);
   letter-spacing: 0.08em;
+  /* Resplandor rojo detrás del número */
+  text-shadow:
+    0 0 12px rgba(229,0,0,0.9),
+    0 0 28px rgba(229,0,0,0.6),
+    0 0 48px rgba(229,0,0,0.35);
 }
 .pilar h3 {
   font-family: var(--ff-display);
@@ -681,7 +686,7 @@ body::after {
 .marquee {
   overflow: hidden;
   background: var(--red);
-  padding: 0.85rem 0;
+  padding: 1.2rem 0;
   white-space: nowrap;
   border-top: 1px solid rgba(0,0,0,0.25);
   border-bottom: 1px solid rgba(0,0,0,0.25);
@@ -695,7 +700,7 @@ body::after {
 .marquee-group {
   display: inline-block;
   font-family: var(--ff-display);
-  font-size: clamp(1.4rem, 3vw, 2.4rem);
+  font-size: clamp(2.2rem, 5vw, 4rem);
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--cream);
@@ -717,10 +722,7 @@ body::after {
   border-top: 1px solid var(--bg-border);
 }
 /* Fondo negro con palabras destacadas en rojo */
-.versus .section-title { color: var(--cream); }
 .versus .accent-text { color: var(--red); }
-.versus .section-title:hover { text-shadow: 0 0 26px rgba(229,0,0,0.3); }
-.versus .section-title:hover .accent-text { color: var(--red); text-shadow: 0 0 18px rgba(229,0,0,0.55); }
 
 .versus-intro {
   max-width: 1100px;
@@ -730,8 +732,9 @@ body::after {
   align-items: flex-start;
 }
 .versus-intro .section-title {
-  font-size: clamp(2.6rem, 6vw, 5rem);
+  font-size: clamp(1.8rem, 4.6vw, 4rem);
   margin-bottom: 1.5rem;
+  white-space: nowrap;
 }
 .versus-lead {
   font-family: var(--ff-sans);
