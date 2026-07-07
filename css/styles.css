@@ -821,16 +821,7 @@ body::after {
   filter: grayscale(1) contrast(1.05) brightness(0.85);
 }
 .vs-card--good .vs-media img {
-  filter: grayscale(1) contrast(1.05) brightness(0.9);
-}
-/* Tinte rojo sobre la foto de luthería */
-.vs-card--good .vs-media::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: var(--red);
-  mix-blend-mode: multiply;
-  opacity: 0.55;
+  filter: contrast(1.03) saturate(1.05);
 }
 
 .vs-label {
