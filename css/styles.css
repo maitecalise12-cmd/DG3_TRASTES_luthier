@@ -340,9 +340,9 @@ body::after {
   z-index: 0;
   background: var(--bg-deep);
 }
-/* La foto tal cual, con un poco más de exposición */
+/* La foto tal cual, con más exposición */
 .hero-img {
-  filter: brightness(1.15);
+  filter: brightness(1.55) contrast(1.05) saturate(1.05);
 }
 
 /* Capa oscura sobre el video para legibilidad del texto */
@@ -352,8 +352,8 @@ body::after {
   z-index: 1;
   pointer-events: none;
   background:
-    linear-gradient(90deg, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.15) 100%),
-    linear-gradient(0deg, rgba(0,0,0,0.55) 0%, transparent 42%);
+    linear-gradient(90deg, rgba(0,0,0,0.68) 0%, rgba(0,0,0,0.28) 50%, rgba(0,0,0,0.08) 100%),
+    linear-gradient(0deg, rgba(0,0,0,0.45) 0%, transparent 42%);
 }
 
 /* Contenedor del titular (alineado a la izquierda) */
