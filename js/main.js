@@ -314,18 +314,25 @@ maderaCards.forEach(card => {
   });
 });
 
-/* Flip card comparación: serie ⇄ luthería */
-const flipCompare = document.getElementById('flipCompare');
-if (flipCompare) {
-  const toggleFlip = () => {
-    const flipped = flipCompare.classList.toggle('flipped');
-    flipCompare.setAttribute('aria-pressed', flipped ? 'true' : 'false');
+/* Cards de papel rasgado: al tocar, esa card se da vuelta (info en el dorso) y pasa al frente */
+const tornCards = qsa('.torn-card');
+tornCards.forEach(card => {
+  const toggle = () => {
+    const wasActive = card.classList.contains('active');
+    tornCards.forEach(c => {
+      c.classList.remove('active');
+      c.setAttribute('aria-pressed', 'false');
+    });
+    if (!wasActive) {
+      card.classList.add('active');
+      card.setAttribute('aria-pressed', 'true');
+    }
   };
-  flipCompare.addEventListener('click', toggleFlip);
-  flipCompare.addEventListener('keydown', e => {
-    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleFlip(); }
+  card.addEventListener('click', toggle);
+  card.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
   });
-}
+});
 
 
 /* ════════════════════════════════════════════════

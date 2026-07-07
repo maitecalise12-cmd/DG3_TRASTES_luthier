@@ -744,29 +744,60 @@ body::after {
   align-items: flex-start;
 }
 
-/* ── Dos cards de papel rasgado superpuestas (serie + luthería) ── */
+/* ── Dos cards de papel rasgado que se dan vuelta (serie + luthería) ── */
 .versus-cards {
   position: relative;
   max-width: 820px;
-  margin: clamp(1rem, 3vw, 2rem) auto 0;
+  margin: clamp(1rem, 3vw, 2rem) auto clamp(2rem, 6vw, 4rem);
   aspect-ratio: 16 / 10;
 }
 .torn-card {
   position: absolute;
   width: 58%;
   margin: 0;
+  cursor: pointer;
+  outline: none;
 }
 .torn-card--serie   { top: 0;    left: 0;  z-index: 1; }
 .torn-card--luthier { bottom: 0; right: 0; z-index: 2; transition-delay: 0.4s; }
+.torn-card.active { z-index: 5; }
+.torn-card:focus-visible { outline: 2px solid var(--red); outline-offset: 6px; }
 
+/* Inclinación (papel recortado) + perspectiva para el volteo + movimiento al hover */
 .torn-card-inner {
   position: relative;
   transform: rotate(-2.5deg);
+  perspective: 1300px;
+  transition: transform 0.35s cubic-bezier(.22,1,.36,1);
 }
 .torn-card--luthier .torn-card-inner { transform: rotate(2.5deg); }
+.torn-card--serie:hover   .torn-card-inner { transform: rotate(-2.5deg) translateY(-12px); }
+.torn-card--luthier:hover .torn-card-inner { transform: rotate(2.5deg)  translateY(-12px); }
 
-/* La "hoja" de papel rasgado detrás de la foto (canto crema irregular) */
-.torn-card-inner::before {
+/* Volteo 3D */
+.torn-flip {
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.75s cubic-bezier(.22,1,.36,1);
+}
+.torn-card.active .torn-flip { transform: rotateY(180deg); }
+
+.torn-face {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.torn-front { position: relative; z-index: 1; }
+.torn-back {
+  position: absolute;
+  inset: 0;
+  transform: rotateY(180deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Hoja de papel rasgado (canto crema irregular) detrás de cada cara */
+.torn-face::before {
   content: '';
   position: absolute;
   inset: -14px;
@@ -775,11 +806,12 @@ body::after {
   box-shadow: 0 22px 50px rgba(0,0,0,0.55);
   z-index: 0;
 }
-.torn-card--luthier .torn-card-inner::before {
+.torn-card--luthier .torn-face::before {
   box-shadow: 0 22px 55px rgba(0,0,0,0.6), 0 0 42px rgba(229,0,0,0.4);
 }
 
-.torn-card-inner img {
+/* Frente: foto + etiqueta */
+.torn-front img {
   position: relative;
   z-index: 1;
   display: block;
@@ -787,14 +819,14 @@ body::after {
   aspect-ratio: 4 / 3;
   object-fit: cover;
 }
-.torn-card--serie   img { filter: grayscale(1) contrast(1.05) brightness(0.85); }
-.torn-card--luthier img { filter: contrast(1.03) saturate(1.08); }
+.torn-card--serie   .torn-front img { filter: grayscale(1) contrast(1.05) brightness(0.85); }
+.torn-card--luthier .torn-front img { filter: contrast(1.03) saturate(1.08); }
 
 .torn-label {
   position: absolute;
   z-index: 2;
   left: 0.85rem;
-  bottom: 0.85rem;
+  top: 0.85rem;
   padding: 0.4rem 0.9rem;
   font-family: var(--ff-display);
   font-size: clamp(0.95rem, 1.4vw, 1.3rem);
@@ -804,6 +836,40 @@ body::after {
   color: #fff;
 }
 .torn-label--red { background: var(--red); }
+
+/* Dorso: info sobre el papel */
+.torn-list {
+  position: relative;
+  z-index: 1;
+  list-style: none;
+  margin: 0;
+  padding: clamp(1rem, 3vw, 2rem);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.5rem, 1.5vw, 0.9rem);
+  width: 100%;
+}
+.torn-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--ff-display);
+  font-size: clamp(1.05rem, 2vw, 1.6rem);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--text-dark);
+  opacity: 0;
+  transform: translateX(-14px);
+  transition: opacity 0.4s ease, transform 0.45s cubic-bezier(.22,1,.36,1);
+}
+.torn-card.active .torn-list li { opacity: 1; transform: translateX(0); }
+.torn-card.active .torn-list li:nth-child(1) { transition-delay: 0.45s; }
+.torn-card.active .torn-list li:nth-child(2) { transition-delay: 0.55s; }
+.torn-card.active .torn-list li:nth-child(3) { transition-delay: 0.65s; }
+.torn-card.active .torn-list li:nth-child(4) { transition-delay: 0.75s; }
+/* Marcas ✕/✓ legibles sobre el papel crema */
+.torn-back .vs-no::before  { color: #6b6b6b; }
+.torn-back .vs-yes::before { color: var(--red); }
 
 @media (max-width: 720px) {
   .versus-cards { aspect-ratio: 3 / 4; max-width: 420px; }
