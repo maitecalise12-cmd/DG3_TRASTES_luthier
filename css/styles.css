@@ -684,13 +684,24 @@ body::after {
 ════════════════════════════════════════════════ */
 /* Banda marquee infinita */
 .marquee {
+  position: relative;
   overflow: hidden;
   background: var(--red);
-  padding: 1.2rem 0;
+  padding: 1.9rem 0;
   white-space: nowrap;
-  border-top: 1px solid rgba(0,0,0,0.25);
-  border-bottom: 1px solid rgba(0,0,0,0.25);
 }
+/* Bordes de papel rasgado (arriba y abajo de la tira) */
+.marquee-tear {
+  position: absolute;
+  left: 0; right: 0;
+  height: clamp(16px, 2.4vw, 26px);
+  z-index: 3;
+  pointer-events: none;
+  line-height: 0;
+}
+.marquee-tear svg { width: 100%; height: 100%; display: block; }
+.marquee-tear--top { top: -1px; }
+.marquee-tear--bottom { bottom: -1px; transform: scaleY(-1); }
 .marquee-track {
   display: inline-flex;
   width: max-content;
@@ -732,9 +743,8 @@ body::after {
   align-items: flex-start;
 }
 .versus-intro .section-title {
-  font-size: clamp(1.8rem, 4.6vw, 4rem);
+  font-size: clamp(2.6rem, 6vw, 5rem);
   margin-bottom: 1.5rem;
-  white-space: nowrap;
 }
 .versus-lead {
   font-family: var(--ff-sans);
