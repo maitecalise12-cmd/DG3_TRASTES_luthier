@@ -219,42 +219,21 @@
     <p class="versus-lead">Mientras la industria fabrica miles de instrumentos idénticos, la luthería sigue apostando por la creación consciente, el oficio y la identidad propia.</p>
   </div>
 
-  <div class="versus-flipwrap reveal-item">
-    <div class="flip-compare" id="flipCompare" role="button" tabindex="0" aria-pressed="false" aria-label="Comparación: pasá el mouse o tocá para ver la luthería de autor">
-      <div class="flip-compare-inner">
-
-        <!-- Cara frontal: producción en serie (apagada) -->
-        <div class="flip-face flip-front">
-          <div class="vs-media">
-            <img src="assets/fabrica.webp" alt="Línea de montaje de guitarras en una fábrica" loading="lazy" />
-            <span class="vs-label">Producción en serie</span>
-          </div>
-          <ul class="vs-list" aria-label="Características de la producción en serie">
-            <li class="vs-no">Masivo</li>
-            <li class="vs-no">Repetitivo</li>
-            <li class="vs-no">Estándar</li>
-            <li class="vs-no">Impersonal</li>
-          </ul>
-          <span class="flip-turn-hint"><span aria-hidden="true">↻</span> Pasá el mouse para ver la alternativa</span>
-        </div>
-
-        <!-- Cara trasera: luthería de autor (destacada) -->
-        <div class="flip-face flip-back">
-          <div class="vs-media">
-            <img src="assets/luthier-3.jpg" alt="Luthier trabajando una guitarra a medida" loading="lazy" />
-            <span class="vs-label vs-label--red">★ Luthería de Autor</span>
-          </div>
-          <ul class="vs-list" aria-label="Características de la luthería de autor">
-            <li class="vs-yes">Único</li>
-            <li class="vs-yes">Artesanal</li>
-            <li class="vs-yes">Personal</li>
-            <li class="vs-yes">Consciente</li>
-          </ul>
-          <span class="flip-turn-hint"><span aria-hidden="true">↩</span> Volver</span>
-        </div>
-
+  <div class="versus-cards">
+    <!-- Card 1: producción en fábrica (aparece primero, abajo) -->
+    <figure class="torn-card torn-card--serie reveal-item">
+      <div class="torn-card-inner">
+        <img src="assets/fabrica.webp" alt="Línea de montaje de guitarras en una fábrica" loading="lazy" />
+        <figcaption class="torn-label">Producción en serie</figcaption>
       </div>
-    </div>
+    </figure>
+    <!-- Card 2: luthería de autor (aparece última, se superpone encima) -->
+    <figure class="torn-card torn-card--luthier reveal-item">
+      <div class="torn-card-inner">
+        <img src="assets/luthier-3.jpg" alt="Luthier trabajando una guitarra a medida a mano" loading="lazy" />
+        <figcaption class="torn-label torn-label--red">★ Luthería de Autor</figcaption>
+      </div>
+    </figure>
   </div>
 
   <div class="versus-cta">
