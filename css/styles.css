@@ -1803,10 +1803,23 @@ body::after {
    §5 · ANATOMÍA
 ════════════════════════════════════════════════ */
 .anatomia {
+  position: relative;
   padding: var(--sp-section) var(--sp-side);
-  background: var(--bg-deep);
+  background: #0A0A0A center / cover no-repeat;
+  background-image: url("../assets/fondo-ingenieria.jpg");
   border-top: 1px solid var(--bg-border);
+  overflow: hidden;
 }
+/* Capa oscura sutil para que el plano de la guitarra siga legible sobre la foto */
+.anatomia::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: rgba(10,10,10,0.30);
+}
+.anatomia > * { position: relative; z-index: 1; }
 
 .anatomia-inner {
   max-width: 1080px;
