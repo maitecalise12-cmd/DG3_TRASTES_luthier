@@ -741,7 +741,8 @@ body::after {
   margin: 0 auto clamp(2.25rem, 4vw, 3.25rem);
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
+  text-align: center;
 }
 
 /* ── Dos cards de papel rasgado que se dan vuelta (serie + luthería) ── */
@@ -809,6 +810,16 @@ body::after {
 .torn-card--luthier .torn-face::before {
   box-shadow: 0 22px 55px rgba(0,0,0,0.6), 0 0 42px rgba(229,0,0,0.4);
 }
+/* Dorso con semitono (degradé) para dar profundidad, no plano */
+.torn-back::before {
+  background: linear-gradient(150deg, #f8f6f2 0%, var(--cream) 42%, #d6d2c8 100%);
+}
+/* Dorso de luthería: fondo rojo */
+.torn-card--luthier .torn-back::before {
+  background: linear-gradient(150deg, #e60a0a 0%, var(--red) 45%, #9c0000 100%);
+}
+.torn-card--luthier .torn-back .torn-list li { color: var(--cream); }
+.torn-card--luthier .torn-back .vs-yes::before { color: #fff; }
 
 /* Frente: foto + etiqueta */
 .torn-front img {
@@ -876,9 +887,11 @@ body::after {
   .torn-card { width: 78%; }
 }
 .versus-intro .section-title {
-  font-size: clamp(2.6rem, 6vw, 5rem);
+  font-size: clamp(1.8rem, 4.6vw, 4rem);
   margin-bottom: 1.5rem;
+  white-space: nowrap;
 }
+.versus-lead { margin-left: auto; margin-right: auto; }
 .versus-lead {
   font-family: var(--ff-sans);
   font-style: italic;
