@@ -1821,6 +1821,25 @@ body::after {
 }
 .anatomia > * { position: relative; z-index: 1; }
 
+/* Encabezado alineado a la izquierda + título más grande */
+.anatomia .section-header {
+  text-align: left;
+  max-width: 1080px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0;
+}
+.anatomia .section-header .section-desc {
+  margin: 0;
+  max-width: 680px;
+  font-size: clamp(0.95rem, 1.3vw, 1.15rem);
+  line-height: 1.6;
+}
+.anatomia .section-title {
+  font-size: clamp(3.5rem, 8.5vw, 7.5rem);
+  line-height: 0.92;
+}
+
 .anatomia-inner {
   max-width: 1080px;
   margin: 0 auto;
