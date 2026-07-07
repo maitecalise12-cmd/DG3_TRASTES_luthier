@@ -340,9 +340,12 @@ body::after {
   z-index: 0;
   background: var(--bg-deep);
 }
-/* La foto tal cual, con más exposición */
+/* La foto tal cual, con más exposición; encuadre más abajo (mástil bajo "revolución") */
 .hero-img {
   filter: brightness(1.55) contrast(1.05) saturate(1.05);
+  object-position: center 0%;
+  transform-origin: center top;   /* anclada arriba: al escalar baja sin dejar huecos */
+  transform: scale(1.18);
 }
 
 /* Capa oscura sobre el video para legibilidad del texto */
@@ -364,7 +367,7 @@ body::after {
   max-width: 1500px;
   margin: 0 auto;
   padding: 2rem var(--sp-side) 6rem;
-  transform: translateY(-6vh);
+  transform: translateY(6vh);
 }
 .hero-content .hero-headline { max-width: 760px; }
 
