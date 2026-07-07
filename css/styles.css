@@ -2812,25 +2812,36 @@ details[open] .faq-question::after { transform: rotate(45deg); }
    (capa de animación, no altera el diseño base)
 ════════════════════════════════════════════════ */
 
-/* Botón primario: barrido de luz + glow */
-.btn-primary { position: relative; overflow: hidden; }
-.btn-primary::after {
+/* Botones: trazo de luz roja que recorre el borde (como guitarra.png) */
+.btn-primary, .btn-ghost, .nav-cta {
+  position: relative;
+  overflow: visible;
+}
+.btn-primary::before,
+.btn-ghost::before,
+.nav-cta::before {
   content: '';
   position: absolute;
-  top: 0; left: -130%;
-  width: 55%; height: 100%;
-  background: linear-gradient(100deg, transparent, rgba(255,255,255,0.35), transparent);
-  transform: skewX(-20deg);
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: conic-gradient(from var(--neon-angle),
+    transparent 0deg, transparent 250deg,
+    rgba(229,0,0,0.1) 275deg,
+    #ff4d4d 300deg, #ffffff 318deg, #ff4d4d 336deg,
+    rgba(229,0,0,0.1) 352deg, transparent 360deg);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+          mask-composite: exclude;
   pointer-events: none;
+  z-index: 2;
+  filter: drop-shadow(0 0 4px rgba(229,0,0,0.9));
+  animation: neon-border 3s linear infinite;
+  will-change: filter;
 }
-.btn-primary:hover::after { animation: btn-sheen 0.7s ease; }
-@keyframes btn-sheen {
-  from { left: -130%; }
-  to   { left: 150%; }
-}
-
-/* Botón fantasma: glow rojo al hover */
-.btn-ghost:hover { box-shadow: 0 0 22px rgba(229,0,0,0.22); }
+.btn-ghost::before { animation-delay: -1s; }
+.nav-cta::before  { animation-delay: -2s; }
 
 /* Títulos: glow al hover + palabra clave que se enciende */
 .section-title,
@@ -2869,14 +2880,46 @@ details[open] .faq-question::after { transform: rotate(45deg); }
 }
 .footer-nav-col a:hover { color: var(--red); transform: translateX(4px); }
 
-/* Tarjetas: glow rojo unificado al hover */
+/* Tarjetas y elementos: elevación + trazo de luz roja al hover */
 .curso-card, .precio-card, .modulo-card,
 .garantia-item, .testimonio-card, .slot {
   transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
+.precio-card, .modulo-card, .garantia-item,
+.testimonio-card, .slot--available { position: relative; }
 .curso-card:hover, .precio-card:hover, .modulo-card:hover,
 .garantia-item:hover, .testimonio-card:hover {
-  box-shadow: 0 18px 50px rgba(0,0,0,0.5), 0 0 28px rgba(229,0,0,0.14);
+  box-shadow: 0 18px 50px rgba(0,0,0,0.5);
+}
+.precio-card::before, .modulo-card::before, .garantia-item::before,
+.testimonio-card::before, .slot--available::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: conic-gradient(from var(--neon-angle),
+    transparent 0deg, transparent 250deg,
+    rgba(229,0,0,0.1) 275deg,
+    #ff4d4d 300deg, #ffffff 318deg, #ff4d4d 336deg,
+    rgba(229,0,0,0.1) 352deg, transparent 360deg);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+          mask-composite: exclude;
+  pointer-events: none;
+  z-index: 2;
+  filter: drop-shadow(0 0 4px rgba(229,0,0,0.9));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  animation: neon-border 3s linear infinite;
+  animation-play-state: paused;
+}
+.precio-card:hover::before, .modulo-card:hover::before,
+.garantia-item:hover::before, .testimonio-card:hover::before,
+.slot--available:hover::before {
+  opacity: 1;
+  animation-play-state: running;
 }
 
 /* Imágenes VS: zoom sutil al hover */
@@ -2886,9 +2929,9 @@ details[open] .faq-question::after { transform: rotate(45deg); }
 .vs-card:hover .vs-media img,
 .vs-card:hover .vs-slide.active { transform: scale(1.05); }
 
-/* Tarjetas destacadas: se iluminan más fuerte al hover */
+/* Tarjetas destacadas: elevación más marcada al hover */
 .curso-card--featured:hover, .precio-card--featured:hover {
-  box-shadow: 0 18px 50px rgba(0,0,0,0.5), 0 0 45px rgba(229,0,0,0.30);
+  box-shadow: 0 18px 50px rgba(0,0,0,0.5);
 }
 
 /* Estrella de marca: se ilumina al hover (sin titilar) */
@@ -2901,11 +2944,7 @@ details[open] .faq-question::after { transform: rotate(45deg); }
   text-shadow: 0 0 16px rgba(229,0,0,0.75);
 }
 
-/* CTA de navegación: glow al hover */
-.nav-cta:hover { box-shadow: 0 0 20px rgba(229,0,0,0.4); }
-
-/* Slots disponibles: destello al hover */
-.slot--available:hover { box-shadow: 0 0 26px rgba(229,0,0,0.22); }
+/* (El CTA de nav y los slots disponibles ahora usan el trazo de luz roja) */
 
 /* Ítems de precio/incluye: marca que se enciende */
 .precio-features li::before,
