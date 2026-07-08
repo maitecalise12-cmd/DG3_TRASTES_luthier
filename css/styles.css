@@ -1753,10 +1753,11 @@ body::after {
   overflow: hidden;
   width: 100vw;
   margin-left: calc(50% - 50vw);   /* full-bleed: llega a los extremos */
-  padding: 14px 0;
+  padding: 40px 0;
+  background: #0A0A0A;             /* fondo negro para que resalte el canto rasgado crema */
   display: flex;
   flex-direction: column;
-  gap: 0.7rem;
+  gap: 1rem;
 }
 .maderas-track {
   display: flex;
@@ -1774,7 +1775,7 @@ body::after {
 .madera-card {
   flex: 0 0 auto;
   width: clamp(240px, 22vw, 310px);
-  margin-right: 0.7rem;   /* más justas; uniforme para loop exacto */
+  margin-right: 1.1rem;   /* separación uniforme (deja lugar al canto rasgado); loop exacto */
   perspective: 1200px;
   cursor: pointer;
   outline: none;
@@ -1789,6 +1790,33 @@ body::after {
 .madera-card.flipped .madera-card-inner { transform: rotateY(180deg); }
 /* Sin número en las tarjetas de madera */
 .madera-num { display: none; }
+
+/* Recuadro de papel rasgado (igual que las cards de CONTRA LO PREFABRICADO) */
+.madera-card-front,
+.madera-card-back {
+  overflow: visible;
+  border: none;
+  border-radius: 0;
+}
+.madera-card-front::before,
+.madera-card-back::before {
+  content: '';
+  position: absolute;
+  inset: -10px;
+  background: var(--cream);
+  filter: url(#paper-rip);
+  box-shadow: 0 20px 46px rgba(0,0,0,0.5);
+  z-index: 0;
+}
+/* Dorso: papel rojo rasgado */
+.madera-card-back::before {
+  background: linear-gradient(150deg, #e60a0a 0%, var(--red) 45%, #9c0000 100%);
+  box-shadow: 0 20px 48px rgba(0,0,0,0.55), 0 0 40px rgba(229,0,0,0.4);
+}
+/* Contenido por encima del papel */
+.madera-card-front img { position: relative; z-index: 1; }
+.madera-card-back h4,
+.madera-card-back p { position: relative; z-index: 1; }
 
 .madera-card-front,
 .madera-card-back {
