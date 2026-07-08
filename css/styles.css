@@ -1803,19 +1803,26 @@ body::after {
 }
 /* El frente (imagen PNG) define el tamaño/forma real de la card */
 .madera-card-front { position: relative; }
-/* Dorso: ROJO SÓLIDO recortado con la silueta del PNG (máscara vía JS) */
+/* Dorso: rojo sólido con la silueta del PNG (imagen tintada de fondo) */
 .madera-card-back {
   position: absolute;
   inset: 0;
   transform: rotateY(180deg);
-  background: linear-gradient(155deg, #e60a0a 0%, var(--red) 45%, #a80000 100%);
-  -webkit-mask-size: 100% 100%;
-          mask-size: 100% 100%;
-  -webkit-mask-repeat: no-repeat;
-          mask-repeat: no-repeat;
-  -webkit-mask-position: center;
-          mask-position: center;
+  background: transparent;
 }
+/* La misma imagen (silueta) tintada a rojo plano, como fondo del dorso */
+.madera-back-fill {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  filter: brightness(0.5) contrast(0.32) sepia(1) saturate(7) hue-rotate(-22deg);
+  z-index: 0;
+  pointer-events: none;
+}
+.madera-card-back h4,
+.madera-card-back .madera-ratings { position: relative; z-index: 1; }
 
 /* Cara frontal: la imagen PNG con su forma rasgada real */
 .madera-card-front img {

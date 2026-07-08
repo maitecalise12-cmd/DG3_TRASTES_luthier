@@ -319,11 +319,14 @@ maderaCards.forEach(card => {
   const name = card.dataset.name || '';
   const ratings = (card.dataset.ratings || '').split(',').map(n => parseInt(n, 10) || 0);
 
-  // Dorso: rojo sólido recortado con la silueta de la imagen del frente (máscara)
-  if (frontImg && back) {
-    const maskUrl = `url("${frontImg.getAttribute('src')}")`;
-    back.style.webkitMaskImage = maskUrl;
-    back.style.maskImage = maskUrl;
+  // Dorso: la misma imagen (silueta), tintada de rojo, como fondo
+  if (frontImg && back && !back.querySelector('.madera-back-fill')) {
+    const fill = document.createElement('img');
+    fill.className = 'madera-back-fill';
+    fill.src = frontImg.getAttribute('src');
+    fill.alt = '';
+    fill.setAttribute('aria-hidden', 'true');
+    back.prepend(fill);
   }
   // Dorso: nombre + rating de estrellas
   if (back && !back.querySelector('.madera-ratings')) {
