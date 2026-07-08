@@ -1573,7 +1573,7 @@ body::after {
   color: var(--red);
   text-align: center;
   max-width: 780px;
-  margin: 1.5rem auto 0;
+  margin: clamp(2.5rem, 5vw, 4rem) auto 0;
 }
 
 /* Gráfico de carácter tonal (60% / 40%) */
@@ -1773,45 +1773,47 @@ body::after {
 
 .madera-card {
   flex: 0 0 auto;
-  width: clamp(240px, 22vw, 310px);
-  margin-right: 2.75rem;   /* separación amplia para que los cantos rasgados no se pisen; loop exacto */
-  perspective: 1200px;
+  width: clamp(300px, 30vw, 440px);
+  margin-right: 1.25rem;   /* separación entre rectángulos; loop exacto */
+  perspective: 1400px;
   cursor: pointer;
   outline: none;
 }
 .madera-card-inner {
   position: relative;
   width: 100%;
+  aspect-ratio: 3 / 2;   /* rectángulo apaisado */
+  transform-style: preserve-3d;
+  transition: transform 0.7s cubic-bezier(.22,1,.36,1);
 }
+.madera-card:hover .madera-card-inner,
+.madera-card:focus-visible .madera-card-inner,
+.madera-card.flipped .madera-card-inner { transform: rotateY(180deg); }
 /* Sin número en las tarjetas de madera */
 .madera-num { display: none; }
 
-/* El frente (imagen PNG) define el tamaño/forma real de la card */
-.madera-card-front {
-  position: relative;
-  background: transparent;
-  border: none;
-}
-/* La info aparece encima de la foto (que se oscurece), respetando su silueta */
+.madera-card-front,
 .madera-card-back {
   position: absolute;
   inset: 0;
-  opacity: 0;
-  transition: opacity 0.35s ease;
+  overflow: hidden;
+  border-radius: 4px;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
-.madera-card:hover .madera-card-back,
-.madera-card:focus-visible .madera-card-back,
-.madera-card.flipped .madera-card-back { opacity: 1; }
-.madera-card:hover .madera-name,
-.madera-card:focus-visible .madera-name,
-.madera-card.flipped .madera-name { opacity: 0; }
+/* Dorso: rectángulo rojo con la info */
+.madera-card-back {
+  transform: rotateY(180deg);
+  background: linear-gradient(155deg, #e60a0a 0%, var(--red) 45%, #a80000 100%);
+}
 
-/* Cara frontal: imagen de la madera (con papel rasgado propio, PNG) */
+/* Cara frontal: la madera llena el rectángulo (escalada para recortar el canto rasgado del PNG) */
 .madera-card-front img {
   display: block;
   width: 100%;
-  height: auto;   /* la imagen conserva su forma/proporción real */
-  transition: filter 0.35s ease;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.2);
 }
 .madera-card-front .madera-num {
   position: absolute;
@@ -1831,13 +1833,12 @@ body::after {
   font-size: 1.4rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: #0A0A0A;
+  color: var(--red);
   transition: opacity 0.3s ease;
 }
 
-/* Info (aparece al hover, sobre la foto oscurecida) */
+/* Dorso: layout de la info (el fondo rojo está definido arriba) */
 .madera-card-back {
-  background: transparent;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1865,12 +1866,6 @@ body::after {
   text-shadow: 0 1px 6px rgba(0,0,0,0.7);
 }
 
-/* Hover: la foto se oscurece (respetando su silueta) para que se lea la info */
-.madera-card:hover .madera-card-front img,
-.madera-card:focus-visible .madera-card-front img,
-.madera-card.flipped .madera-card-front img {
-  filter: brightness(0.3) saturate(0.85);
-}
 .madera-card:focus-visible { outline: 2px solid var(--red); outline-offset: 6px; }
 
 
