@@ -328,11 +328,8 @@ maderaCards.forEach(card => {
     fill.setAttribute('aria-hidden', 'true');
     back.prepend(fill);
   }
-  // Dorso: nombre + rating de estrellas
+  // Dorso: rating de estrellas (sin nombre)
   if (back && !back.querySelector('.madera-ratings')) {
-    const h = document.createElement('h4');
-    h.textContent = name;
-    back.appendChild(h);
     const wrap = document.createElement('div');
     wrap.className = 'madera-ratings';
     MADERA_ATTRS.forEach((attr, i) => {
