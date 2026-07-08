@@ -562,8 +562,12 @@ body::after {
   overflow: hidden;
   background: var(--bg-deep);
 }
-.doodle-zone .manifiesto,
-.doodle-zone .versus { background: transparent; }
+.doodle-zone .manifiesto { background: transparent; }
+.doodle-zone .versus {
+  background:
+    linear-gradient(rgba(10,10,10,0.62), rgba(10,10,10,0.62)),
+    url("../assets/fondo-segunda.jpg") center / cover no-repeat;
+}
 /* El contenido queda por encima de los doodles */
 .doodle-zone .marquee { position: relative; z-index: 1; }
 .versus-intro, .versus-compare, .versus-cta { position: relative; z-index: 1; }
@@ -1804,7 +1808,7 @@ body::after {
 ════════════════════════════════════════════════ */
 .anatomia {
   position: relative;
-  padding: var(--sp-section) var(--sp-side);
+  padding: clamp(2.5rem, 4vw, 3.75rem) var(--sp-side);
   background: #0A0A0A center / cover no-repeat;
   background-image: url("../assets/fondo-ingenieria.jpg");
   border-top: 1px solid var(--bg-border);
@@ -1824,11 +1828,12 @@ body::after {
 /* Encabezado alineado a la izquierda + título más grande */
 .anatomia .section-header {
   text-align: left;
-  max-width: 1080px;
-  margin-left: auto;
-  margin-right: auto;
+  max-width: 900px;
+  margin: 0 auto clamp(1rem, 2vw, 1.75rem);
   padding: 0;
 }
+/* Guitarra más chica para que toda la sección entre en pantalla */
+.anatomia .anatomia-inner { max-width: 900px; }
 .anatomia .section-header .section-desc {
   margin: 0;
   max-width: 680px;
@@ -1974,13 +1979,13 @@ body::after {
   top: 0; left: 0;
   background: var(--cream);
   border: 1px solid rgba(0,0,0,0.12);
-  border-left: 3px solid var(--red);
+  border-bottom: 3px solid var(--red);
   padding: 1.25rem;
   width: clamp(210px, 60vw, 250px);
   border-radius: var(--radius);
   box-shadow: 0 16px 46px rgba(0,0,0,0.55), 0 0 28px rgba(229,0,0,0.2);
   z-index: 10;
-  transform-origin: left center;
+  transform-origin: center bottom;
   animation: info-in 0.4s cubic-bezier(.34,1.56,.64,1);
 }
 @keyframes info-in {

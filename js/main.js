@@ -216,26 +216,25 @@ if (reserveBtn) {
 ════════════════════════════════════════════════ */
 let activeHotspot = null;
 
-// Ubica la ficha al lado del punto, dentro de los límites del contenedor
+// Ubica la ficha ARRIBA del punto, dentro de los límites del contenedor
 function positionInfo(infoEl, spot) {
   const container = spot.closest('.blueprint-container');
   if (!container) return;
   const cw = container.clientWidth;
   const ch = container.clientHeight;
   const cx = spot.offsetLeft + spot.offsetWidth / 2;
-  const cy = spot.offsetTop + spot.offsetHeight / 2;
   const iw = infoEl.offsetWidth;
   const ih = infoEl.offsetHeight;
   const gap = 22;
 
-  let left;
-  if (cx + gap + iw <= cw)        left = cx + gap;           // a la derecha del punto
-  else if (cx - gap - iw >= 0)    left = cx - gap - iw;      // a la izquierda
-  else                            left = (cw - iw) / 2;      // centrada
+  // Centrada horizontalmente sobre el punto
+  let left = cx - iw / 2;
+  // Por encima del punto; si no entra arriba, la pone abajo
+  let top = spot.offsetTop - gap - ih;
+  if (top < 8) top = spot.offsetTop + spot.offsetHeight + gap;
 
-  let top = cy - ih / 2;                                     // alineada verticalmente
-  top = Math.max(8, Math.min(ch - ih - 8, top));
   left = Math.max(8, Math.min(cw - iw - 8, left));
+  top  = Math.max(8, Math.min(ch - ih - 8, top));
 
   infoEl.style.left = left + 'px';
   infoEl.style.top  = top + 'px';
