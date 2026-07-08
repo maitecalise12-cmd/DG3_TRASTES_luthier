@@ -1496,7 +1496,7 @@ body::after {
 ════════════════════════════════════════════════ */
 .materia {
   background: #0A0A0A;
-  padding: var(--sp-section) var(--sp-side) clamp(4.5rem, 8vw, 6.5rem);
+  padding: clamp(2.5rem, 5vw, 4rem) var(--sp-side) clamp(4.5rem, 8vw, 6.5rem);
   position: relative;
   z-index: 2;
 }
@@ -1578,7 +1578,7 @@ body::after {
   text-align: center;
   white-space: nowrap;
   max-width: none;
-  margin: clamp(0.75rem, 1.5vw, 1.25rem) auto 0;
+  margin: 0 auto;
 }
 
 /* Gráfico de carácter tonal (60% / 40%) */
@@ -1740,7 +1740,7 @@ body::after {
 /* ── Flip-cards de maderas ── */
 .maderas-showcase {
   max-width: 1200px;
-  margin: clamp(3rem, 6vw, 5rem) auto 0;
+  margin: clamp(2.5rem, 5vw, 3.75rem) auto 0;
 }
 .maderas-hint {
   font-size: 0.7rem;
@@ -1748,7 +1748,7 @@ body::after {
   text-transform: uppercase;
   color: var(--text-dark);
   font-weight: 600;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.4rem;
 }
 .maderas-hint span { color: #8A7A66; font-weight: 400; }
 
