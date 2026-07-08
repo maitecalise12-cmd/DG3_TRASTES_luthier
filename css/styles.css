@@ -1817,7 +1817,7 @@ body::after {
   width: 100%;
   height: 100%;
   object-fit: fill;
-  filter: brightness(0.5) contrast(0.32) sepia(1) saturate(7) hue-rotate(-22deg);
+  filter: url(#tint-red);   /* rellena la silueta con #E50000 sólido y exacto */
   z-index: 0;
   pointer-events: none;
 }
