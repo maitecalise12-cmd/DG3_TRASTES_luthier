@@ -299,6 +299,7 @@ document.addEventListener('keydown', e => {
 /* ════════════════════════════════════════════════
    6.5 · FLIP-CARDS DE MADERAS
 ════════════════════════════════════════════════ */
+const MADERA_ATTRS = ['Graves', 'Agudos', 'Proyección', 'Resonancia'];
 const maderaCards = qsa('.madera-card');
 maderaCards.forEach(card => {
   const flip = () => {
@@ -311,16 +312,53 @@ maderaCards.forEach(card => {
   card.addEventListener('keydown', e => {
     if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); flip(); }
   });
-  // El dorso: la misma imagen (silueta) tintada de rojo de fondo
+
   const frontImg = card.querySelector('.madera-card-front img');
   const back = card.querySelector('.madera-card-back');
-  if (frontImg && back && !back.querySelector('.madera-back-fill')) {
-    const fill = document.createElement('img');
-    fill.className = 'madera-back-fill';
-    fill.src = frontImg.getAttribute('src');
-    fill.alt = '';
-    fill.setAttribute('aria-hidden', 'true');
-    back.prepend(fill);
+  const inner = card.querySelector('.madera-card-inner');
+  const name = card.dataset.name || '';
+  const ratings = (card.dataset.ratings || '').split(',').map(n => parseInt(n, 10) || 0);
+
+  // Dorso: rojo sólido recortado con la silueta de la imagen del frente (máscara)
+  if (frontImg && back) {
+    const maskUrl = `url("${frontImg.getAttribute('src')}")`;
+    back.style.webkitMaskImage = maskUrl;
+    back.style.maskImage = maskUrl;
+  }
+  // Dorso: nombre + rating de estrellas
+  if (back && !back.querySelector('.madera-ratings')) {
+    const h = document.createElement('h4');
+    h.textContent = name;
+    back.appendChild(h);
+    const wrap = document.createElement('div');
+    wrap.className = 'madera-ratings';
+    MADERA_ATTRS.forEach((attr, i) => {
+      const row = document.createElement('div');
+      row.className = 'mr-row';
+      const lab = document.createElement('span');
+      lab.className = 'mr-label';
+      lab.textContent = attr;
+      const stars = document.createElement('span');
+      stars.className = 'mr-stars';
+      const v = ratings[i] || 0;
+      for (let s = 0; s < 5; s++) {
+        const star = document.createElement('i');
+        star.className = s < v ? 'on' : 'off';
+        star.textContent = '★';
+        stars.appendChild(star);
+      }
+      row.appendChild(lab);
+      row.appendChild(stars);
+      wrap.appendChild(row);
+    });
+    back.appendChild(wrap);
+  }
+  // Nombre debajo de la card
+  if (inner && name && !card.querySelector('.madera-name')) {
+    const nm = document.createElement('span');
+    nm.className = 'madera-name';
+    nm.textContent = name;
+    card.appendChild(nm);
   }
 });
 
