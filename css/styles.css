@@ -1496,7 +1496,7 @@ body::after {
 ════════════════════════════════════════════════ */
 .materia {
   background: #0A0A0A;
-  padding: var(--sp-section) var(--sp-side);
+  padding: var(--sp-section) var(--sp-side) clamp(4.5rem, 8vw, 6.5rem);
   position: relative;
   z-index: 2;
 }
@@ -1511,7 +1511,7 @@ body::after {
   position: absolute;
   left: 0; right: 0;
   height: 300px;
-  z-index: 4;              /* por encima de las secciones vecinas */
+  z-index: 1;              /* sobre los fondos vecinos, pero DEBAJO del contenido */
   pointer-events: none;
   background-image: url("../assets/rasgado-borde.png");
   background-repeat: no-repeat;
@@ -1521,32 +1521,25 @@ body::after {
 .paper-tear--top {
   top: -67px;
   background-position: center top;
+  /* el negro se desvanece hacia el fondo para no dejar un borde duro */
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 55%, transparent 100%);
+          mask-image: linear-gradient(to bottom, #000 0%, #000 55%, transparent 100%);
 }
 /* Abajo: negro → rasgado → transparente (revela la de abajo) */
 .paper-tear--bottom {
   bottom: -67px;
   background-position: center bottom;
+  -webkit-mask-image: linear-gradient(to top, #000 0%, #000 55%, transparent 100%);
+          mask-image: linear-gradient(to top, #000 0%, #000 55%, transparent 100%);
 }
 
-/* Textura de madera al tope, superpuesta con el título y difuminada al crema */
-.materia-topwood {
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: clamp(340px, 40vw, 560px);
-  z-index: 0;
-  pointer-events: none;
-  opacity: 0.6;
-  background-image:
-    linear-gradient(to bottom, rgba(0,0,0,0.35) 0%, transparent 25%, transparent 45%, #0A0A0A 82%),
-    url("../assets/textura-madera.png");
-  background-size: cover;
-  background-position: center top;
-  background-repeat: no-repeat;
-}
-/* El contenido va por encima de la textura */
+/* Textura de madera del tope: desactivada (generaba una banda sobre el fondo negro) */
+.materia-topwood { display: none; }
+/* El contenido va por encima de la textura y de las tiras de rasgado */
 .materia-header,
 .materia-tono,
-.maderas-showcase { position: relative; z-index: 1; }
+.maderas-showcase,
+.materia-claim { position: relative; z-index: 2; }
 
 .materia-inner {
   display: grid;
