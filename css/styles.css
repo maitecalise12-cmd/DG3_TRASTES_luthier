@@ -1555,7 +1555,11 @@ body::after {
   margin: 0 auto;
   text-align: center;
 }
-.materia-header .section-title { margin: 0.75rem 0 1.25rem; }
+.materia-header .section-title {
+  margin: 0.75rem 0 1.25rem;
+  font-size: clamp(2.6rem, 5.5vw, 4.8rem);
+  line-height: 0.95;
+}
 .materia-bajada {
   font-size: clamp(1rem, 1.4vw, 1.2rem);
   line-height: 1.7;
@@ -1566,13 +1570,14 @@ body::after {
 .materia-bajada strong { color: var(--red); }
 .materia-claim {
   font-family: var(--ff-display);
-  font-size: clamp(1.7rem, 3.6vw, 3rem);
-  line-height: 1.05;
+  font-size: clamp(0.9rem, 2vw, 1.6rem);
+  line-height: 1.1;
   letter-spacing: 0.02em;
   text-transform: uppercase;
   color: var(--red);
   text-align: center;
-  max-width: 780px;
+  white-space: nowrap;
+  max-width: none;
   margin: clamp(2.5rem, 5vw, 4rem) auto 0;
 }
 
@@ -1782,7 +1787,6 @@ body::after {
 .madera-card-inner {
   position: relative;
   width: 100%;
-  aspect-ratio: 3 / 2;   /* rectángulo apaisado */
   transform-style: preserve-3d;
   transition: transform 0.7s cubic-bezier(.22,1,.36,1);
 }
@@ -1794,26 +1798,37 @@ body::after {
 
 .madera-card-front,
 .madera-card-back {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  border-radius: 4px;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
 }
-/* Dorso: rectángulo rojo con la info */
+/* El frente (imagen PNG) define el tamaño/forma real de la card */
+.madera-card-front { position: relative; }
+/* Dorso: rojo recortado con la MISMA silueta rasgada del PNG (no un rectángulo) */
 .madera-card-back {
+  position: absolute;
+  inset: 0;
   transform: rotateY(180deg);
-  background: linear-gradient(155deg, #e60a0a 0%, var(--red) 45%, #a80000 100%);
+  background: transparent;
 }
+/* La misma imagen (silueta rasgada) tintada de rojo, como fondo del dorso */
+.madera-back-fill {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  filter: brightness(0.5) sepia(1) saturate(8) hue-rotate(-28deg);
+  z-index: 0;
+  pointer-events: none;
+}
+.madera-card-back h4,
+.madera-card-back p { position: relative; z-index: 1; }
 
-/* Cara frontal: la madera llena el rectángulo (escalada para recortar el canto rasgado del PNG) */
+/* Cara frontal: la imagen PNG con su forma rasgada real */
 .madera-card-front img {
   display: block;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transform: scale(1.2);
+  height: auto;
 }
 .madera-card-front .madera-num {
   position: absolute;

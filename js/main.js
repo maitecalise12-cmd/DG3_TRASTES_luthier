@@ -311,6 +311,17 @@ maderaCards.forEach(card => {
   card.addEventListener('keydown', e => {
     if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); flip(); }
   });
+  // El dorso: la misma imagen (silueta) tintada de rojo de fondo
+  const frontImg = card.querySelector('.madera-card-front img');
+  const back = card.querySelector('.madera-card-back');
+  if (frontImg && back && !back.querySelector('.madera-back-fill')) {
+    const fill = document.createElement('img');
+    fill.className = 'madera-back-fill';
+    fill.src = frontImg.getAttribute('src');
+    fill.alt = '';
+    fill.setAttribute('aria-hidden', 'true');
+    back.prepend(fill);
+  }
 });
 
 /* Cards de papel rasgado: al tocar, esa card se da vuelta (info en el dorso) y pasa al frente */
