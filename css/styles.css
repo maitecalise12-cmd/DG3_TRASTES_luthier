@@ -1498,7 +1498,7 @@ body::after {
   background: #0A0A0A;
   padding: var(--sp-section) var(--sp-side);
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 /* Fondo negro: textos claros */
 .materia .section-title.dark { color: var(--cream); }
@@ -1506,25 +1506,25 @@ body::after {
 .materia .maderas-hint { color: var(--cream); }
 .materia .maderas-hint span { color: var(--text-muted); }
 
-/* Tiras de canto de papel rasgado (PNG) en cada borde de la sección */
+/* Tiras de canto de papel rasgado (PNG a tamaño original) en cada borde */
 .paper-tear {
   position: absolute;
   left: 0; right: 0;
-  height: 150px;
-  z-index: 3;
+  height: 300px;
+  z-index: 4;              /* por encima de las secciones vecinas */
   pointer-events: none;
   background-image: url("../assets/rasgado-borde.png");
   background-repeat: no-repeat;
-  background-size: 100% 700px;   /* alto fijo: el canto queda a ~45px del borde */
+  background-size: auto;   /* tamaño original */
 }
-/* Arriba: transparente → rasgado → negro (revela la sección de arriba) */
+/* Arriba: transparente → rasgado → negro (las puntas del canto en el borde, revela la de arriba) */
 .paper-tear--top {
-  top: -45px;
+  top: -67px;
   background-position: center top;
 }
-/* Abajo: negro → rasgado → transparente (revela la sección de abajo) */
+/* Abajo: negro → rasgado → transparente (revela la de abajo) */
 .paper-tear--bottom {
-  bottom: -45px;
+  bottom: -67px;
   background-position: center bottom;
 }
 
@@ -1896,7 +1896,7 @@ body::after {
 ════════════════════════════════════════════════ */
 .anatomia {
   position: relative;
-  padding: clamp(2.5rem, 4vw, 3.75rem) var(--sp-side);
+  padding: clamp(2.5rem, 4vw, 3.75rem) var(--sp-side) clamp(3.5rem, 6vw, 5.5rem);
   background: #0A0A0A center / cover no-repeat;
   background-image: url("../assets/fondo-ingenieria.jpg");
   border-top: 1px solid var(--bg-border);
