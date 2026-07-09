@@ -2277,19 +2277,50 @@ body::after {
   will-change: transform;
 }
 
+/* Banda de testimonios en loop infinito */
+.testi-marquee {
+  position: relative;
+  overflow: hidden;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  padding: 0.5rem 0;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+          mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+}
+.testi-track {
+  display: flex;
+  width: max-content;
+  animation: testi-scroll 60s linear infinite;
+}
+.testi-marquee:hover .testi-track { animation-play-state: paused; }
+@keyframes testi-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
 .testimonio-card {
-  flex: 0 0 min(480px, 80vw);
+  flex: 0 0 clamp(300px, 30vw, 375px);
+  margin-right: 1.5rem;
   background: var(--bg-mid);
   border: 1px solid var(--bg-border);
-  padding: 2.5rem;
+  padding: 2rem 2.15rem;
   border-radius: var(--radius);
 }
 .testimonio-card blockquote p {
-  font-size: 1rem;
-  line-height: 1.75;
+  font-size: 1.02rem;
+  line-height: 1.7;
   color: var(--text-primary);
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.4rem;
   position: relative;
+}
+/* Frases destacadas con la tipografía de los títulos */
+.t-hl {
+  font-family: var(--ff-display);
+  font-size: 1.32em;
+  line-height: 0.9;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--red);
 }
 .testimonio-card blockquote p::before {
   content: '"';
