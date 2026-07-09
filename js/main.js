@@ -664,3 +664,46 @@ if (newsletterDismiss) {
     if (section) section.style.opacity = '0.5';
   });
 }
+
+
+/* ════════════════════════════════════════════════
+   11 · Conteo animado de los datos del curso
+════════════════════════════════════════════════ */
+const datoNums = qsa('.dato-num');
+if (datoNums.length) {
+  const countUp = (el) => {
+    const target = parseInt(el.dataset.count, 10) || 0;
+    const duration = 1100;
+    const start = performance.now();
+    const step = (now) => {
+      const p = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - p, 3); // easeOutCubic
+      el.textContent = Math.round(eased * target);
+      if (p < 1) requestAnimationFrame(step);
+      else el.textContent = target; // siempre termina en el valor correcto
+    };
+    requestAnimationFrame(step);
+  };
+
+  // Empezar en 0
+  datoNums.forEach((el) => { el.textContent = '0'; });
+
+  // Disparar al entrar en pantalla (una vez)
+  const datoObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        countUp(entry.target);
+        datoObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.6 });
+  datoNums.forEach((el) => datoObserver.observe(el));
+
+  // Re-disparar al pasar el mouse por la lista
+  const datosList = qs('.curso-datos');
+  if (datosList) {
+    datosList.addEventListener('mouseenter', () => {
+      datoNums.forEach((el) => countUp(el));
+    });
+  }
+}
