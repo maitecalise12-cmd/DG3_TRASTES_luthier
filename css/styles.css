@@ -1076,14 +1076,19 @@ body::after {
 /* Cards estilo foto: marco claro, apiladas y rotadas */
 .curso-card {
   position: relative;
-  flex: 0 0 clamp(290px, 31vw, 400px);
-  display: block;
+  flex: 0 0 clamp(250px, 26vw, 325px);
+  display: flex;
+  flex-direction: column;
   aspect-ratio: 4 / 5;
   text-decoration: none;
   cursor: pointer;
   background: transparent;
   border: 15px solid transparent;
   transition: transform 0.45s cubic-bezier(.22,1,.36,1);
+}
+/* El curso estrella siempre más grande */
+.curso-card--featured {
+  flex-basis: clamp(275px, 28vw, 350px);
 }
 /* Marco de papel rasgado (mismo SVG que CONTRA LO PREFABRICADO) */
 .curso-card::before {
@@ -1103,8 +1108,9 @@ body::after {
   box-shadow: 0 30px 62px rgba(0,0,0,0.55);
 }
 .curso-media {
-  position: absolute;
-  inset: 0;
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 0;
   z-index: 1;
   overflow: hidden;
   background: #1a1a1a;
@@ -1119,15 +1125,7 @@ body::after {
 }
 .curso-card:hover .curso-media img,
 .curso-card:hover .curso-media video { transform: scale(1.06); }
-/* Degradado inferior para legibilidad del texto */
-.curso-card::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  background: linear-gradient(to top, rgba(10,10,10,0.94) 0%, rgba(10,10,10,0.55) 34%, transparent 64%);
-  pointer-events: none;
-}
+.curso-card::after { display: none; }
 /* Sin números en las cards */
 .curso-num { display: none; }
 
@@ -1136,21 +1134,29 @@ body::after {
 .cursos-grid .curso-card:nth-child(2) { order: 1; transform: rotate(-5deg); z-index: 1; margin-right: clamp(-52px, -3.5vw, -32px); }
 .cursos-grid .curso-card:nth-child(3) { order: 3; transform: rotate(4deg);  z-index: 1; margin-left: clamp(-52px, -3.5vw, -32px); }
 .curso-caption {
-  position: absolute;
-  left: 0; right: 0; bottom: 0;
-  z-index: 3;
-  padding: clamp(0.9rem, 1.6vw, 1.3rem);
+  position: relative;
+  z-index: 1;
+  padding: clamp(1rem, 1.7vw, 1.4rem);
+  background: #141414;
   display: flex;
   flex-direction: column;
-  gap: 0.28rem;
+  gap: 0.3rem;
 }
 .curso-title {
   font-family: var(--ff-display);
-  font-size: clamp(1.3rem, 1.7vw, 1.65rem);
-  line-height: 1;
+  font-size: clamp(1.75rem, 2.5vw, 2.4rem);
+  line-height: 0.98;
   letter-spacing: 0.03em;
   text-transform: uppercase;
   color: #fff;
+}
+/* Cards no destacadas: reservar 2 líneas de título para igualar alturas */
+.curso-card:not(.curso-card--featured) .curso-title {
+  min-height: 1.96em;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 .curso-tagline {
   font-family: var(--ff-sans);
