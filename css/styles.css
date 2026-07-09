@@ -239,7 +239,7 @@ body::after {
 .site-header {
   position: fixed;
   top: 0; left: 0; right: 0;
-  z-index: 100;
+  z-index: 9999;
   background: rgba(0,0,0,0.92);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -1636,7 +1636,7 @@ body::after {
   background: #0A0A0A;
   padding: clamp(2.5rem, 5vw, 4rem) var(--sp-side) clamp(4.5rem, 8vw, 6.5rem);
   position: relative;
-  z-index: 2;
+  z-index: 9002;   /* sobre anatomía para conservar la transición rasgada */
 }
 /* Fondo negro: textos claros */
 .materia .section-title.dark { color: var(--cream); }
@@ -2058,6 +2058,7 @@ body::after {
 ════════════════════════════════════════════════ */
 .anatomia {
   position: relative;
+  z-index: 9001;   /* por encima del grano global para mostrar la foto limpia */
   padding: clamp(2.5rem, 4vw, 3.75rem) var(--sp-side) clamp(3.5rem, 6vw, 5.5rem);
   background: #0A0A0A center / cover no-repeat;
   background-image: url("../assets/fondo-ingenieria.jpg");
