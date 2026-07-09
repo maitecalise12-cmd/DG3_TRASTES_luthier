@@ -1057,13 +1057,15 @@ body::after {
    §2 · CURSOS
 ════════════════════════════════════════════════ */
 .cursos {
-  padding: var(--sp-section) var(--sp-side);
+  padding: clamp(2.25rem, 4.5vw, 3.5rem) var(--sp-side) clamp(2.5rem, 5vw, 4rem);
   background: #FFFFFF;
   border-top: 1px solid rgba(0,0,0,0.1);
 }
 /* Encabezado sobre el fondo blanco */
 .cursos .section-title { color: var(--red); white-space: nowrap; }
 .cursos .section-desc { color: #4A4A4A; }
+/* Juntar las cards al título para que la sección entre en pantalla */
+.cursos .section-header { margin-bottom: clamp(1rem, 2vw, 1.75rem); }
 .cursos-grid {
   display: flex;
   justify-content: center;
@@ -1071,7 +1073,7 @@ body::after {
   gap: 0;
   max-width: 1180px;
   margin: 0 auto;
-  padding-top: 3rem;
+  padding-top: 0.5rem;
 }
 /* Cards estilo foto: marco claro, apiladas y rotadas */
 .curso-card {
@@ -1079,7 +1081,7 @@ body::after {
   flex: 0 0 clamp(250px, 26vw, 325px);
   display: flex;
   flex-direction: column;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 4 / 5.3;
   text-decoration: none;
   cursor: pointer;
   background: transparent;
@@ -1109,7 +1111,7 @@ body::after {
 }
 .curso-media {
   position: relative;
-  flex: 1 1 auto;
+  flex: 1 1 0;
   min-height: 0;
   z-index: 1;
   overflow: hidden;
@@ -1236,12 +1238,12 @@ body::after {
   color: rgba(255,255,255,0.9);
 }
 .curso-items li::before {
-  content: '';
+  content: '★';
   position: absolute;
-  left: 0; top: 0.42em;
-  width: 6px; height: 6px;
-  background: var(--red);
-  transform: rotate(45deg);
+  left: 0; top: 0;
+  color: var(--red);
+  font-size: 0.8em;
+  line-height: 1.55;
 }
 
 /* Duración (pill arriba a la derecha) */
