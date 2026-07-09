@@ -1081,7 +1081,7 @@ body::after {
   flex: 0 0 clamp(250px, 26vw, 325px);
   display: flex;
   flex-direction: column;
-  aspect-ratio: 4 / 5.3;
+  aspect-ratio: 4 / 5.7;
   text-decoration: none;
   cursor: pointer;
   background: transparent;
@@ -1138,11 +1138,11 @@ body::after {
 .curso-caption {
   position: relative;
   z-index: 1;
-  padding: clamp(1rem, 1.7vw, 1.4rem);
+  padding: clamp(0.85rem, 1.4vw, 1.15rem);
   background: #141414;
   display: flex;
   flex-direction: column;
-  gap: 0.3rem;
+  gap: 0.25rem;
 }
 .curso-title {
   font-family: var(--ff-display);
@@ -1152,13 +1152,12 @@ body::after {
   text-transform: uppercase;
   color: #fff;
 }
-/* Cards no destacadas: reservar 2 líneas de título para igualar alturas */
+/* Cards no destacadas: título en una sola línea (achicando la tipografía) */
 .curso-card:not(.curso-card--featured) .curso-title {
-  min-height: 1.96em;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
+  font-size: clamp(1.4rem, 1.85vw, 1.78rem);
+  white-space: nowrap;
   overflow: hidden;
+  text-overflow: ellipsis;
 }
 .curso-tagline {
   font-family: var(--ff-sans);
