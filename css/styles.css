@@ -1067,31 +1067,28 @@ body::after {
 .cursos-grid {
   display: flex;
   justify-content: center;
-  gap: clamp(1rem, 2.5vw, 2rem);
+  align-items: center;
+  gap: 0;
   max-width: 1180px;
   margin: 0 auto;
-  padding-top: 2rem;
+  padding-top: 3rem;
 }
-/* Cards de imagen con borde de papel rasgado (mismo SVG que CONTRA LO PREFABRICADO) */
+/* Cards estilo foto: marco claro, apiladas y rotadas */
 .curso-card {
   position: relative;
-  flex: 1 1 0;
-  min-width: 0;
+  flex: 0 0 clamp(230px, 25vw, 315px);
   display: block;
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 4 / 5;
   text-decoration: none;
-  transition: transform 0.4s cubic-bezier(.22,1,.36,1);
+  background: #e8e2d6;
+  border: 13px solid #e8e2d6;
+  box-shadow: 0 14px 34px rgba(0,0,0,0.45);
+  transition: transform 0.45s cubic-bezier(.22,1,.36,1), box-shadow var(--transition);
 }
-.curso-card:hover { transform: translateY(-10px); }
-/* Canto de papel rasgado detrás de la imagen */
-.curso-card::before {
-  content: '';
-  position: absolute;
-  inset: -12px;
-  background: var(--cream);
-  filter: url(#paper-rip);
-  box-shadow: 0 18px 44px rgba(0,0,0,0.28);
-  z-index: 0;
+.curso-card:hover {
+  transform: rotate(0deg) translateY(-16px) scale(1.05) !important;
+  z-index: 10;
+  box-shadow: 0 30px 62px rgba(0,0,0,0.55);
 }
 .curso-media {
   position: absolute;
@@ -1231,9 +1228,12 @@ body::after {
   font-size: 0.72rem;
   color: rgba(255,255,255,0.75);
 }
-/* Card destacada: canto de papel con resplandor rojo */
-.curso-card--featured::before {
-  box-shadow: 0 18px 44px rgba(0,0,0,0.3), 0 0 42px rgba(229,0,0,0.5);
+/* Card destacada: reborde rojo con resplandor */
+.curso-card--featured {
+  box-shadow: 0 16px 40px rgba(0,0,0,0.35), 0 0 0 2px var(--red), 0 0 34px rgba(229,0,0,0.35);
+}
+.curso-card--featured:hover {
+  box-shadow: 0 28px 62px rgba(0,0,0,0.5), 0 0 0 2px var(--red), 0 0 46px rgba(229,0,0,0.5);
 }
 
 @property --neon-angle {
