@@ -666,16 +666,27 @@ body::after {
   width: 2.6rem;
   height: 2.6rem;
   color: var(--red);
-  /* Resplandor rojo detrás del tilde */
-  filter:
-    drop-shadow(0 0 10px rgba(229,0,0,0.9))
-    drop-shadow(0 0 24px rgba(229,0,0,0.5));
 }
 .pilar-num svg {
   width: 100%;
   height: 100%;
   display: block;
   overflow: visible;
+}
+/* Tilde que se dibuja rápido en loop y desaparece de golpe */
+.pilar-check-path {
+  stroke-dasharray: 120;
+  stroke-dashoffset: 120;
+  animation: pilar-check 1.3s ease-out infinite;
+}
+.manifiesto-pilares .pilar:nth-child(2) .pilar-check-path { animation-delay: 0.22s; }
+.manifiesto-pilares .pilar:nth-child(3) .pilar-check-path { animation-delay: 0.44s; }
+@keyframes pilar-check {
+  0%     { stroke-dashoffset: 120; }
+  28%    { stroke-dashoffset: 0; }
+  88%    { stroke-dashoffset: 0; }
+  88.01% { stroke-dashoffset: 120; }
+  100%   { stroke-dashoffset: 120; }
 }
 .pilar h3 {
   font-family: var(--ff-display);
