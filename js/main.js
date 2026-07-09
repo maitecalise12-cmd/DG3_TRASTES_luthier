@@ -664,23 +664,3 @@ if (newsletterDismiss) {
     if (section) section.style.opacity = '0.5';
   });
 }
-
-
-/* ════════════════════════════════════════════════
-   10 · Cursos — desplegar items al hacer clic
-════════════════════════════════════════════════ */
-qsa('.curso-card').forEach((card) => {
-  const toggle = (e) => {
-    // Dejar navegar el link "Ver curso" sin desplegar
-    if (e.target.closest('.curso-link')) return;
-    card.classList.toggle('is-open');
-  };
-  card.addEventListener('click', toggle);
-  card.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      if (e.target.closest('.curso-link')) return;
-      e.preventDefault();
-      card.classList.toggle('is-open');
-    }
-  });
-});

@@ -1081,14 +1081,25 @@ body::after {
   aspect-ratio: 4 / 5;
   text-decoration: none;
   cursor: pointer;
+  background: transparent;
+  border: 15px solid transparent;
+  transition: transform 0.45s cubic-bezier(.22,1,.36,1);
+}
+/* Marco de papel rasgado (mismo SVG que CONTRA LO PREFABRICADO) */
+.curso-card::before {
+  content: '';
+  position: absolute;
+  inset: -15px;
   background: #e8e2d6;
-  border: 15px solid #e8e2d6;
+  filter: url(#paper-rip);
   box-shadow: 0 14px 34px rgba(0,0,0,0.45);
-  transition: transform 0.45s cubic-bezier(.22,1,.36,1), box-shadow var(--transition);
+  z-index: 0;
 }
 .curso-card:hover {
   transform: rotate(0deg) translateY(-16px) scale(1.05) !important;
   z-index: 20 !important;
+}
+.curso-card:hover::before {
   box-shadow: 0 30px 62px rgba(0,0,0,0.55);
 }
 .curso-media {
@@ -1172,6 +1183,17 @@ body::after {
   transform: translateY(-2px);
   box-shadow: 0 8px 20px rgba(229,0,0,0.45);
 }
+/* Botón "Más información" (outline) para los cursos no destacados */
+.curso-link--info {
+  background: transparent;
+  color: #fff;
+  border: 1.5px solid rgba(255,255,255,0.65);
+}
+.curso-link--info:hover {
+  background: rgba(255,255,255,0.12);
+  border-color: #fff;
+  box-shadow: none;
+}
 
 /* Items: panel DETRÁS de la card, se desliza hacia abajo al hacer clic */
 .curso-items {
@@ -1194,7 +1216,7 @@ body::after {
   transform: translateY(0);
   transition: transform 0.55s cubic-bezier(.22,1,.36,1), opacity 0.4s ease;
 }
-.curso-card.is-open .curso-items {
+.curso-card:hover .curso-items {
   transform: translateY(calc(100% + 22px));
   opacity: 1;
   pointer-events: auto;
@@ -1215,8 +1237,6 @@ body::after {
   background: var(--red);
   transform: rotate(45deg);
 }
-/* Al abrir, traer la card al frente para que el panel no quede tapado */
-.curso-card.is-open { z-index: 15 !important; }
 
 /* Duración (pill arriba a la derecha) */
 .curso-duracion {
@@ -1287,9 +1307,13 @@ body::after {
   font-size: 0.72rem;
   color: rgba(255,255,255,0.75);
 }
-/* Card destacada: reborde rojo con resplandor */
-.curso-card--featured {
-  box-shadow: 0 16px 40px rgba(0,0,0,0.35), 0 0 0 2px var(--red), 0 0 34px rgba(229,0,0,0.35);
+/* Card destacada: marco rojo rasgado con resplandor */
+.curso-card--featured::before {
+  background: var(--red);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.4), 0 0 42px rgba(229,0,0,0.5);
+}
+.curso-card--featured:hover::before {
+  box-shadow: 0 30px 62px rgba(0,0,0,0.55), 0 0 52px rgba(229,0,0,0.6);
 }
 .curso-card--featured:hover {
   box-shadow: 0 28px 62px rgba(0,0,0,0.5), 0 0 0 2px var(--red), 0 0 46px rgba(229,0,0,0.5);
