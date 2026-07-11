@@ -21,6 +21,15 @@
     <feTurbulence type="fractalNoise" baseFrequency="0.9 0.12" numOctaves="3" seed="4" result="fiber"/>
     <feDisplacementMap in="d1" in2="fiber" scale="5" xChannelSelector="R" yChannelSelector="G"/>
   </filter>
+  <filter id="doodle-rough">
+    <feTurbulence type="fractalNoise" baseFrequency="0.016" numOctaves="2" result="n"/>
+    <feDisplacementMap in="SourceGraphic" in2="n" scale="5"/>
+  </filter>
+  <symbol id="d-bolt" viewBox="0 0 50 100"><path d="M32 3 L10 48 L26 48 L18 97 L44 38 L28 38 Z" fill="currentColor"/></symbol>
+  <symbol id="d-star" viewBox="0 0 100 100"><path d="M50 5 L62 38 L97 38 L69 60 L79 95 L50 74 L21 95 L31 60 L3 38 L38 38 Z" fill="none" stroke="currentColor" stroke-width="5" stroke-linejoin="round"/></symbol>
+  <symbol id="d-skull" viewBox="0 0 100 100"><g fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M24 42 Q24 14 50 14 Q76 14 76 42 Q76 56 68 63 L68 74 L60 74 L60 82 L52 74 L48 74 L40 82 L40 74 L32 74 L32 63 Q24 56 24 42 Z"/><circle cx="39" cy="45" r="6.5" fill="currentColor" stroke="none"/><circle cx="61" cy="45" r="6.5" fill="currentColor" stroke="none"/><path d="M50 55 L45 63 L55 63 Z" fill="currentColor" stroke="none"/></g></symbol>
+  <symbol id="d-anarchy" viewBox="0 0 100 100"><g fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round"><circle cx="50" cy="50" r="38"/><path d="M18 80 L50 18 L82 80 M34 60 L70 60"/></g></symbol>
+  <symbol id="d-spiral" viewBox="0 0 100 100"><path d="M52 50 Q56 40 66 44 Q80 50 74 66 Q66 86 42 80 Q14 72 20 42 Q27 8 62 14 Q98 21 92 60" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round"/></symbol>
 </defs></svg>
 
 <!-- NAV -->
@@ -200,13 +209,12 @@
     <p class="section-desc">Solo tus ganas. El taller pone absolutamente todo lo demás:</p>
   </div>
   <ul class="incluye-list">
-    <li class="reveal-item">Todas las <strong>maderas y materiales</strong> para construir tu guitarra</li>
-    <li class="reveal-item">Uso de <strong>herramientas y maquinaria</strong> profesional del taller</li>
-    <li class="reveal-item">Hardware completo: <strong>pastillas, clavijas, puente y electrónica</strong></li>
-    <li class="reveal-item">Acompañamiento personalizado de un <strong>luthier de autor</strong></li>
-    <li class="reveal-item">Grupos reducidos de <strong>máximo 12 personas</strong></li>
-    <li class="reveal-item">Tu <strong>guitarra terminada</strong> es tuya, te la llevás a casa</li>
-    <li class="reveal-item">Certificado y acceso a la <strong>comunidad de egresados</strong></li>
+    <li><span class="incluye-num">01</span><p class="incluye-text">Todas las <strong>maderas y materiales</strong> para construir tu guitarra</p></li>
+    <li><span class="incluye-num">02</span><p class="incluye-text">Uso de <strong>herramientas y maquinaria</strong> profesional del taller</p></li>
+    <li><span class="incluye-num">03</span><p class="incluye-text">Hardware completo: <strong>pastillas, clavijas, puente y electrónica</strong></p></li>
+    <li><span class="incluye-num">04</span><p class="incluye-text">Acompañamiento personalizado de un <strong>luthier de autor</strong></p></li>
+    <li><span class="incluye-num">05</span><p class="incluye-text">Grupos reducidos de <strong>máximo 12 personas</strong></p></li>
+    <li><span class="incluye-num">06</span><p class="incluye-text">Tu <strong>guitarra terminada</strong> es tuya, te la llevás a casa</p></li>
   </ul>
 </section>
 
@@ -217,33 +225,37 @@
     <h2 class="section-title">SALIERON CON <span class="hl">LA SUYA</span></h2>
     <p class="section-desc">No es teoría: cada persona termina el curso con su propia guitarra funcionando. Estos son algunos.</p>
   </div>
-  <div class="resultados-grid">
-    <article class="resultado-card reveal-item">
-      <p class="resultado-quote">"Entré sin saber ni soldar. Salí con mi primera guitarra sonando en el ensayo de mi banda."</p>
-      <footer class="resultado-meta">
-        <strong>Nico D.</strong>
-        <span>Construyó una Telecaster en caoba y arce</span>
-      </footer>
-    </article>
-    <article class="resultado-card reveal-item">
-      <p class="resultado-quote">"Nunca había agarrado una lijadora. Hoy toco un instrumento que hice yo, de punta a punta."</p>
-      <footer class="resultado-meta">
-        <strong>Sofía M.</strong>
-        <span>Construyó una Stratocaster HSS en nogal</span>
-      </footer>
-    </article>
-    <article class="resultado-card reveal-item">
-      <p class="resultado-quote">"Seis meses y me llevé a casa una guitarra que no cambio por ninguna de fábrica."</p>
-      <footer class="resultado-meta">
-        <strong>Diego R.</strong>
-        <span>Construyó una doble cutaway en cedro</span>
-      </footer>
-    </article>
+  <div class="resultados-marquee" aria-label="Guitarras construidas por egresados">
+    <div class="resultados-track">
+      <!-- Set 1 -->
+      <div class="resultado-card"><img src="assets/resultado-1.jpg" alt="Guitarra construida por un egresado del taller" loading="lazy" /></div>
+      <div class="resultado-card"><img src="assets/resultado-2.jpg" alt="Guitarra construida por un egresado del taller" loading="lazy" /></div>
+      <div class="resultado-card"><img src="assets/resultado-3.jpg" alt="Guitarra construida por un egresado del taller" loading="lazy" /></div>
+      <div class="resultado-card"><img src="assets/resultado-4.jpg" alt="Guitarra construida por un egresado del taller" loading="lazy" /></div>
+      <div class="resultado-card"><img src="assets/resultado-5.jpg" alt="Guitarra construida por un egresado del taller" loading="lazy" /></div>
+      <!-- Set 2 (duplicado para el loop) -->
+      <div class="resultado-card" aria-hidden="true"><img src="assets/resultado-1.jpg" alt="" loading="lazy" /></div>
+      <div class="resultado-card" aria-hidden="true"><img src="assets/resultado-2.jpg" alt="" loading="lazy" /></div>
+      <div class="resultado-card" aria-hidden="true"><img src="assets/resultado-3.jpg" alt="" loading="lazy" /></div>
+      <div class="resultado-card" aria-hidden="true"><img src="assets/resultado-4.jpg" alt="" loading="lazy" /></div>
+      <div class="resultado-card" aria-hidden="true"><img src="assets/resultado-5.jpg" alt="" loading="lazy" /></div>
+    </div>
   </div>
 </section>
 
 <!-- INSCRIPCIÓN -->
 <section class="reveal-section curso-inscripcion" id="inscribirme" aria-label="Inscripción al curso">
+  <!-- Doodles rojos y grandes -->
+  <span class="doodle" data-speed="34" data-rot="-13" style="top:12%; left:4%;  width:82px;" aria-hidden="true"><svg viewBox="0 0 50 100"><use href="#d-bolt"/></svg></span>
+  <span class="doodle" data-speed="50" data-rot="9"   style="top:42%; left:8%;  width:66px;" aria-hidden="true"><svg viewBox="0 0 100 100"><use href="#d-star"/></svg></span>
+  <span class="doodle" data-speed="26" data-rot="-7"  style="top:70%; left:3%;  width:104px;" aria-hidden="true"><svg viewBox="0 0 100 100"><use href="#d-skull"/></svg></span>
+  <span class="doodle" data-speed="44" data-rot="12"  style="top:90%; left:9%;  width:74px;" aria-hidden="true"><svg viewBox="0 0 100 100"><use href="#d-anarchy"/></svg></span>
+
+  <span class="doodle" data-speed="46" data-rot="8"   style="top:14%; left:90%; width:72px;" aria-hidden="true"><svg viewBox="0 0 100 100"><use href="#d-spiral"/></svg></span>
+  <span class="doodle" data-speed="28" data-rot="-10" style="top:44%; left:85%; width:112px;" aria-hidden="true"><svg viewBox="0 0 100 100"><use href="#d-skull"/></svg></span>
+  <span class="doodle" data-speed="54" data-rot="6"   style="top:70%; left:93%; width:60px;" aria-hidden="true"><svg viewBox="0 0 50 100"><use href="#d-bolt"/></svg></span>
+  <span class="doodle" data-speed="32" data-rot="-12" style="top:90%; left:87%; width:88px;" aria-hidden="true"><svg viewBox="0 0 100 100"><use href="#d-star"/></svg></span>
+
   <div class="inscripcion-inner">
     <span class="section-tag">★ Próxima camada</span>
     <h2 class="section-title">EMPEZÁ A<br><span class="hl">CONSTRUIR</span></h2>
