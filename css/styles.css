@@ -2866,10 +2866,27 @@ details[open] .faq-question::after { transform: rotate(45deg); }
    §11.5 · CONTACTO
 ════════════════════════════════════════════════ */
 .contacto {
-  background: var(--bg-deep);
+  background: linear-gradient(160deg, #D40000 0%, #6E0000 100%);
   padding: var(--sp-section) var(--sp-side);
-  border-top: 1px solid var(--bg-border);
+  border-top: 1px solid rgba(0,0,0,0.25);
 }
+/* Textos claros sobre el fondo rojo (columna de info) */
+.contacto .section-tag { color: rgba(255,255,255,0.8); }
+.contacto-info .section-title { color: #fff; }
+.contacto-info .section-title .hl,
+.contacto-info .section-title:hover .hl {
+  color: #fff;
+  animation: proyecto-glow 2.2s ease-in-out infinite;
+}
+@keyframes proyecto-glow {
+  0%, 100% { text-shadow: 0 0 8px rgba(255,255,255,0.35); }
+  50%      { text-shadow: 0 0 26px rgba(255,255,255,0.7); }
+}
+.contacto .contacto-lead { color: rgba(255,255,255,0.9); }
+.contacto .contacto-label { color: rgba(255,255,255,0.72); }
+.contacto .contacto-list a,
+.contacto .contacto-list li > span:last-child { color: #fff; }
+.contacto .contacto-list a:hover { color: rgba(255,255,255,0.7); }
 .contacto-inner {
   max-width: 1100px;
   margin: 0 auto;
@@ -2904,39 +2921,53 @@ details[open] .faq-question::after { transform: rotate(45deg); }
 
 /* Formulario */
 .contacto-form {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
-  background: var(--bg-card);
-  border: 1px solid var(--bg-border);
-  border-radius: var(--radius);
+  background: #5E0A0A;                      /* rojo oscuro opaco (el grano global le da la textura) */
+  border: none;
   padding: clamp(1.5rem, 3vw, 2.5rem);
 }
+/* Borde de papel rasgado (mismo SVG que las cards) */
+.contacto-form::before {
+  content: '';
+  position: absolute;
+  inset: -13px;
+  background: var(--cream);
+  filter: url(#paper-rip);
+  box-shadow: 0 20px 46px rgba(0,0,0,0.45);
+  z-index: 0;
+}
+.contacto-form > * { position: relative; z-index: 1; }
 .form-field { display: flex; flex-direction: column; gap: 0.4rem; }
 .form-field label {
   font-size: 0.65rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--text-muted);
+  color: rgba(255,255,255,0.85);
   font-weight: 600;
 }
+.contacto-form .form-field label { color: #111; }
 .form-field input,
 .form-field textarea {
   font-family: var(--ff-sans);
   font-size: 0.95rem;
-  color: var(--text-primary);
-  background: var(--bg-mid);
-  border: 1px solid var(--bg-border);
+  color: #fff;
+  background: rgba(0,0,0,0.3);
+  border: 1px solid rgba(255,255,255,0.18);
   border-radius: var(--radius);
   padding: 0.8rem 1rem;
   transition: border-color var(--transition), box-shadow var(--transition);
   resize: vertical;
 }
+.form-field input::placeholder,
+.form-field textarea::placeholder { color: rgba(255,255,255,0.45); }
 .form-field input:focus,
 .form-field textarea:focus {
   outline: none;
-  border-color: var(--red);
-  box-shadow: 0 0 0 3px rgba(229,0,0,0.18);
+  border-color: rgba(255,255,255,0.8);
+  box-shadow: 0 0 0 3px rgba(255,255,255,0.15);
 }
 .contacto-form .btn { width: max-content; }
 .form-note { font-size: 0.85rem; color: var(--red); min-height: 1.2em; }
