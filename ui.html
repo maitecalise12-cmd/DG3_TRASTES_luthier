@@ -64,7 +64,8 @@
     .radius-demo { width: 90px; height: 54px; background: var(--red); border-radius: var(--radius); }
 
     /* Efectos */
-    .fx-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.6rem 1.4rem; }
+    .fx-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1.4rem 1.2rem; }
+    @media (max-width: 720px) { .fx-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
     .fx { text-align: center; }
     .fx-label { font-family: var(--ff-sans); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-top: 1.1rem; }
 
@@ -144,10 +145,9 @@
   <nav class="nav-container" aria-label="Navegación principal">
     <a href="index.html" class="nav-logo" aria-label="Volver al inicio">TRASTES <span class="accent">★</span></a>
     <ul class="nav-links" role="list" id="nav-links-mobile">
-      <li><a href="index.html#cursos">Cursos</a></li>
-      <li><a href="index.html#faq">Preguntas</a></li>
       <li><a href="index.html#contacto">Contacto</a></li>
-      <li><a href="ui.html" class="nav-cta" aria-current="page">Sistema UI</a></li>
+      <li><a href="ui.html" aria-current="page">Sistema UI</a></li>
+      <li><a href="index.html#cursos" class="nav-cta">Cursos</a></li>
     </ul>
     <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-links-mobile">
       <span></span><span></span><span></span>
@@ -157,10 +157,10 @@
 
 <!-- HERO -->
 <section class="ug" style="padding-top: calc(64px + 3rem);">
-  <div class="ug-inner">
+  <div class="ug-inner" style="text-align:center;">
     <span class="ug-kicker">★ Design System</span>
-    <h1 class="ug-title">SISTEMA DE DISEÑO</h1>
-    <p class="ug-lead">La caja de herramientas visual de <strong style="color:var(--text-primary)">Trastes — Luthería de Autor</strong>: paleta, tipografías, escala, botones, tokens y efectos. Estética rebelde-industrial, modo oscuro, acento rojo.</p>
+    <h1 class="ug-title" style="font-size:clamp(2.4rem, 6vw, 4.4rem); margin-top:0.5rem;">SISTEMA DE DISEÑO</h1>
+    <p class="ug-lead" style="margin:1rem auto 0;">La caja de herramientas visual de <strong style="color:var(--text-primary)">Trastes — Luthería de Autor</strong>:<br>paleta, tipografías, escala, botones, tokens y efectos.</p>
   </div>
 </section>
 
@@ -170,28 +170,11 @@
     <span class="ug-kicker">01 · Paleta</span>
     <h2 class="ug-title">COLORES</h2>
 
-    <h3 class="ug-subtitle">Fondos y superficies</h3>
     <div class="ug-swatches">
-      <div class="sw"><div class="sw-color" style="background:#000000"></div><div class="sw-meta"><div class="sw-name">Fondo principal</div><div class="sw-var">--bg-deep</div><div class="sw-hex">#000000</div></div></div>
-      <div class="sw"><div class="sw-color" style="background:#121212"></div><div class="sw-meta"><div class="sw-name">Tarjetas / elevación</div><div class="sw-var">--bg-card</div><div class="sw-hex">#121212</div></div></div>
-      <div class="sw"><div class="sw-color" style="background:#1A1A1A"></div><div class="sw-meta"><div class="sw-name">Superficie media</div><div class="sw-var">--bg-mid</div><div class="sw-hex">#1A1A1A</div></div></div>
-      <div class="sw"><div class="sw-color" style="background:rgba(255,255,255,0.07)"></div><div class="sw-meta"><div class="sw-name">Bordes</div><div class="sw-var">--bg-border</div><div class="sw-hex">rgba 255·.07</div></div></div>
-    </div>
-
-    <h3 class="ug-subtitle">Acento rojo</h3>
-    <div class="ug-swatches">
+      <div class="sw"><div class="sw-color" style="background:#000000"></div><div class="sw-meta"><div class="sw-name">Negro</div><div class="sw-var">--bg-deep</div><div class="sw-hex">#000000</div></div></div>
       <div class="sw"><div class="sw-color" style="background:#E50000"></div><div class="sw-meta"><div class="sw-name">Rojo rebelde</div><div class="sw-var">--red</div><div class="sw-hex">#E50000</div></div></div>
-      <div class="sw"><div class="sw-color" style="background:#B80000"></div><div class="sw-meta"><div class="sw-name">Rojo hover</div><div class="sw-var">--red-hover</div><div class="sw-hex">#B80000</div></div></div>
-      <div class="sw"><div class="sw-color" style="background:rgba(229,0,0,0.18)"></div><div class="sw-meta"><div class="sw-name">Resplandor rojo</div><div class="sw-var">--red-glow</div><div class="sw-hex">rgba 229·.18</div></div></div>
-    </div>
-
-    <h3 class="ug-subtitle">Crema y texto</h3>
-    <div class="ug-swatches">
-      <div class="sw"><div class="sw-color" style="background:#F4F3F0"></div><div class="sw-meta"><div class="sw-name">Crema (transición)</div><div class="sw-var">--cream</div><div class="sw-hex">#F4F3F0</div></div></div>
-      <div class="sw"><div class="sw-color" style="background:#E0DAD0"></div><div class="sw-meta"><div class="sw-name">Crema oscuro</div><div class="sw-var">--cream-dark</div><div class="sw-hex">#E0DAD0</div></div></div>
-      <div class="sw"><div class="sw-color" style="background:#E0E0E0"></div><div class="sw-meta"><div class="sw-name">Texto principal</div><div class="sw-var">--text-primary</div><div class="sw-hex">#E0E0E0</div></div></div>
-      <div class="sw"><div class="sw-color" style="background:#9E9E9E"></div><div class="sw-meta"><div class="sw-name">Texto secundario</div><div class="sw-var">--text-muted</div><div class="sw-hex">#9E9E9E</div></div></div>
-      <div class="sw"><div class="sw-color" style="background:#1A1A1A"></div><div class="sw-meta"><div class="sw-name">Texto sobre claro</div><div class="sw-var">--text-dark</div><div class="sw-hex">#1A1A1A</div></div></div>
+      <div class="sw"><div class="sw-color" style="background:#F4F3F0"></div><div class="sw-meta"><div class="sw-name">Crema</div><div class="sw-var">--cream</div><div class="sw-hex">#F4F3F0</div></div></div>
+      <div class="sw"><div class="sw-color" style="background:#E0E0E0"></div><div class="sw-meta"><div class="sw-name">Texto claro</div><div class="sw-var">--text-primary</div><div class="sw-hex">#E0E0E0</div></div></div>
     </div>
   </div>
 </section>
@@ -216,13 +199,6 @@
       </div>
     </div>
 
-    <h3 class="ug-subtitle">Escala</h3>
-    <div class="scale-row"><div class="scale-sample s-hero">Hero title</div><div class="scale-meta">Display · clamp(3rem → 8.5rem)<br>line-height 0.82</div></div>
-    <div class="scale-row"><div class="scale-sample s-title">Section title</div><div class="scale-meta">Display · clamp(3rem → 5.5rem)<br>line-height 0.95</div></div>
-    <div class="scale-row"><div class="scale-sample s-h3">Subtítulo / H3</div><div class="scale-meta">Display · 1.6–1.9rem · uppercase</div></div>
-    <div class="scale-row"><div class="scale-sample s-body">Cuerpo de texto — párrafos y bajadas, line-height 1.6–1.7.</div><div class="scale-meta">Sans · 1rem</div></div>
-    <div class="scale-row"><div class="scale-sample s-small">Botón / label</div><div class="scale-meta">Sans · 0.72rem · 0.18em · 600</div></div>
-    <div class="scale-row"><div class="scale-sample s-tag">★ Section tag</div><div class="scale-meta">Sans · 0.68rem · 0.22em · rojo</div></div>
   </div>
 </section>
 
@@ -254,24 +230,10 @@
   </div>
 </section>
 
-<!-- TOKENS -->
-<section class="ug">
-  <div class="ug-inner">
-    <span class="ug-kicker">05 · Tokens</span>
-    <h2 class="ug-title">ESPACIADO &amp; FORMA</h2>
-    <div class="token-grid">
-      <div class="token"><div class="token-name">Espaciado de sección</div><div class="token-val">--sp-section · clamp(80px → 130px)</div><div class="token-demo"><div class="bar" style="width:100%"></div></div></div>
-      <div class="token"><div class="token-name">Padding lateral</div><div class="token-val">--sp-side · clamp(1.5rem → 6rem)</div><div class="token-demo"><div class="bar" style="width:70%"></div></div></div>
-      <div class="token"><div class="token-name">Radio de borde</div><div class="token-val">--radius · 4px</div><div class="token-demo"><div class="radius-demo"></div></div></div>
-      <div class="token"><div class="token-name">Transición</div><div class="token-val">--transition · 0.28s cubic-bezier(.22,1,.36,1)</div><div class="token-demo"><div class="bar" style="width:45%"></div></div></div>
-    </div>
-  </div>
-</section>
-
 <!-- EFECTOS -->
 <section class="ug">
   <div class="ug-inner">
-    <span class="ug-kicker">06 · Efectos</span>
+    <span class="ug-kicker">05 · Efectos</span>
     <h2 class="ug-title">EFECTOS &amp; TEXTURAS</h2>
     <div class="fx-grid">
       <div class="fx">
@@ -293,10 +255,6 @@
         <div class="fx-label">Glow rojo pulsante (animación en loop)</div>
       </div>
       <div class="fx">
-        <div class="fx-flip"><div class="fx-flip-inner"><div class="fx-face">01</div><div class="fx-face back">Detalle</div></div></div>
-        <div class="fx-label">Flip card 3D (hover)</div>
-      </div>
-      <div class="fx">
         <div class="fx-neon"><button class="btn btn-primary" type="button">Neón al hover</button></div>
         <div class="fx-label">Reborde + resplandor neón en el botón primario</div>
       </div>
@@ -311,7 +269,7 @@
 <!-- IMÁGENES -->
 <section class="ug">
   <div class="ug-inner">
-    <span class="ug-kicker">07 · Imágenes</span>
+    <span class="ug-kicker">06 · Imágenes</span>
     <h2 class="ug-title">FORMATO DE IMÁGENES</h2>
 
     <div class="token-grid" style="margin-bottom:2.6rem;">
