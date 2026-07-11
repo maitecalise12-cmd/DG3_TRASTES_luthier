@@ -2525,7 +2525,7 @@ body::after {
 .timeline-item .timeline-dot { left: 0; }
 
 /* Título clickeable */
-.timeline-content h3 { cursor: pointer; width: max-content; }
+.timeline-content h3 { cursor: pointer; width: max-content; max-width: 100%; }
 
 /* Descripción colapsable (aparece al tocar la nota) */
 .timeline-content p {
@@ -3147,6 +3147,15 @@ details[open] .faq-question::after { transform: rotate(45deg); }
     flex-direction: column;
     align-items: flex-start;
   }
+}
+
+/* Sección del proceso (mástil de fondo) en mobile */
+@media (max-width: 768px) {
+  .timeline-sec {
+    background-attachment: scroll;    /* 'fixed' se rompe en mobile: foto gigante/pixelada */
+    background-position: 18% center;  /* centra el mástil */
+  }
+  .timeline-list { left: 0; max-width: 100%; }
 }
 
 @media (max-width: 540px) {
