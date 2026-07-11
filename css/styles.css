@@ -2412,25 +2412,31 @@ body::after {
 ════════════════════════════════════════════════ */
 .timeline-sec {
   padding: var(--sp-section) var(--sp-side);
-  background: var(--bg-deep);
+  background: linear-gradient(rgba(10,10,10,0.72), rgba(10,10,10,0.72)),
+              url("../assets/fondo-mastil.jpg") 22% center / cover no-repeat;
   border-top: 1px solid var(--bg-border);
 }
 
 .proceso-title { white-space: nowrap; }
 
 
-/* Proceso: mástil real de fondo a la izquierda, botones encima */
 .timeline-list {
   position: relative;
-  max-width: 900px;
+  max-width: 820px;
   margin: 0 auto;
-  padding-left: 170px;   /* espacio del mástil de fondo */
-  background: url("../assets/mastil.png") left top / auto 100% no-repeat;
+}
+/* Línea vertical del timeline */
+.timeline-list::before {
+  content: '';
+  position: absolute;
+  left: 14px; top: 6px; bottom: 6px;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--red), rgba(229,0,0,0.25));
 }
 
 .timeline-item {
   position: relative;
-  padding: 0 0 3.25rem 0;
+  padding: 0 0 3rem 2.6rem;
   display: flex;
   flex-direction: column;
   gap: 0.35rem;
@@ -2466,7 +2472,7 @@ body::after {
 .timeline-dot:hover,
 .timeline-dot:focus-visible { transform: scale(1.15); box-shadow: 0 0 18px 4px rgba(229,0,0,0.8); outline: none; }
 .timeline-item.is-visible .timeline-dot { box-shadow: 0 0 16px 3px rgba(229,0,0,0.6); }
-.timeline-item .timeline-dot { left: -105px; }
+.timeline-item .timeline-dot { left: 0; }
 
 /* Título clickeable */
 .timeline-content h3 { cursor: pointer; width: max-content; }
