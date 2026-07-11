@@ -2411,6 +2411,8 @@ body::after {
    §7 · TIMELINE
 ════════════════════════════════════════════════ */
 .timeline-sec {
+  position: relative;
+  z-index: 9001;   /* por encima del grano global para mostrar el fondo limpio */
   padding: var(--sp-section) var(--sp-side);
   background: linear-gradient(rgba(10,10,10,0.72), rgba(10,10,10,0.72)),
               url("../assets/fondo-mastil.jpg") 22% center / cover no-repeat;
