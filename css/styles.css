@@ -1369,7 +1369,15 @@ body::after {
   background: var(--bg-deep) url("../assets/interaccion.jpg") center / 100% 100% no-repeat;
 }
 /* Textos oscuros sobre el fondo claro del configurador */
-.configurador .section-title { color: var(--red); white-space: nowrap; }
+.configurador .section-title { color: var(--text-dark); white-space: nowrap; }
+.disenar-title .hl {
+  color: var(--red);
+  animation: disenar-glow 2.2s ease-in-out infinite;
+}
+@keyframes disenar-glow {
+  0%, 100% { text-shadow: 0 0 8px rgba(229,0,0,0.30); }
+  50%      { text-shadow: 0 0 24px rgba(229,0,0,0.75); }
+}
 .configurador .section-desc { color: #4A4A4A; }
 .configurador .config-label { color: #2A2A2A; }
 .configurador .guitar-label { color: #555; }
@@ -1379,11 +1387,11 @@ body::after {
 
 .configurador-inner {
   display: grid;
-  grid-template-columns: minmax(0, 300px) minmax(0, 560px);
+  grid-template-columns: minmax(0, 340px) auto;
   justify-content: center;
-  gap: clamp(2rem, 5vw, 5rem);
+  gap: clamp(1.5rem, 3vw, 3rem);
   align-items: center;
-  max-width: 1200px;
+  max-width: 960px;
   margin: 0 auto;
 }
 
@@ -1394,6 +1402,42 @@ body::after {
   align-items: center;
   justify-content: center;
   gap: 1.5rem;
+}
+
+/* Card con borde rasgado para la foto de la guitarra */
+.guitar-card {
+  position: relative;
+  display: inline-block;
+  line-height: 0;
+}
+.guitar-card::before {
+  content: '';
+  position: absolute;
+  inset: -13px;
+  background: var(--cream);
+  filter: url(#paper-rip);
+  box-shadow: 0 20px 46px rgba(0,0,0,0.5);
+  z-index: 0;
+}
+.guitar-swap {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+}
+/* Tinte que recolorea solo la zona del mástil/diapasón */
+.guitar-neck-tint {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 42.5%;
+  width: 14%;
+  height: 37%;
+  background: var(--neck-tint, transparent);
+  mix-blend-mode: color;
+  opacity: 0.85;
+  pointer-events: none;
 }
 
 .guitar-render {
@@ -1446,8 +1490,12 @@ body::after {
 .config-panel {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 1.75rem;
 }
+.config-group { align-items: center; }
+.config-label { text-align: center; }
+.config-options { justify-content: center; }
 
 .price-display {
   background: var(--bg-card);
@@ -1532,11 +1580,18 @@ body::after {
 
 .config-actions {
   display: flex;
+  flex-direction: column;
+  align-items: center;
   gap: 0.75rem;
   padding-top: 0.5rem;
-  flex-wrap: wrap;
+  width: 100%;
 }
-.config-actions .btn { flex: 1; min-width: 140px; }
+.config-actions .btn {
+  width: 100%;
+  max-width: 280px;
+  justify-content: center;
+  text-align: center;
+}
 
 
 /* ════════════════════════════════════════════════

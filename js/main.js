@@ -110,6 +110,8 @@ const fretsEls  = qsa('#guitar-render line[stroke]').filter(l => l.parentElement
 const labelBody = qs('#label-body-wood');
 const labelNeck = qs('#label-neck-wood');
 const labelFret = qs('#label-frets-type');
+const swapImg   = qs('#guitar-swap');
+const neckTint  = qs('#guitar-neck-tint');
 
 function updatePrice() {
   const total = BASE_PRICE + state.strings + state.body + state.neck + state.frets;
@@ -152,13 +154,18 @@ qsa('.config-btn').forEach(btn => {
     state[group] = parseInt(btn.dataset.value, 10) || 0;
 
     // Actualizar colores del SVG y etiquetas
-    if (group === 'body' && btn.dataset.color) {
-      updateGuitarBody(btn.dataset.color);
+    if (group === 'body') {
+      if (btn.dataset.color) updateGuitarBody(btn.dataset.color);
       if (labelBody && btn.dataset.bodyLabel) labelBody.textContent = btn.dataset.bodyLabel;
+      if (swapImg && btn.dataset.photo) {
+        swapImg.src = btn.dataset.photo;
+        swapImg.alt = 'Guitarra con cuerpo de ' + (btn.dataset.bodyLabel || '');
+      }
     }
     if (group === 'neck' && btn.dataset.neckColor) {
       updateGuitarNeck(btn.dataset.neckColor);
       if (labelNeck && btn.dataset.neckLabel) labelNeck.textContent = btn.dataset.neckLabel;
+      if (neckTint) neckTint.style.background = btn.dataset.neckColor;
     }
     if (group === 'frets' && btn.dataset.fretColor) {
       updateFretColor(btn.dataset.fretColor);
@@ -191,7 +198,9 @@ if (resetBtn) {
         if (first.dataset.neckColor) updateGuitarNeck(first.dataset.neckColor);
         if (first.dataset.fretColor) updateFretColor(first.dataset.fretColor);
         if (first.dataset.bodyLabel && labelBody) labelBody.textContent = first.dataset.bodyLabel;
+        if (first.dataset.photo && swapImg) swapImg.src = first.dataset.photo;
         if (first.dataset.neckLabel && labelNeck) labelNeck.textContent = first.dataset.neckLabel;
+        if (first.dataset.neckColor && neckTint) neckTint.style.background = first.dataset.neckColor;
         if (first.dataset.fretLabel && labelFret) labelFret.textContent = first.dataset.fretLabel;
       }
     });
