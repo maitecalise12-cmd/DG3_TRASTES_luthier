@@ -425,9 +425,8 @@ if (tonoBlock) {
 /* ════════════════════════════════════════════════
    6.7 · DOODLES ROCKEROS — PARALLAX AL SCROLL
 ════════════════════════════════════════════════ */
-const doodleZone = qs('.doodle-zone');
 const doodleEls  = qsa('.doodle');
-if (doodleZone && doodleEls.length) {
+if (doodleEls.length) {
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const items = doodleEls.map((el, i) => ({
     el,
@@ -443,10 +442,10 @@ if (doodleZone && doodleEls.length) {
   const measure = () => items.forEach(it => { it.base = it.el.offsetTop; it.h = it.el.offsetHeight; });
 
   const computeTargets = () => {
-    const zoneTop = doodleZone.getBoundingClientRect().top;
     const vh = window.innerHeight;
     items.forEach(it => {
-      const center = zoneTop + it.base + it.h / 2;
+      const parentTop = it.el.offsetParent ? it.el.offsetParent.getBoundingClientRect().top : 0;
+      const center = parentTop + it.base + it.h / 2;
       const fromCenter = (center - vh / 2) / vh;   // -~1 (arriba) .. ~1 (abajo)
       it.target = fromCenter * -it.drift * 1.6;    // parallax muy suave (flotan/caen levemente)
     });

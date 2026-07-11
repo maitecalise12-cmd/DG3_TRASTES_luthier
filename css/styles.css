@@ -2806,7 +2806,12 @@ body::after {
   padding: var(--sp-section) var(--sp-side);
   background: var(--bg-deep);
   border-top: 1px solid var(--bg-border);
+  position: relative;
+  overflow: hidden;
 }
+/* El contenido de la FAQ queda por encima de los doodles */
+.faq .section-header,
+.faq .faq-list { position: relative; z-index: 1; }
 
 .faq-list {
   max-width: 760px;
