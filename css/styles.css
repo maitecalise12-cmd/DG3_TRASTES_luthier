@@ -2424,10 +2424,13 @@ body::after {
 
 .timeline-list {
   position: relative;
-  max-width: 820px;
-  margin: 0 auto;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  left: 45px;
+  counter-reset: fase;
 }
-/* Línea vertical del timeline */
+/* Línea vertical del timeline (al lado del mástil) */
 .timeline-list::before {
   content: '';
   position: absolute;
@@ -2438,6 +2441,7 @@ body::after {
 
 .timeline-item {
   position: relative;
+  counter-increment: fase;
   padding: 0 0 3rem 2.6rem;
   display: flex;
   flex-direction: column;
@@ -2448,32 +2452,29 @@ body::after {
 /* Traste plateado desactivado: la foto del mástil ya tiene los trastes */
 .timeline-item::before { display: none; }
 
-/* Nota numerada sobre el diapasón, cada fase en una cuerda distinta */
+/* Punto numerado sobre el mástil (número = semana) */
 .timeline-dot {
   position: absolute;
   top: 0.1rem;
   width: 30px; height: 30px;
   border-radius: 50%;
-  background: radial-gradient(circle at 35% 28%, #ff7a7a, var(--red) 62%);
+  background: var(--red);
   border: 1px solid rgba(0,0,0,0.5);
-  box-shadow: 0 0 12px rgba(229,0,0,0.85);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.55);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: var(--ff-sans);
-  font-size: 1.4rem;
-  font-weight: 300;
+  font-family: var(--ff-display);
+  font-size: 1.15rem;
+  font-weight: 400;
   line-height: 1;
   color: #fff;
-  cursor: pointer;
   z-index: 2;
-  transition: box-shadow 0.25s ease, transform 0.2s ease;
+  transition: transform 0.2s ease;
 }
-.timeline-dot::after { content: '+'; }
-.timeline-item.open .timeline-dot::after { content: '−'; }
+.timeline-dot::after { content: counter(fase); }
 .timeline-dot:hover,
-.timeline-dot:focus-visible { transform: scale(1.15); box-shadow: 0 0 18px 4px rgba(229,0,0,0.8); outline: none; }
-.timeline-item.is-visible .timeline-dot { box-shadow: 0 0 16px 3px rgba(229,0,0,0.6); }
+.timeline-dot:focus-visible { transform: scale(1.12); outline: none; }
 .timeline-item .timeline-dot { left: 0; }
 
 /* Título clickeable */
