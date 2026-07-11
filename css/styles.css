@@ -3156,6 +3156,10 @@ details[open] .faq-question::after { transform: rotate(45deg); }
     background-position: 18% center;  /* centra el mástil */
   }
   .timeline-list { left: 0; max-width: 100%; }
+
+  /* Título del configurador en 2 líneas, centrado */
+  .configurador .section-title { white-space: normal; text-align: center; }
+  .disenar-title .hl { display: block; }
 }
 
 @media (max-width: 540px) {
