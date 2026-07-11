@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Sistema de diseño de Trastes — Luthería de Autor. Colores, tipografías, botones, tokens y efectos de la interfaz." />
+  <title>Sistema de Diseño · TRASTES ★ Luthería</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://use.typekit.net/uct3nlq.css" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    /* ── Página de guía de estilos ── */
+    .ug { padding: clamp(2.5rem, 5vw, 4.5rem) var(--sp-side); border-top: 1px solid var(--bg-border); }
+    .ug:nth-child(even) { background: var(--bg-card); }
+    .ug-inner { max-width: 1100px; margin: 0 auto; }
+    .ug-kicker { font-family: var(--ff-sans); font-size: 0.66rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--red); }
+    .ug-title { font-family: var(--ff-display); font-size: clamp(2.2rem, 5vw, 3.6rem); line-height: 1; letter-spacing: 0.02em; color: var(--text-primary); margin: 0.4rem 0 0.6rem; }
+    .ug-lead { color: var(--text-muted); max-width: 620px; margin-bottom: 2.5rem; }
+    .ug-subtitle { font-family: var(--ff-display); font-size: 1.4rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--text-primary); margin: 2.5rem 0 1.1rem; }
+
+    /* Colores */
+    .ug-swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 1rem; }
+    .sw { border: 1px solid var(--bg-border); border-radius: var(--radius); overflow: hidden; background: var(--bg-mid); }
+    .sw-color { height: 90px; }
+    .sw-meta { padding: 0.7rem 0.85rem; }
+    .sw-name { font-family: var(--ff-sans); font-size: 0.82rem; font-weight: 600; color: var(--text-primary); }
+    .sw-var  { font-family: var(--ff-sans); font-size: 0.7rem; color: var(--text-muted); }
+    .sw-hex  { font-family: var(--ff-sans); font-size: 0.72rem; color: var(--red); letter-spacing: 0.04em; text-transform: uppercase; margin-top: 0.15rem; }
+
+    /* Tipografías */
+    .ug-fonts { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+    .fontcard { border: 1px solid var(--bg-border); border-radius: var(--radius); padding: 1.8rem; background: var(--bg-mid); }
+    .fontcard .fc-big-display { font-family: var(--ff-display); font-size: 4rem; line-height: 0.9; color: var(--text-primary); }
+    .fontcard .fc-big-sans { font-family: var(--ff-sans); font-size: 2.6rem; line-height: 1; color: var(--text-primary); font-weight: 600; }
+    .fc-role { font-family: var(--ff-sans); font-size: 0.66rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--red); margin-bottom: 1rem; }
+    .fc-stack { font-family: var(--ff-sans); font-size: 0.82rem; color: var(--text-muted); margin-top: 1rem; word-break: break-word; }
+    .fc-alpha { font-family: var(--ff-display); color: var(--text-muted); font-size: 1.3rem; letter-spacing: 0.08em; margin-top: 0.8rem; }
+    .fontcard--sans .fc-alpha { font-family: var(--ff-sans); }
+
+    /* Escala tipográfica */
+    .scale-row { display: flex; align-items: baseline; gap: 1.5rem; padding: 0.9rem 0; border-bottom: 1px solid var(--bg-border); flex-wrap: wrap; }
+    .scale-sample { flex: 1 1 260px; min-width: 0; color: var(--text-primary); line-height: 1; }
+    .scale-meta { font-family: var(--ff-sans); font-size: 0.72rem; color: var(--text-muted); letter-spacing: 0.04em; text-align: right; flex-shrink: 0; }
+    .s-hero { font-family: var(--ff-display); font-size: clamp(2.4rem, 6vw, 4rem); }
+    .s-title { font-family: var(--ff-display); font-size: 2.4rem; }
+    .s-h3 { font-family: var(--ff-display); font-size: 1.6rem; letter-spacing: 0.03em; text-transform: uppercase; }
+    .s-body { font-family: var(--ff-sans); font-size: 1rem; }
+    .s-small { font-family: var(--ff-sans); font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 600; }
+    .s-tag { font-family: var(--ff-sans); font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase; font-weight: 600; color: var(--red); }
+
+    /* Botones / componentes en fila */
+    .ug-row { display: flex; flex-wrap: wrap; gap: 1.2rem; align-items: center; }
+    .ug-note { font-family: var(--ff-sans); font-size: 0.8rem; color: var(--text-muted); margin-top: 0.8rem; }
+
+    /* Tokens */
+    .token-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
+    .token { border: 1px solid var(--bg-border); border-radius: var(--radius); padding: 1.1rem 1.2rem; background: var(--bg-mid); }
+    .token-name { font-family: var(--ff-sans); font-size: 0.78rem; font-weight: 600; color: var(--text-primary); }
+    .token-val { font-family: var(--ff-sans); font-size: 0.74rem; color: var(--red); margin-top: 0.2rem; }
+    .token-demo { margin-top: 0.9rem; }
+    .token-demo .bar { height: 16px; background: var(--red); border-radius: 2px; }
+    .radius-demo { width: 90px; height: 54px; background: var(--red); border-radius: var(--radius); }
+
+    /* Efectos */
+    .fx-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.6rem 1.4rem; }
+    .fx { text-align: center; }
+    .fx-label { font-family: var(--ff-sans); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-top: 1.1rem; }
+
+    /* Borde rasgado demo */
+    .fx-torn { position: relative; height: 130px; display: flex; align-items: center; justify-content: center; }
+    .fx-torn span { position: relative; z-index: 1; font-family: var(--ff-display); font-size: 1.6rem; color: var(--text-dark); }
+    .fx-torn::before { content: ''; position: absolute; inset: 0 22%; background: var(--cream); filter: url(#paper-rip); box-shadow: 0 16px 38px rgba(0,0,0,0.45); z-index: 0; }
+
+    /* Doodles demo */
+    .fx-doodles { display: flex; flex-wrap: wrap; gap: 1.2rem; justify-content: center; align-items: center; height: 130px; }
+    .fx-doodles svg { width: 46px; height: 46px; color: var(--red); filter: url(#doodle-rough); }
+    .fx-doodles svg.big { width: 66px; height: 66px; }
+
+    /* Glow pulsante demo */
+    .fx-glow { display: flex; align-items: center; justify-content: center; height: 130px; }
+    .fx-glow span { font-family: var(--ff-display); font-size: 2.6rem; color: var(--red); animation: sg-glow 2.2s ease-in-out infinite; }
+    @keyframes sg-glow { 0%,100% { text-shadow: 0 0 8px rgba(229,0,0,0.35); } 50% { text-shadow: 0 0 26px rgba(229,0,0,0.85); } }
+
+    /* Flip card demo */
+    .fx-flip { height: 130px; perspective: 900px; }
+    .fx-flip-inner { position: relative; width: 100%; height: 100%; transform-style: preserve-3d; transition: transform 0.6s cubic-bezier(.22,1,.36,1); }
+    .fx-flip:hover .fx-flip-inner { transform: rotateY(180deg); }
+    .fx-face { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; display: flex; align-items: center; justify-content: center; background: var(--cream); color: var(--text-dark); border-radius: var(--radius); font-family: var(--ff-display); font-size: 1.5rem; }
+    .fx-face.back { transform: rotateY(180deg); background: var(--red); color: #fff; font-size: 1rem; font-family: var(--ff-sans); text-transform: uppercase; letter-spacing: 0.12em; }
+
+    /* Neón botón demo */
+    .fx-neon { display: flex; align-items: center; justify-content: center; height: 130px; }
+
+    /* Marquee demo */
+    .fx-marquee { overflow: hidden; height: 130px; display: flex; align-items: center; border: 1px solid var(--bg-border); border-radius: var(--radius); }
+    .fx-marquee-track { display: flex; gap: 1rem; width: max-content; animation: sg-marquee 12s linear infinite; padding: 0 0.5rem; }
+    .fx-marquee-track span { font-family: var(--ff-display); font-size: 1.4rem; color: var(--red); white-space: nowrap; }
+    @keyframes sg-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* Imágenes */
+    .img-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 1.6rem 1.4rem; }
+    .img-frame { position: relative; aspect-ratio: 4 / 5; background: #1a1a1a; overflow: hidden; }
+    .img-frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .img-label { font-family: var(--ff-sans); font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-muted); margin-top: 0.9rem; text-align: center; }
+    .img-torn::before { content: ''; position: absolute; inset: -12px; background: var(--cream); filter: url(#paper-rip); box-shadow: 0 16px 38px rgba(0,0,0,0.45); z-index: -1; }
+    .img-torn { overflow: visible; }
+    .img-tint::after { content: ''; position: absolute; inset: 0; background: var(--red); mix-blend-mode: multiply; opacity: 0.55; }
+    .img-overlay::after { content: ''; position: absolute; inset: 0; background: linear-gradient(rgba(10,10,10,0.3), rgba(10,10,10,0.82)); }
+    .img-overlay .ov-text { position: absolute; bottom: 0.8rem; left: 0.9rem; z-index: 2; font-family: var(--ff-display); color: #fff; font-size: 1.3rem; letter-spacing: 0.03em; }
+    .img-png { background: repeating-conic-gradient(#141414 0 25%, #1f1f1f 0 50%) 0 0 / 22px 22px; display: flex; align-items: center; justify-content: center; }
+    .img-png img { width: auto; height: 92%; object-fit: contain; }
+  </style>
+</head>
+<body>
+
+<!-- Filtros/símbolos para efectos -->
+<svg width="0" height="0" aria-hidden="true" style="position:absolute"><defs>
+  <filter id="paper-rip" x="-8%" y="-70%" width="116%" height="240%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.011 0.04" numOctaves="6" seed="7" result="big"/>
+    <feDisplacementMap in="SourceGraphic" in2="big" scale="26" xChannelSelector="R" yChannelSelector="G" result="d1"/>
+    <feTurbulence type="fractalNoise" baseFrequency="0.9 0.12" numOctaves="3" seed="4" result="fiber"/>
+    <feDisplacementMap in="d1" in2="fiber" scale="5" xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
+  <filter id="doodle-rough">
+    <feTurbulence type="fractalNoise" baseFrequency="0.016" numOctaves="2" result="n"/>
+    <feDisplacementMap in="SourceGraphic" in2="n" scale="5"/>
+  </filter>
+  <filter id="tint-red" color-interpolation-filters="sRGB">
+    <feFlood flood-color="#E50000"/>
+    <feComposite in2="SourceGraphic" operator="in"/>
+  </filter>
+  <symbol id="d-bolt" viewBox="0 0 50 100"><path d="M32 3 L10 48 L26 48 L18 97 L44 38 L28 38 Z" fill="currentColor"/></symbol>
+  <symbol id="d-star" viewBox="0 0 100 100"><path d="M50 5 L62 38 L97 38 L69 60 L79 95 L50 74 L21 95 L31 60 L3 38 L38 38 Z" fill="none" stroke="currentColor" stroke-width="5" stroke-linejoin="round"/></symbol>
+  <symbol id="d-skull" viewBox="0 0 100 100"><g fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M24 42 Q24 14 50 14 Q76 14 76 42 Q76 56 68 63 L68 74 L60 74 L60 82 L52 74 L48 74 L40 82 L40 74 L32 74 L32 63 Q24 56 24 42 Z"/><circle cx="39" cy="45" r="6.5" fill="currentColor" stroke="none"/><circle cx="61" cy="45" r="6.5" fill="currentColor" stroke="none"/><path d="M50 55 L45 63 L55 63 Z" fill="currentColor" stroke="none"/></g></symbol>
+  <symbol id="d-anarchy" viewBox="0 0 100 100"><g fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round"><circle cx="50" cy="50" r="38"/><path d="M18 80 L50 18 L82 80 M34 60 L70 60"/></g></symbol>
+  <symbol id="d-crown" viewBox="0 0 100 78"><path d="M10 68 L20 26 L38 50 L50 20 L62 50 L80 26 L90 68 Z" fill="none" stroke="currentColor" stroke-width="6" stroke-linejoin="round"/></symbol>
+  <symbol id="d-spiral" viewBox="0 0 100 100"><path d="M52 50 Q56 40 66 44 Q80 50 74 66 Q66 86 42 80 Q14 72 20 42 Q27 8 62 14 Q98 21 92 60" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round"/></symbol>
+</defs></svg>
+
+<!-- NAV -->
+<header class="site-header" role="banner">
+  <nav class="nav-container" aria-label="Navegación principal">
+    <a href="index.html" class="nav-logo" aria-label="Volver al inicio">TRASTES <span class="accent">★</span></a>
+    <ul class="nav-links" role="list" id="nav-links-mobile">
+      <li><a href="index.html#cursos">Cursos</a></li>
+      <li><a href="index.html#faq">Preguntas</a></li>
+      <li><a href="index.html#contacto">Contacto</a></li>
+      <li><a href="ui.html" class="nav-cta" aria-current="page">Sistema UI</a></li>
+    </ul>
+    <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-links-mobile">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="ug" style="padding-top: calc(64px + 3rem);">
+  <div class="ug-inner">
+    <span class="ug-kicker">★ Design System</span>
+    <h1 class="ug-title">SISTEMA DE DISEÑO</h1>
+    <p class="ug-lead">La caja de herramientas visual de <strong style="color:var(--text-primary)">Trastes — Luthería de Autor</strong>: paleta, tipografías, escala, botones, tokens y efectos. Estética rebelde-industrial, modo oscuro, acento rojo.</p>
+  </div>
+</section>
+
+<!-- COLORES -->
+<section class="ug">
+  <div class="ug-inner">
+    <span class="ug-kicker">01 · Paleta</span>
+    <h2 class="ug-title">COLORES</h2>
+
+    <h3 class="ug-subtitle">Fondos y superficies</h3>
+    <div class="ug-swatches">
+      <div class="sw"><div class="sw-color" style="background:#000000"></div><div class="sw-meta"><div class="sw-name">Fondo principal</div><div class="sw-var">--bg-deep</div><div class="sw-hex">#000000</div></div></div>
+      <div class="sw"><div class="sw-color" style="background:#121212"></div><div class="sw-meta"><div class="sw-name">Tarjetas / elevación</div><div class="sw-var">--bg-card</div><div class="sw-hex">#121212</div></div></div>
+      <div class="sw"><div class="sw-color" style="background:#1A1A1A"></div><div class="sw-meta"><div class="sw-name">Superficie media</div><div class="sw-var">--bg-mid</div><div class="sw-hex">#1A1A1A</div></div></div>
+      <div class="sw"><div class="sw-color" style="background:rgba(255,255,255,0.07)"></div><div class="sw-meta"><div class="sw-name">Bordes</div><div class="sw-var">--bg-border</div><div class="sw-hex">rgba 255·.07</div></div></div>
+    </div>
+
+    <h3 class="ug-subtitle">Acento rojo</h3>
+    <div class="ug-swatches">
+      <div class="sw"><div class="sw-color" style="background:#E50000"></div><div class="sw-meta"><div class="sw-name">Rojo rebelde</div><div class="sw-var">--red</div><div class="sw-hex">#E50000</div></div></div>
+      <div class="sw"><div class="sw-color" style="background:#B80000"></div><div class="sw-meta"><div class="sw-name">Rojo hover</div><div class="sw-var">--red-hover</div><div class="sw-hex">#B80000</div></div></div>
+      <div class="sw"><div class="sw-color" style="background:rgba(229,0,0,0.18)"></div><div class="sw-meta"><div class="sw-name">Resplandor rojo</div><div class="sw-var">--red-glow</div><div class="sw-hex">rgba 229·.18</div></div></div>
+    </div>
+
+    <h3 class="ug-subtitle">Crema y texto</h3>
+    <div class="ug-swatches">
+      <div class="sw"><div class="sw-color" style="background:#F4F3F0"></div><div class="sw-meta"><div class="sw-name">Crema (transición)</div><div class="sw-var">--cream</div><div class="sw-hex">#F4F3F0</div></div></div>
+      <div class="sw"><div class="sw-color" style="background:#E0DAD0"></div><div class="sw-meta"><div class="sw-name">Crema oscuro</div><div class="sw-var">--cream-dark</div><div class="sw-hex">#E0DAD0</div></div></div>
+      <div class="sw"><div class="sw-color" style="background:#E0E0E0"></div><div class="sw-meta"><div class="sw-name">Texto principal</div><div class="sw-var">--text-primary</div><div class="sw-hex">#E0E0E0</div></div></div>
+      <div class="sw"><div class="sw-color" style="background:#9E9E9E"></div><div class="sw-meta"><div class="sw-name">Texto secundario</div><div class="sw-var">--text-muted</div><div class="sw-hex">#9E9E9E</div></div></div>
+      <div class="sw"><div class="sw-color" style="background:#1A1A1A"></div><div class="sw-meta"><div class="sw-name">Texto sobre claro</div><div class="sw-var">--text-dark</div><div class="sw-hex">#1A1A1A</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TIPOGRAFÍAS -->
+<section class="ug">
+  <div class="ug-inner">
+    <span class="ug-kicker">02 · Tipografía</span>
+    <h2 class="ug-title">FAMILIAS</h2>
+    <div class="ug-fonts">
+      <div class="fontcard">
+        <div class="fc-role">Display · Títulos</div>
+        <div class="fc-big-display">FORJÁ<br>LA TUYA</div>
+        <div class="fc-alpha">A B C D E F G · 0 1 2 3 4 5</div>
+        <div class="fc-stack">'pf-fuel-grime', 'Bebas Neue', 'Impact'<br>Uso: títulos, números, destacados. Mayúsculas, condensada, grunge.</div>
+      </div>
+      <div class="fontcard fontcard--sans">
+        <div class="fc-role">Sans · Texto</div>
+        <div class="fc-big-sans">Hacete de abajo.</div>
+        <div class="fc-alpha">A B C D E F G · 0 1 2 3 4 5</div>
+        <div class="fc-stack">'tt-commons-pro', 'Inter', system-ui<br>Uso: cuerpo, bajadas, botones, labels. Pesos 300 / 400 / 500 / 600.</div>
+      </div>
+    </div>
+
+    <h3 class="ug-subtitle">Escala</h3>
+    <div class="scale-row"><div class="scale-sample s-hero">Hero title</div><div class="scale-meta">Display · clamp(3rem → 8.5rem)<br>line-height 0.82</div></div>
+    <div class="scale-row"><div class="scale-sample s-title">Section title</div><div class="scale-meta">Display · clamp(3rem → 5.5rem)<br>line-height 0.95</div></div>
+    <div class="scale-row"><div class="scale-sample s-h3">Subtítulo / H3</div><div class="scale-meta">Display · 1.6–1.9rem · uppercase</div></div>
+    <div class="scale-row"><div class="scale-sample s-body">Cuerpo de texto — párrafos y bajadas, line-height 1.6–1.7.</div><div class="scale-meta">Sans · 1rem</div></div>
+    <div class="scale-row"><div class="scale-sample s-small">Botón / label</div><div class="scale-meta">Sans · 0.72rem · 0.18em · 600</div></div>
+    <div class="scale-row"><div class="scale-sample s-tag">★ Section tag</div><div class="scale-meta">Sans · 0.68rem · 0.22em · rojo</div></div>
+  </div>
+</section>
+
+<!-- BOTONES -->
+<section class="ug">
+  <div class="ug-inner">
+    <span class="ug-kicker">03 · Acciones</span>
+    <h2 class="ug-title">BOTONES</h2>
+    <div class="ug-row">
+      <button class="btn btn-primary" type="button">Botón primario <span aria-hidden="true">→</span></button>
+      <button class="btn btn-ghost" type="button">Botón fantasma</button>
+      <a class="nav-cta" href="#" style="pointer-events:none">Nav CTA</a>
+    </div>
+    <p class="ug-note">Hover del primario: se oscurece a <code>--red-hover</code> + reborde y resplandor neón rojo + leve elevación. El fantasma aclara su borde y se eleva.</p>
+  </div>
+</section>
+
+<!-- TAGS -->
+<section class="ug">
+  <div class="ug-inner">
+    <span class="ug-kicker">04 · Etiquetas</span>
+    <h2 class="ug-title">TAGS &amp; BADGES</h2>
+    <div class="ug-row">
+      <span class="section-tag">★ Section tag</span>
+      <span class="curso-off">20% OFF</span>
+      <span class="curso-duracion" style="position:static;">6 meses</span>
+      <span class="curso-estrella" style="position:static; transform:none;">★ Curso estrella</span>
+    </div>
+  </div>
+</section>
+
+<!-- TOKENS -->
+<section class="ug">
+  <div class="ug-inner">
+    <span class="ug-kicker">05 · Tokens</span>
+    <h2 class="ug-title">ESPACIADO &amp; FORMA</h2>
+    <div class="token-grid">
+      <div class="token"><div class="token-name">Espaciado de sección</div><div class="token-val">--sp-section · clamp(80px → 130px)</div><div class="token-demo"><div class="bar" style="width:100%"></div></div></div>
+      <div class="token"><div class="token-name">Padding lateral</div><div class="token-val">--sp-side · clamp(1.5rem → 6rem)</div><div class="token-demo"><div class="bar" style="width:70%"></div></div></div>
+      <div class="token"><div class="token-name">Radio de borde</div><div class="token-val">--radius · 4px</div><div class="token-demo"><div class="radius-demo"></div></div></div>
+      <div class="token"><div class="token-name">Transición</div><div class="token-val">--transition · 0.28s cubic-bezier(.22,1,.36,1)</div><div class="token-demo"><div class="bar" style="width:45%"></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- EFECTOS -->
+<section class="ug">
+  <div class="ug-inner">
+    <span class="ug-kicker">06 · Efectos</span>
+    <h2 class="ug-title">EFECTOS &amp; TEXTURAS</h2>
+    <div class="fx-grid">
+      <div class="fx">
+        <div class="fx-torn"><span>Rasgado</span></div>
+        <div class="fx-label">Borde de papel rasgado · SVG #paper-rip</div>
+      </div>
+      <div class="fx">
+        <div class="fx-doodles">
+          <svg viewBox="0 0 50 100"><use href="#d-bolt"/></svg>
+          <svg viewBox="0 0 100 100" class="big"><use href="#d-skull"/></svg>
+          <svg viewBox="0 0 100 100"><use href="#d-star"/></svg>
+          <svg viewBox="0 0 100 100" class="big"><use href="#d-anarchy"/></svg>
+          <svg viewBox="0 0 100 100"><use href="#d-spiral"/></svg>
+        </div>
+        <div class="fx-label">Doodles a mano alzada · SVG #doodle-rough</div>
+      </div>
+      <div class="fx">
+        <div class="fx-glow"><span>ENCENDIDO</span></div>
+        <div class="fx-label">Glow rojo pulsante (animación en loop)</div>
+      </div>
+      <div class="fx">
+        <div class="fx-flip"><div class="fx-flip-inner"><div class="fx-face">01</div><div class="fx-face back">Detalle</div></div></div>
+        <div class="fx-label">Flip card 3D (hover)</div>
+      </div>
+      <div class="fx">
+        <div class="fx-neon"><button class="btn btn-primary" type="button">Neón al hover</button></div>
+        <div class="fx-label">Reborde + resplandor neón en el botón primario</div>
+      </div>
+      <div class="fx">
+        <div class="fx-marquee"><div class="fx-marquee-track"><span>HACETE DE ABAJO ★ HACETE DE ABAJO ★&nbsp;</span><span>HACETE DE ABAJO ★ HACETE DE ABAJO ★&nbsp;</span></div></div>
+        <div class="fx-label">Banda / marquee en loop</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IMÁGENES -->
+<section class="ug">
+  <div class="ug-inner">
+    <span class="ug-kicker">07 · Imágenes</span>
+    <h2 class="ug-title">FORMATO DE IMÁGENES</h2>
+
+    <div class="token-grid" style="margin-bottom:2.6rem;">
+      <div class="token"><div class="token-name">Fotos → .jpg</div><div class="token-val">hero · taller · luthier · cursos · guitarras · fondos</div><p class="ug-note" style="margin-top:.5rem;">Fotografía a sangre, comprimida. Se muestran con <code>object-fit: cover</code>.</p></div>
+      <div class="token"><div class="token-name">Transparencia → .png</div><div class="token-val">siluetas · mástil · texturas de madera</div><p class="ug-note" style="margin-top:.5rem;">Fondo transparente para recortes y overlays sobre cualquier color.</p></div>
+      <div class="token"><div class="token-name">Relación de aspecto</div><div class="token-val">4 : 5 — cards de curso y resultados</div><p class="ug-note" style="margin-top:.5rem;">Vertical, recorte centrado con <code>cover</code>.</p></div>
+    </div>
+
+    <h3 class="ug-subtitle">Tratamientos</h3>
+    <div class="img-grid">
+      <div>
+        <div class="img-frame img-torn"><img src="assets/taller.jpg" alt="Foto con marco de papel rasgado" loading="lazy"></div>
+        <div class="img-label">Marco rasgado + cover</div>
+      </div>
+      <div>
+        <div class="img-frame img-tint"><img src="assets/luthier-3.jpg" alt="Foto con tinte rojo" loading="lazy"></div>
+        <div class="img-label">Tinte rojo · mix-blend</div>
+      </div>
+      <div>
+        <div class="img-frame img-overlay"><img src="assets/fondo-ingenieria.jpg" alt="Fondo con overlay oscuro" loading="lazy"><span class="ov-text">Overlay</span></div>
+        <div class="img-label">Fondo + overlay oscuro</div>
+      </div>
+      <div>
+        <div class="img-frame img-png"><img src="assets/guitarra.png" alt="PNG con transparencia" loading="lazy"></div>
+        <div class="img-label">PNG transparente (silueta)</div>
+      </div>
+      <div>
+        <div class="img-frame"><img src="assets/cedro-madera.png" alt="Textura de madera" loading="lazy"></div>
+        <div class="img-label">Textura de madera (PNG)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer" role="contentinfo">
+  <div class="footer-bottom" style="justify-content:center;">
+    <p>© 2026 Trastes Luthería de Autor · Sistema de Diseño</p>
+    <p class="footer-certif"><a href="index.html" style="color:var(--text-muted);">← Volver al inicio</a></p>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
