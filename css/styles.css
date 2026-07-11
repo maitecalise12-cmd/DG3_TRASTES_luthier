@@ -1493,10 +1493,11 @@ body::after {
 }
 
 .config-btn {
-  font-family: var(--ff-sans);
-  font-size: 0.75rem;
-  font-weight: 500;
-  padding: 0.6rem 1.1rem;
+  font-family: var(--ff-display);
+  font-size: 1.1rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  padding: 0.55rem 1.1rem;
   background: var(--bg-card);
   color: var(--text-muted);
   border: 1px solid var(--bg-border);
@@ -1527,16 +1528,7 @@ body::after {
 }
 
 .swatch { padding: 0.5rem 0.9rem; }
-.swatch-dot {
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  display: inline-block;
-  flex-shrink: 0;
-  background-size: cover;
-  background-position: center;
-  border: 1px solid rgba(255,255,255,0.15);
-}
+.swatch-dot { display: none; }
 
 .config-actions {
   display: flex;
