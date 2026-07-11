@@ -22,6 +22,10 @@
 
     /* Colores */
     .ug-swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 1rem; }
+    .ug-swatches--full { grid-template-columns: repeat(4, 1fr); gap: 1.4rem; }
+    .ug-swatches--full .sw-color { height: clamp(100px, 12vw, 150px); }
+    .ug-swatches--full .sw-meta { padding: 1rem 1.15rem; }
+    @media (max-width: 720px) { .ug-swatches--full { grid-template-columns: repeat(2, 1fr); } }
     .sw { border: 1px solid var(--bg-border); border-radius: var(--radius); overflow: hidden; background: var(--bg-mid); }
     .sw-color { height: 90px; }
     .sw-meta { padding: 0.7rem 0.85rem; }
@@ -166,11 +170,11 @@
 
 <!-- COLORES -->
 <section class="ug">
-  <div class="ug-inner">
+  <div class="ug-inner" style="max-width:none;">
     <span class="ug-kicker">01 · Paleta</span>
     <h2 class="ug-title">COLORES</h2>
 
-    <div class="ug-swatches">
+    <div class="ug-swatches ug-swatches--full">
       <div class="sw"><div class="sw-color" style="background:#000000"></div><div class="sw-meta"><div class="sw-name">Negro</div><div class="sw-var">--bg-deep</div><div class="sw-hex">#000000</div></div></div>
       <div class="sw"><div class="sw-color" style="background:#E50000"></div><div class="sw-meta"><div class="sw-name">Rojo rebelde</div><div class="sw-var">--red</div><div class="sw-hex">#E50000</div></div></div>
       <div class="sw"><div class="sw-color" style="background:#F4F3F0"></div><div class="sw-meta"><div class="sw-name">Crema</div><div class="sw-var">--cream</div><div class="sw-hex">#F4F3F0</div></div></div>
