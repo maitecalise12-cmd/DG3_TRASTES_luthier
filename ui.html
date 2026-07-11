@@ -108,7 +108,7 @@
     .img-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 1.6rem 1.4rem; }
     .img-frame { position: relative; aspect-ratio: 4 / 5; background: #1a1a1a; overflow: hidden; }
     .img-frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .img-label { font-family: var(--ff-sans); font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-muted); margin-top: 0.9rem; text-align: center; }
+    .img-label { font-family: var(--ff-sans); font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-muted); margin-top: 1.8rem; text-align: center; }
     .img-torn::before { content: ''; position: absolute; inset: -12px; background: var(--cream); filter: url(#paper-rip); box-shadow: 0 16px 38px rgba(0,0,0,0.45); z-index: -1; }
     .img-torn { overflow: visible; }
     .img-tint::after { content: ''; position: absolute; inset: 0; background: var(--red); mix-blend-mode: multiply; opacity: 0.55; }
@@ -275,12 +275,6 @@
   <div class="ug-inner">
     <span class="ug-kicker">06 · Imágenes</span>
     <h2 class="ug-title">FORMATO DE IMÁGENES</h2>
-
-    <div class="token-grid" style="margin-bottom:2.6rem;">
-      <div class="token"><div class="token-name">Fotos → .jpg</div><div class="token-val">hero · taller · luthier · cursos · guitarras · fondos</div><p class="ug-note" style="margin-top:.5rem;">Fotografía a sangre, comprimida. Se muestran con <code>object-fit: cover</code>.</p></div>
-      <div class="token"><div class="token-name">Transparencia → .png</div><div class="token-val">siluetas · mástil · texturas de madera</div><p class="ug-note" style="margin-top:.5rem;">Fondo transparente para recortes y overlays sobre cualquier color.</p></div>
-      <div class="token"><div class="token-name">Relación de aspecto</div><div class="token-val">4 : 5 — cards de curso y resultados</div><p class="ug-note" style="margin-top:.5rem;">Vertical, recorte centrado con <code>cover</code>.</p></div>
-    </div>
 
     <h3 class="ug-subtitle">Tratamientos</h3>
     <div class="img-grid">
