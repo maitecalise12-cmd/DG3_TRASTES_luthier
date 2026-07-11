@@ -116,6 +116,25 @@
     .img-overlay .ov-text { position: absolute; bottom: 0.8rem; left: 0.9rem; z-index: 2; font-family: var(--ff-display); color: #fff; font-size: 1.3rem; letter-spacing: 0.03em; }
     .img-png { background: repeating-conic-gradient(#141414 0 25%, #1f1f1f 0 50%) 0 0 / 22px 22px; display: flex; align-items: center; justify-content: center; }
     .img-png img { width: auto; height: 92%; object-fit: contain; }
+
+    /* ── Responsive mobile ── */
+    @media (max-width: 700px) {
+      .ug { padding: clamp(1.8rem, 7vw, 2.6rem) var(--sp-side); }
+      .ug-subtitle { font-size: 1.1rem; margin: 1.6rem 0 0.9rem; }
+      .ug-fonts { grid-template-columns: 1fr; }
+      .fontcard { padding: 1.4rem; }
+      .fontcard .fc-big-display { font-size: 2.7rem; }
+      .fontcard .fc-big-sans { font-size: 1.9rem; }
+      .img-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.4rem 1rem; }
+      .ug-swatches--full { grid-template-columns: repeat(2, 1fr); }
+      .fx-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .ug-row { gap: 0.8rem; }
+    }
+    @media (max-width: 400px) {
+      .img-grid { grid-template-columns: 1fr; }
+      .fx-grid { grid-template-columns: 1fr; }
+      .ug-swatches--full { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
@@ -170,7 +189,7 @@
 
 <!-- COLORES -->
 <section class="ug">
-  <div class="ug-inner" style="max-width:none;">
+  <div class="ug-inner">
     <span class="ug-kicker">01 · Paleta</span>
     <h2 class="ug-title">COLORES</h2>
 
