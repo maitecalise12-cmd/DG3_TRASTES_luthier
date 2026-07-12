@@ -2182,9 +2182,9 @@ body::after {
 }
 /* Mobile: guitarra en vertical (sin rotar) + hotspots reubicados */
 @media (max-width: 640px) {
-  .blueprint-container { padding-bottom: 120%; }
+  .blueprint-container { padding-bottom: 155%; }
   .anatomia-img {
-    width: 44%;
+    width: 62%;
     transform: translate(-50%, -50%) rotate(0deg);
   }
   .anatomia .hotspot[data-num="1"] { top: 15% !important; left: 48% !important; }
