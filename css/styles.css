@@ -2180,6 +2180,18 @@ body::after {
   animation: neon-travel 2.4s linear infinite;
   will-change: filter;
 }
+/* Mobile: guitarra en vertical (sin rotar) + hotspots reubicados */
+@media (max-width: 640px) {
+  .blueprint-container { padding-bottom: 120%; }
+  .anatomia-img {
+    width: 44%;
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  .anatomia .hotspot[data-num="1"] { top: 15% !important; left: 48% !important; }
+  .anatomia .hotspot[data-num="2"] { top: 40% !important; left: 50% !important; }
+  .anatomia .hotspot[data-num="3"] { top: 65% !important; left: 50% !important; }
+  .anatomia .hotspot[data-num="4"] { top: 84% !important; left: 51% !important; }
+}
 /* La luz brillante orbita el contorno de la guitarra */
 @keyframes neon-travel {
   0%, 100% {
@@ -3419,14 +3431,15 @@ details[open] .faq-question::after { transform: rotate(45deg); }
 /* Layout: título + CTA a la izquierda, acordeón a la derecha */
 .incluye-layout {
   display: grid;
-  grid-template-columns: minmax(0, 340px) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 420px) minmax(0, 500px);
+  justify-content: center;
   gap: clamp(2rem, 5vw, 5rem);
   max-width: 1150px;
   margin: 0 auto;
   align-items: start;
 }
 .incluye-side .section-title {
-  font-size: clamp(2.7rem, 5.5vw, 4.8rem);
+  font-size: clamp(2.7rem, 5.4vw, 4.8rem);
   margin: 0.5rem 0 1rem;
 }
 .incluye-side .section-desc { margin-bottom: 1.8rem; }
@@ -3436,8 +3449,8 @@ details[open] .faq-question::after { transform: rotate(45deg); }
 .incluye-acc {
   display: flex;
   flex-direction: column;
-  gap: 2.6rem;
-  min-height: 620px;   /* reserva el espacio de la card expandida → no se mueve el límite de la sección */
+  justify-content: space-between;   /* reparte el aire entre ítems, sin dejar hueco abajo */
+  min-height: 500px;                /* reserva para la card expandida → el límite de la sección no se mueve */
 }
 .acc-item {
   position: relative;
@@ -3476,8 +3489,14 @@ details[open] .faq-question::after { transform: rotate(45deg); }
   max-height: 0;
   overflow: hidden;
   padding: 0 1.5rem;
-  transition: max-height 0.5s cubic-bezier(.22,1,.36,1), padding 0.4s ease;
 }
+/* El contenido entra con fade/slide; el alto (y el canto rasgado) cambian de una sola vez, sin re-animarse */
+.acc-body > * {
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+.acc-item:hover .acc-body > * { opacity: 1; transform: none; }
 .acc-item:hover { transform: translateY(-3px); }
 .acc-item:hover::before { box-shadow: 0 22px 44px rgba(0,0,0,0.5); }
 .acc-item:hover .acc-body { max-height: 320px; padding-bottom: 1.3rem; }
@@ -3500,7 +3519,7 @@ details[open] .faq-question::after { transform: rotate(45deg); }
 @media (max-width: 760px) {
   .incluye-layout { grid-template-columns: 1fr; }
   .incluye-side .section-title { white-space: normal; }
-  .incluye-acc { min-height: 0; }
+  .incluye-acc { min-height: 0; justify-content: flex-start; gap: 2.2rem; }
 }
 
 /* Inscripción */
