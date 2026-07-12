@@ -111,7 +111,8 @@
     .img-label { font-family: var(--ff-sans); font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-muted); margin-top: 1.8rem; text-align: center; }
     .img-torn::before { content: ''; position: absolute; inset: -12px; background: var(--cream); filter: url(#paper-rip); box-shadow: 0 16px 38px rgba(0,0,0,0.45); z-index: -1; }
     .img-torn { overflow: visible; }
-    .img-tint::after { content: ''; position: absolute; inset: 0; background: var(--red); mix-blend-mode: multiply; opacity: 0.55; }
+    .img-silueta { background: #0e0e0e; display: flex; align-items: center; justify-content: center; }
+    .img-silueta img { width: auto; height: 88%; object-fit: contain; filter: url(#tint-red); }
     .img-overlay::after { content: ''; position: absolute; inset: 0; background: linear-gradient(rgba(10,10,10,0.3), rgba(10,10,10,0.82)); }
     .img-overlay .ov-text { position: absolute; bottom: 0.8rem; left: 0.9rem; z-index: 2; font-family: var(--ff-display); color: #fff; font-size: 1.3rem; letter-spacing: 0.03em; }
     .img-png { background: repeating-conic-gradient(#141414 0 25%, #1f1f1f 0 50%) 0 0 / 22px 22px; display: flex; align-items: center; justify-content: center; }
@@ -210,15 +211,15 @@
     <div class="ug-fonts">
       <div class="fontcard">
         <div class="fc-role">Display · Títulos</div>
-        <div class="fc-big-display">FORJÁ<br>LA TUYA</div>
+        <div class="fc-big-display">HACETE<br>DE ABAJO</div>
         <div class="fc-alpha">A B C D E F G · 0 1 2 3 4 5</div>
-        <div class="fc-stack">'pf-fuel-grime', 'Bebas Neue', 'Impact'<br>Uso: títulos, números, destacados. Mayúsculas, condensada, grunge.</div>
+        <div class="fc-stack">'pf-fuel-grime', 'Bebas Neue', 'Impact'<br>Uso: títulos de sección, números y la cinta marquee. Mayúsculas, condensada, grunge.</div>
       </div>
       <div class="fontcard fontcard--sans">
         <div class="fc-role">Sans · Texto</div>
-        <div class="fc-big-sans">Hacete de abajo.</div>
+        <div class="fc-big-sans">Tu próxima guitarra no se compra.</div>
         <div class="fc-alpha">A B C D E F G · 0 1 2 3 4 5</div>
-        <div class="fc-stack">'tt-commons-pro', 'Inter', system-ui<br>Uso: cuerpo, bajadas, botones, labels. Pesos 300 / 400 / 500 / 600.</div>
+        <div class="fc-stack">'tt-commons-pro', 'Inter', system-ui<br>Uso: cuerpo, bajadas, botones y labels. Pesos 300 / 400 / 500 / 600.</div>
       </div>
     </div>
 
@@ -302,8 +303,8 @@
         <div class="img-label">Marco rasgado + cover</div>
       </div>
       <div>
-        <div class="img-frame img-tint"><img src="assets/luthier-3.jpg" alt="Foto con tinte rojo" loading="lazy"></div>
-        <div class="img-label">Tinte rojo · mix-blend</div>
+        <div class="img-frame img-silueta"><img src="assets/guitarra.png" alt="Silueta roja con filtro #tint-red" loading="lazy"></div>
+        <div class="img-label">Silueta roja · #tint-red</div>
       </div>
       <div>
         <div class="img-frame img-overlay"><img src="assets/fondo-ingenieria.jpg" alt="Fondo con overlay oscuro" loading="lazy"><span class="ov-text">Overlay</span></div>
