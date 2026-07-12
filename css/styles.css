@@ -3416,44 +3416,92 @@ details[open] .faq-question::after { transform: rotate(45deg); }
   background: var(--bg-deep);
   border-top: 1px solid var(--bg-border);
 }
-.incluye-list {
-  list-style: none;
-  max-width: 640px;
+/* Layout: título + CTA a la izquierda, acordeón a la derecha */
+.incluye-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 340px) minmax(0, 1fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  max-width: 1150px;
   margin: 0 auto;
+  align-items: start;
+}
+.incluye-side .section-title {
+  font-size: clamp(2.7rem, 5.5vw, 4.8rem);
+  margin: 0.5rem 0 1rem;
+}
+.incluye-side .section-desc { margin-bottom: 1.8rem; }
+.incluye-side .btn { align-self: start; }
+
+/* Acordeón: ítems sobre papel rasgado */
+.incluye-acc {
   display: flex;
   flex-direction: column;
-  gap: 1.6rem;
+  gap: 2.6rem;
+  min-height: 620px;   /* reserva el espacio de la card expandida → no se mueve el límite de la sección */
 }
-.incluye-list li {
+.acc-item {
   position: relative;
-  display: flex;
-  align-items: center;
-  gap: 1.4rem;
-  padding: 0.8rem 1.9rem;
   background: var(--cream);
-  color: #2E2A26;
-  font-size: 0.95rem;
-  line-height: 1.35;
+  transition: transform 0.3s ease;
 }
-/* Borde de papel rasgado (mismo SVG que las cards) */
-.incluye-list li::before {
+/* Borde de papel rasgado */
+.acc-item::before {
   content: '';
   position: absolute;
   inset: -11px;
   background: var(--cream);
   filter: url(#paper-rip);
-  box-shadow: 0 14px 32px rgba(0,0,0,0.4);
+  box-shadow: 0 14px 30px rgba(0,0,0,0.4);
   z-index: -1;
+  transition: box-shadow 0.3s ease;
 }
-.incluye-num {
-  flex-shrink: 0;
+.acc-head {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  padding: 1.1rem 1.5rem;
+  cursor: pointer;
+}
+.acc-num { font-family: var(--ff-display); font-size: 1.5rem; line-height: 1; color: var(--red); }
+.acc-head h3 {
+  flex: 1;
   font-family: var(--ff-display);
-  font-size: 2.1rem;
-  line-height: 1;
-  color: var(--red);
+  font-size: 1.5rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--text-dark);
 }
-.incluye-text { margin: 0; }
-.incluye-text strong { color: var(--red); }
+.acc-arrow { color: var(--red); font-size: 0.85rem; transition: transform 0.35s ease; }
+.acc-body {
+  max-height: 0;
+  overflow: hidden;
+  padding: 0 1.5rem;
+  transition: max-height 0.5s cubic-bezier(.22,1,.36,1), padding 0.4s ease;
+}
+.acc-item:hover { transform: translateY(-3px); }
+.acc-item:hover::before { box-shadow: 0 22px 44px rgba(0,0,0,0.5); }
+.acc-item:hover .acc-body { max-height: 320px; padding-bottom: 1.3rem; }
+.acc-item:hover .acc-arrow { transform: rotate(180deg); }
+.acc-quote {
+  font-style: italic;
+  color: var(--red);
+  margin-bottom: 0.85rem;
+  font-size: 0.95rem;
+}
+.acc-body ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+.acc-body li {
+  position: relative;
+  padding-left: 1.4rem;
+  color: #3A322C;
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+.acc-body li::before { content: '›'; position: absolute; left: 0; color: var(--red); font-weight: 700; }
+@media (max-width: 760px) {
+  .incluye-layout { grid-template-columns: 1fr; }
+  .incluye-side .section-title { white-space: normal; }
+  .incluye-acc { min-height: 0; }
+}
 
 /* Inscripción */
 .curso-inscripcion {
