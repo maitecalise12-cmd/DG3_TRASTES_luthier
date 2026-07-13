@@ -2195,21 +2195,27 @@ body::after {
 }
 /* Mobile: guitarra en vertical (sin rotar) + hotspots reubicados */
 @media (max-width: 640px) {
-  /* Se baja la guitarra para que su mástil no tape el título ni la bajada */
+  /* Contenedor full-bleed (de borde a borde) → la guitarra llega al borde de la pantalla */
   .anatomia .section-header { margin-bottom: 0.75rem; }
-  .anatomia .anatomia-inner { margin-top: 150px; }
-  /* Guitarra grande, saliendo por la izquierda de la pantalla */
-  .blueprint-container { padding-bottom: 155%; }
+  .anatomia .anatomia-inner {
+    margin-top: 20px;
+    width: 100vw;
+    max-width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+  }
+  /* Contenedor con el alto completo de la guitarra → no se corta arriba ni abajo */
+  .blueprint-container { padding-bottom: 238%; overflow: hidden; }
   .anatomia-img {
-    width: 106%;
-    left: 16%;
+    width: 100%;
+    left: 20%;
     transform: translate(-50%, -50%) rotate(0deg);
   }
-  /* Puntos sobre el mástil y el cuerpo (que se ensancha a la derecha abajo) */
-  .anatomia .hotspot[data-num="1"] { top: 34% !important; left: 17% !important; }
-  .anatomia .hotspot[data-num="2"] { top: 50% !important; left: 17% !important; }
-  .anatomia .hotspot[data-num="3"] { top: 65% !important; left: 20% !important; }
-  .anatomia .hotspot[data-num="4"] { top: 79% !important; left: 24% !important; }
+  /* Puntos: 1 clavijero · 2 mástil · 3 pastillas del cuerpo · 4 puente */
+  .anatomia .hotspot[data-num="1"] { top: 13% !important; left: 20% !important; }
+  .anatomia .hotspot[data-num="2"] { top: 32% !important; left: 20% !important; }
+  .anatomia .hotspot[data-num="3"] { top: 71% !important; left: 25% !important; }
+  .anatomia .hotspot[data-num="4"] { top: 86% !important; left: 29% !important; }
   /* Card más angosta para que se despliegue a la derecha del punto */
   .anatomia .hotspot-info { width: clamp(150px, 44vw, 190px); }
 }
