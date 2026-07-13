@@ -3647,3 +3647,34 @@ details[open] .faq-question::after { transform: rotate(45deg); }
 .precio-card:hover .precio-features li::before {
   text-shadow: 0 0 10px rgba(229,0,0,0.7);
 }
+
+/* Salto de línea que solo aparece en mobile */
+.br-mobile { display: none; }
+
+/* ════════════════════════════════════════════════
+   AJUSTES RESPONSIVE MOBILE — secciones de la home
+════════════════════════════════════════════════ */
+@media (max-width: 640px) {
+  .br-mobile { display: inline; }
+
+  /* HERO: foto centrada (se nota la guitarra) + título más grande */
+  .hero-img { object-position: center center; transform: scale(1); }
+  .hero-title { font-size: clamp(3.6rem, 15vw, 5.8rem); }
+
+  /* MANIFIESTO: frase más grande y "Forjamos la tuya" en la 3ª línea */
+  .manifiesto-frase { white-space: normal; font-size: clamp(2rem, 8.5vw, 3rem); }
+  /* Pilares (ítems) y tildes centrados */
+  .manifiesto-pilares { text-align: center; }
+  .pilar { align-items: center; text-align: center; }
+
+  /* VERSUS: la parte roja toda en la 2ª fila */
+  .versus-cta-text { font-size: clamp(1.1rem, 5vw, 1.8rem); }
+  .versus-cta-text .accent-text { display: block; }
+
+  /* MATERIA: claim en 2 líneas (partido por la coma) y más grande */
+  .materia-claim { white-space: normal; font-size: clamp(1.15rem, 4.6vw, 1.6rem); line-height: 1.25; }
+  .materia-claim span { display: block; }
+  /* Más aire negro debajo del claim para que no quede pegado a la transición rasgada */
+  .materia { padding-bottom: clamp(6.5rem, 17vw, 9rem); }
+  .materia-claim { margin-top: 1.5rem; }
+}
