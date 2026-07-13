@@ -134,6 +134,14 @@ body::after {
 }
 .section-header .section-desc { margin: 0 auto; }
 
+/* Página de detalle: bajadas de sección más grandes */
+.curso-quees .section-desc,
+#proceso .section-desc,
+.curso-resultados .section-desc,
+.incluye-side .section-desc {
+  font-size: clamp(1.05rem, 1.4vw, 1.2rem);
+}
+
 .accent { color: var(--red); }
 .accent-text { color: var(--red); }
 
@@ -1395,7 +1403,7 @@ body::after {
 .configurador .config-label { color: #2A2A2A; }
 .configurador .guitar-label { color: #555; }
 .configurador .guitar-label strong { color: var(--text-dark); }
-.configurador .btn-ghost { color: var(--text-dark); border-color: rgba(0,0,0,0.35); }
+.configurador .btn-ghost { background: transparent; color: var(--text-dark); border-color: rgba(0,0,0,0.35); }
 .configurador .btn-ghost:hover { color: var(--red); border-color: var(--red); }
 
 .configurador-inner {
@@ -3450,6 +3458,8 @@ details[open] .faq-question::after { transform: rotate(45deg); }
 
 /* RESULTADOS DE INTEGRANTES */
 .curso-resultados {
+  position: relative;
+  z-index: 9001;              /* por encima del grano global → cards sin textura */
   padding: var(--sp-section) var(--sp-side) clamp(4rem, 8vw, 6rem);
   background: linear-gradient(160deg, #D40000 0%, #6E0000 100%);
   border-top: 1px solid rgba(0,0,0,0.25);
@@ -3496,6 +3506,7 @@ details[open] .faq-question::after { transform: rotate(45deg); }
   height: 100%;
   object-fit: cover;
   display: block;
+  opacity: 1;
 }
 
 .curso-incluye {
