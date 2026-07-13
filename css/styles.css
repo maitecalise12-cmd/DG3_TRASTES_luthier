@@ -2986,6 +2986,13 @@ details[open] .faq-question::after { transform: rotate(45deg); }
   gap: clamp(2.5rem, 6vw, 5rem);
   align-items: start;
 }
+/* Mobile: orden → tag, título y bajada · luego el formulario · y al final los datos de contacto */
+@media (max-width: 640px) {
+  .contacto-inner { display: flex; flex-direction: column; gap: 0; align-items: stretch; }
+  .contacto-info { display: contents; }
+  .contacto-form { order: 1; margin-top: 2.2rem; }
+  .contacto-list { order: 2; margin-top: 2.2rem; }
+}
 .contacto-info .section-title { font-size: clamp(2.4rem, 5vw, 4rem); margin: 0.75rem 0 1.25rem; }
 .contacto-lead {
   font-size: 1rem;
