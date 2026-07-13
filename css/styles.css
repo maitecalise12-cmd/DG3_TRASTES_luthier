@@ -2214,10 +2214,14 @@ body::after {
   /* Puntos: 1 clavijero · 2 mástil · 3 pastillas del cuerpo · 4 puente */
   .anatomia .hotspot[data-num="1"] { top: 13% !important; left: 20% !important; }
   .anatomia .hotspot[data-num="2"] { top: 32% !important; left: 20% !important; }
-  .anatomia .hotspot[data-num="3"] { top: 71% !important; left: 25% !important; }
-  .anatomia .hotspot[data-num="4"] { top: 86% !important; left: 29% !important; }
-  /* Card más angosta para que se despliegue a la derecha del punto */
-  .anatomia .hotspot-info { width: clamp(150px, 44vw, 190px); }
+  .anatomia .hotspot[data-num="3"] { top: 71% !important; left: 20% !important; }
+  .anatomia .hotspot[data-num="4"] { top: 86% !important; left: 20% !important; }
+  /* Card más ancha y más baja (aprovecha el espacio de la derecha), con movimiento lateral */
+  .anatomia .hotspot-info { width: clamp(210px, 60vw, 255px); padding: 0.75rem 1rem; animation-name: info-in-side; }
+  .anatomia .hotspot-info p { line-height: 1.38; }
+  /* Botones (puntos) un poco más grandes */
+  .anatomia .hotspot { width: 40px; height: 40px; margin: -20px 0 0 -20px; }
+  .anatomia .hotspot::before { font-size: 1.2rem; }
 }
 /* La luz brillante orbita el contorno de la guitarra */
 @keyframes neon-travel {
@@ -2331,6 +2335,12 @@ body::after {
   60%  { opacity: 1; transform: translateY(-4px) scale(1.03); }
   100% { opacity: 1; transform: translateY(0) scale(1); }
 }
+/* Variante lateral: leve desplazamiento hacia el costado (card que sale a la derecha) */
+@keyframes info-in-side {
+  0%   { opacity: 0; transform: translateX(-24px) scale(0.92); }
+  60%  { opacity: 1; transform: translateX(4px) scale(1.02); }
+  100% { opacity: 1; transform: translateX(0) scale(1); }
+}
 .hotspot-info[hidden] { display: none; }
 
 .info-close {
@@ -2348,7 +2358,7 @@ body::after {
   font-family: var(--ff-display);
   font-size: 1.1rem;
   letter-spacing: 0.05em;
-  color: var(--text-dark);
+  color: var(--red);
   margin-bottom: 0.3rem;
 }
 .hotspot-info p {
