@@ -1358,6 +1358,8 @@ body::after {
     margin: 0 !important;
     transform: rotate(0deg) !important;
   }
+  /* En mobile las cards se apilan: desactivo el panel de items (que se montaba sobre la card de abajo) */
+  .curso-items { display: none; }
 }
 
 
