@@ -726,34 +726,67 @@ if (datoNums.length) {
   const track = qs(tSel, marquee);
   if (!track) return;
 
-  let offset = 0, paused = false, pending = 0;
+  let offset = 0, paused = false, snapTarget = null, resumeTimer = null;
   const speed = 40;                          // px/s del auto-scroll
   const setW = () => track.scrollWidth / 2;  // ancho de un set (el track tiene 2 sets iguales)
 
   let last = performance.now();
   const step = (now) => {
     const dt = Math.min(now - last, 50); last = now;
-    if (!paused) offset += speed * dt / 1000;
-    if (Math.abs(pending) > 0.5) { const d = pending * 0.18; offset += d; pending -= d; }
-    const w = setW();
-    if (w > 0) offset = ((offset % w) + w) % w;   // loop infinito y sin salto
+    if (snapTarget !== null) {
+      // Snap suave hasta centrar la card elegida
+      offset += (snapTarget - offset) * 0.2;
+      if (Math.abs(snapTarget - offset) < 0.5) { offset = snapTarget; snapTarget = null; }
+    } else {
+      if (!paused) offset += speed * dt / 1000;
+      const w = setW();
+      if (w > 0) offset = ((offset % w) + w) % w;   // loop infinito y sin salto
+    }
     track.style.transform = `translateX(${(-offset).toFixed(1)}px)`;
     requestAnimationFrame(step);
   };
   requestAnimationFrame(step);
 
   // Pausa al pasar el mouse
-  marquee.addEventListener('mouseenter', () => { paused = true; });
-  marquee.addEventListener('mouseleave', () => { paused = false; });
+  marquee.addEventListener('mouseenter', () => { if (snapTarget === null && resumeTimer === null) paused = true; });
+  marquee.addEventListener('mouseleave', () => { if (resumeTimer === null) paused = false; });
 
-  // Flechas de control (adelantar / atrasar suave)
+  // Al tocar una flecha: centrar la card siguiente/anterior en el viewport
+  const snapToCard = (dir) => {
+    const w = setW();
+    if (w <= 0) return;
+    const mw = marquee.clientWidth;
+    const cards = Array.prototype.slice.call(track.children);
+    const half = Math.floor(cards.length / 2) || cards.length;
+    // Offsets que centran cada card del primer set (+ copias desplazadas por el loop)
+    const targets = [];
+    for (let i = 0; i < half; i++) {
+      const c = cards[i];
+      const base = c.offsetLeft + c.offsetWidth / 2 - mw / 2;
+      targets.push(base - w, base, base + w);
+    }
+    const o = offset;
+    let best = null;
+    targets.forEach(t => {
+      if (dir > 0 && t > o + 1) { if (best === null || t < best) best = t; }
+      if (dir < 0 && t < o - 1) { if (best === null || t > best) best = t; }
+    });
+    if (best === null) return;
+    while (best < 0) { best += w; offset += w; }        // mantener el snap en rango visible
+    while (best > 2 * w) { best -= w; offset -= w; }
+    snapTarget = best;
+    paused = true;
+    clearTimeout(resumeTimer);
+    resumeTimer = setTimeout(() => { paused = false; resumeTimer = null; }, 3000);
+  };
+
   const addArrow = (dir, label, sym) => {
     const b = document.createElement('button');
     b.type = 'button';
     b.className = 'marquee-arrow marquee-arrow--' + (dir < 0 ? 'prev' : 'next');
     b.setAttribute('aria-label', label);
     b.textContent = sym;
-    b.addEventListener('click', () => { pending += dir * 340; });
+    b.addEventListener('click', () => snapToCard(dir));
     marquee.appendChild(b);
   };
   addArrow(-1, 'Anterior', '‹');

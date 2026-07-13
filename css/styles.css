@@ -3206,7 +3206,12 @@ details[open] .faq-question::after { transform: rotate(45deg); }
   .versus-compare { grid-template-columns: 1fr; }
   .vs-divider { padding: 0.5rem 0; }
 
-  .guitar-preview { flex-direction: column; }
+  .guitar-preview { flex-direction: column; gap: 1rem; }
+  /* Guitarra más chica para que toda la sección entre en una pantalla */
+  .guitar-card { max-width: 165px; }
+  .configurador { padding-top: clamp(2.5rem, 8vw, 4rem); padding-bottom: clamp(2.5rem, 8vw, 4rem); }
+  .configurador .section-header { margin-bottom: 1.25rem; }
+  .configurador-inner { gap: 1.25rem; }
 
   .precios-grid { grid-template-columns: 1fr; }
   .cursos-grid { flex-direction: column; gap: 1.5rem; }
@@ -3230,7 +3235,25 @@ details[open] .faq-question::after { transform: rotate(45deg); }
     background-attachment: scroll;    /* 'fixed' se rompe en mobile: foto gigante/pixelada */
     background-position: 18% center;  /* centra el mástil */
   }
+  /* Página detalle: en mobile, "Del primer corte al primer acorde" sin foto de fondo */
+  #proceso { background: var(--bg-deep); }
   .timeline-list { left: 0; max-width: 100%; }
+
+  /* Título del proceso centrado en el medio */
+  #proceso .section-header { text-align: center; margin-bottom: 1.5rem; }
+  #proceso .proceso-title {
+    white-space: normal;
+    text-align: center;
+    font-size: clamp(2.2rem, 9vw, 3.2rem);
+  }
+
+  /* Ítems más chicos para que entren todos en pantalla */
+  #proceso .timeline-item { padding-bottom: 1.4rem; padding-left: 2.1rem; }
+  #proceso .timeline-tag { font-size: 0.58rem; }
+  #proceso .timeline-content h3 { font-size: 1.2rem; }
+  #proceso .timeline-content p { font-size: 0.8rem; line-height: 1.55; }
+  #proceso .timeline-dot { width: 24px; height: 24px; font-size: 0.95rem; }
+  #proceso .timeline-list::before { left: 11px; }
 
   /* Título del configurador en 2 líneas, centrado */
   .configurador .section-title {
@@ -3530,9 +3553,12 @@ details[open] .faq-question::after { transform: rotate(45deg); }
 }
 .acc-body li::before { content: '›'; position: absolute; left: 0; color: var(--red); font-weight: 700; }
 @media (max-width: 760px) {
-  .incluye-layout { grid-template-columns: 1fr; }
+  /* Columna única; el CTA baja debajo de los ítems y queda centrado */
+  .incluye-layout { display: flex; flex-direction: column; gap: 0; align-items: stretch; }
+  .incluye-side { display: contents; }
   .incluye-side .section-title { white-space: normal; }
-  .incluye-acc { min-height: 0; justify-content: flex-start; gap: 2.2rem; }
+  .incluye-acc { min-height: 0; justify-content: flex-start; gap: 2.2rem; order: 1; margin-top: 0.5rem; }
+  .incluye-side .btn { order: 2; align-self: center; margin: 4rem 0 0; }
 }
 
 /* Inscripción */
@@ -3563,6 +3589,18 @@ details[open] .faq-question::after { transform: rotate(45deg); }
 @media (max-width: 768px) {
   .modulos-grid { grid-template-columns: 1fr; }
   .curso-facts { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Inscripción en mobile: doodles en dos columnas por lado, con tamaños variados
+   (columna externa grande, interna chica) para que se vea orgánico sin amontonarse */
+@media (max-width: 640px) {
+  .curso-inscripcion .doodle { opacity: 0.55; }
+  /* Izquierda: dos columnas */
+  .curso-inscripcion .doodle:nth-of-type(-n+8):nth-of-type(odd)  { left: 0% !important;  width: 66px !important; }
+  .curso-inscripcion .doodle:nth-of-type(-n+8):nth-of-type(even) { left: 18% !important; width: 38px !important; }
+  /* Derecha: dos columnas */
+  .curso-inscripcion .doodle:nth-of-type(n+9):nth-of-type(even) { left: auto !important; right: 0% !important;  width: 66px !important; }
+  .curso-inscripcion .doodle:nth-of-type(n+9):nth-of-type(odd)  { left: auto !important; right: 18% !important; width: 38px !important; }
 }
 
 
@@ -3670,12 +3708,23 @@ details[open] .faq-question::after { transform: rotate(45deg); }
 @media (max-width: 640px) {
   .br-mobile { display: inline; }
 
+  /* Títulos en general un poco más grandes en mobile */
+  .section-title { font-size: clamp(3.5rem, 13vw, 5rem); }
+  .versus-intro .section-title { font-size: clamp(2.1rem, 9vw, 3rem); }
+  .materia-header .section-title { font-size: clamp(3rem, 12vw, 4.4rem); }
+  .anatomia .section-title { font-size: clamp(4rem, 15vw, 6rem); }
+  .newsletter-text .section-title { font-size: clamp(2.9rem, 11vw, 4rem); }
+  .contacto-info .section-title { font-size: clamp(2.8rem, 11vw, 4rem); }
+  .curso-hero .section-title { font-size: clamp(3.5rem, 13vw, 5.5rem); }
+  .incluye-side .section-title { font-size: clamp(3.1rem, 12vw, 4.4rem); }
+  .curso-inscripcion .section-title { font-size: clamp(3rem, 12vw, 4.4rem); }
+
   /* HERO: foto centrada (se nota la guitarra) + título más grande */
   .hero-img { object-position: center center; transform: scale(1); }
-  .hero-title { font-size: clamp(3.6rem, 15vw, 5.8rem); }
+  .hero-title { font-size: clamp(4.1rem, 16.5vw, 6.4rem); }
 
   /* MANIFIESTO: frase más grande y "Forjamos la tuya" en la 3ª línea */
-  .manifiesto-frase { white-space: normal; font-size: clamp(2rem, 8.5vw, 3rem); }
+  .manifiesto-frase { white-space: normal; font-size: clamp(2.3rem, 9.5vw, 3.4rem); }
   /* Pilares (ítems) y tildes centrados */
   .manifiesto-pilares { text-align: center; }
   .pilar { align-items: center; text-align: center; }
@@ -3684,10 +3733,50 @@ details[open] .faq-question::after { transform: rotate(45deg); }
   .versus-cta-text { font-size: clamp(1.1rem, 5vw, 1.8rem); }
   .versus-cta-text .accent-text { display: block; }
 
+  /* MATERIA: bajada en 2 líneas exactas (una frase por línea, sin que se parta) */
+  .materia-bajada { white-space: nowrap; font-size: clamp(0.55rem, 2.7vw, 0.88rem); line-height: 1.9; }
+
   /* MATERIA: claim en 2 líneas (partido por la coma) y más grande */
   .materia-claim { white-space: normal; font-size: clamp(1.15rem, 4.6vw, 1.6rem); line-height: 1.25; }
   .materia-claim span { display: block; }
   /* Más aire negro debajo del claim para que no quede pegado a la transición rasgada */
   .materia { padding-bottom: clamp(6.5rem, 17vw, 9rem); }
   .materia-claim { margin-top: 1.5rem; }
+
+  /* MADERAS: card más grande y dorso compacto para que los ratings entren en la silueta roja */
+  .madera-card { width: clamp(250px, 82vw, 300px); }
+  .madera-card-back { padding: 0.7rem 1rem; gap: 0.3rem; }
+  .madera-ratings { margin-top: 0; gap: 0.15rem; max-width: 210px; }
+  .mr-label { font-size: 0.92rem; }
+  .mr-stars { font-size: 0.78rem; }
+
+  /* CARRUSELES: flechas debajo (no a los lados) en todos los carruseles */
+  .testi-marquee, .maderas-marquee, .resultados-marquee { padding-bottom: 62px; }
+  .marquee-arrow { top: auto; bottom: 6px; transform: none; }
+  .marquee-arrow--prev { left: 50%; right: auto; margin-left: -52px; }
+  .marquee-arrow--next { right: 50%; left: auto; margin-right: -52px; }
+
+  /* SALÍ DE LO CONVENCIONAL (maderas): flechas más chicas */
+  .maderas-marquee .marquee-arrow { width: 34px; height: 34px; font-size: 1.1rem; }
+  .maderas-marquee .marquee-arrow--prev { margin-left: -44px; }
+  .maderas-marquee .marquee-arrow--next { margin-right: -44px; }
+
+  /* SALIERON CON LA SUYA (resultados): flechas más abajo */
+  .resultados-marquee { padding-bottom: 92px; }
+
+  /* FAQ: doodles solo en la franja del título (arriba) y debajo de las preguntas (abajo),
+     nunca encima de la lista de preguntas */
+  .faq .doodle { width: 34px !important; opacity: 0.5; }
+  /* Franja del título (arriba) */
+  .faq .doodle:nth-of-type(1) { top: 1% !important;  left: 3% !important; }
+  .faq .doodle:nth-of-type(2) { top: 7% !important;  left: 11% !important; }
+  .faq .doodle:nth-of-type(3) { top: 13% !important; left: 3% !important; }
+  .faq .doodle:nth-of-type(6) { top: 1% !important;  left: 93% !important; }
+  .faq .doodle:nth-of-type(7) { top: 7% !important;  left: 85% !important; }
+  .faq .doodle:nth-of-type(8) { top: 13% !important; left: 93% !important; }
+  /* Debajo de las preguntas (abajo) */
+  .faq .doodle:nth-of-type(4)  { top: 94% !important; left: 4% !important; }
+  .faq .doodle:nth-of-type(5)  { top: 98% !important; left: 13% !important; }
+  .faq .doodle:nth-of-type(9)  { top: 94% !important; left: 93% !important; }
+  .faq .doodle:nth-of-type(10) { top: 98% !important; left: 84% !important; }
 }
