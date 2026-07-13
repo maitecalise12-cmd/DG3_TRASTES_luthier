@@ -1349,17 +1349,28 @@ body::after {
 }
 
 @media (max-width: 760px) {
-  .cursos-grid { flex-direction: column; align-items: center; gap: 1.5rem; }
+  .cursos-grid { flex-direction: column; align-items: center; gap: 2rem; }
   .curso-card {
     flex-basis: auto;
     width: 100%;
     max-width: 380px;
-    aspect-ratio: 4 / 5;
+    aspect-ratio: auto;      /* crece para contener imagen + info + items */
     margin: 0 !important;
     transform: rotate(0deg) !important;
   }
-  /* En mobile las cards se apilan: desactivo el panel de items (que se montaba sobre la card de abajo) */
-  .curso-items { display: none; }
+  .curso-media { flex: none; height: 260px; }
+  /* Items en el flujo, debajo de la card, siempre visibles y sin superponerse */
+  .curso-items {
+    position: relative;
+    z-index: 1;
+    left: auto; right: auto; bottom: auto;
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+    box-shadow: none;
+    margin: 0;
+  }
+  .curso-card:hover .curso-items { transform: none; }
 }
 
 
