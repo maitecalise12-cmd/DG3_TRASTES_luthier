@@ -240,25 +240,32 @@ function measureCards() {
   });
 }
 
-// Ubica la ficha ARRIBA del punto, dentro de los límites del contenedor
+// Ubica la ficha respecto al punto, dentro de los límites del contenedor
 function positionInfo(infoEl, spot) {
   const container = spot.closest('.blueprint-container');
   if (!container) return;
+  const cw = container.clientWidth;
   const ch = container.clientHeight;
-  const cx = spot.offsetLeft + spot.offsetWidth / 2;
   const iw = infoEl.offsetWidth;
   const ih = infoEl.offsetHeight;
-  const cardH = refCardH || ih;   // referencia común → todas las cards a la misma altura
   const gap = 18;
+  let left, top;
 
-  // Centrada horizontalmente sobre el punto (sin corregir por los bordes)
-  let left = cx - iw / 2;
-  // Siempre por encima del punto, alineadas a la misma altura → el número queda visible debajo.
-  // Solo en mobile (punto superior sin lugar arriba) se permite ubicarla debajo.
-  let top = spot.offsetTop - gap - cardH;
-  if (top < 8 && window.innerWidth <= 640) top = spot.offsetTop + spot.offsetHeight + gap;
-
-  top = Math.max(8, Math.min(ch - ih - 8, top));
+  if (window.innerWidth <= 640) {
+    // Mobile: la card se despliega hacia la DERECHA del punto, centrada verticalmente con él
+    const cy = spot.offsetTop + spot.offsetHeight / 2;
+    left = spot.offsetLeft + spot.offsetWidth + gap;
+    left = Math.max(8, Math.min(cw - iw - 8, left));
+    top  = cy - ih / 2;
+    top  = Math.max(8, Math.min(ch - ih - 8, top));
+  } else {
+    // Desktop: por encima del punto, todas alineadas a la misma altura → el número queda visible debajo
+    const cx = spot.offsetLeft + spot.offsetWidth / 2;
+    const cardH = refCardH || ih;
+    left = cx - iw / 2;
+    top  = spot.offsetTop - gap - cardH;
+    top  = Math.max(8, Math.min(ch - ih - 8, top));
+  }
 
   infoEl.style.left = left + 'px';
   infoEl.style.top  = top + 'px';

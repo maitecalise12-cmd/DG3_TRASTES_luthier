@@ -2195,15 +2195,23 @@ body::after {
 }
 /* Mobile: guitarra en vertical (sin rotar) + hotspots reubicados */
 @media (max-width: 640px) {
+  /* Se baja la guitarra para que su mástil no tape el título ni la bajada */
+  .anatomia .section-header { margin-bottom: 0.75rem; }
+  .anatomia .anatomia-inner { margin-top: 150px; }
+  /* Guitarra grande, saliendo por la izquierda de la pantalla */
   .blueprint-container { padding-bottom: 155%; }
   .anatomia-img {
-    width: 62%;
+    width: 106%;
+    left: 16%;
     transform: translate(-50%, -50%) rotate(0deg);
   }
-  .anatomia .hotspot[data-num="1"] { top: 15% !important; left: 48% !important; }
-  .anatomia .hotspot[data-num="2"] { top: 40% !important; left: 50% !important; }
-  .anatomia .hotspot[data-num="3"] { top: 65% !important; left: 50% !important; }
-  .anatomia .hotspot[data-num="4"] { top: 84% !important; left: 51% !important; }
+  /* Puntos sobre el mástil y el cuerpo (que se ensancha a la derecha abajo) */
+  .anatomia .hotspot[data-num="1"] { top: 34% !important; left: 17% !important; }
+  .anatomia .hotspot[data-num="2"] { top: 50% !important; left: 17% !important; }
+  .anatomia .hotspot[data-num="3"] { top: 65% !important; left: 20% !important; }
+  .anatomia .hotspot[data-num="4"] { top: 79% !important; left: 24% !important; }
+  /* Card más angosta para que se despliegue a la derecha del punto */
+  .anatomia .hotspot-info { width: clamp(150px, 44vw, 190px); }
 }
 /* La luz brillante orbita el contorno de la guitarra */
 @keyframes neon-travel {
