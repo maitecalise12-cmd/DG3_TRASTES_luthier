@@ -2140,7 +2140,7 @@ body::after {
 .anatomia .section-header {
   text-align: left;
   max-width: 900px;
-  margin: 0 auto clamp(1rem, 2vw, 1.75rem);
+  margin: 0 auto clamp(2.5rem, 5vw, 4.5rem);
   padding: 0;
 }
 /* Guitarra más chica para que toda la sección entre en pantalla */
@@ -2303,17 +2303,18 @@ body::after {
   background: var(--cream);
   border: 1px solid rgba(0,0,0,0.12);
   border-bottom: 3px solid var(--red);
-  padding: 1.25rem;
-  width: clamp(210px, 60vw, 250px);
+  padding: 0.95rem 1.15rem;
+  width: clamp(220px, 56vw, 270px);
   border-radius: var(--radius);
   box-shadow: 0 16px 46px rgba(0,0,0,0.55), 0 0 28px rgba(229,0,0,0.2);
   z-index: 10;
+  text-align: center;
   transform-origin: center bottom;
   animation: info-in 0.4s cubic-bezier(.34,1.56,.64,1);
 }
 @keyframes info-in {
-  0%   { opacity: 0; transform: translateY(10px) scale(0.85); }
-  60%  { opacity: 1; transform: translateY(-3px) scale(1.03); }
+  0%   { opacity: 0; transform: translateY(28px) scale(0.9); }
+  60%  { opacity: 1; transform: translateY(-4px) scale(1.03); }
   100% { opacity: 1; transform: translateY(0) scale(1); }
 }
 .hotspot-info[hidden] { display: none; }
@@ -2331,15 +2332,15 @@ body::after {
 
 .hotspot-info h4 {
   font-family: var(--ff-display);
-  font-size: 1.25rem;
-  letter-spacing: 0.06em;
+  font-size: 1.1rem;
+  letter-spacing: 0.05em;
   color: var(--text-dark);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.3rem;
 }
 .hotspot-info p {
-  font-size: 0.85rem;
+  font-size: 0.78rem;
   color: #4A4038;
-  line-height: 1.65;
+  line-height: 1.45;
 }
 
 

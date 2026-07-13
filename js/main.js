@@ -224,26 +224,41 @@ if (reserveBtn) {
    6 · HOTSPOTS — ANATOMÍA ACÚSTICA
 ════════════════════════════════════════════════ */
 let activeHotspot = null;
+let refCardH = 0;   // altura de referencia (la card más alta) → todas se alinean por arriba a la misma altura
+
+// Mide la altura de todas las fichas para alinearlas a la misma altura
+function measureCards() {
+  refCardH = 0;
+  qsa('.hotspot-info').forEach(el => {
+    const wasHidden = el.hidden;
+    const prevVis = el.style.visibility;
+    el.hidden = false;
+    el.style.visibility = 'hidden';
+    refCardH = Math.max(refCardH, el.offsetHeight);
+    el.style.visibility = prevVis;
+    el.hidden = wasHidden;
+  });
+}
 
 // Ubica la ficha ARRIBA del punto, dentro de los límites del contenedor
 function positionInfo(infoEl, spot) {
   const container = spot.closest('.blueprint-container');
   if (!container) return;
-  const cw = container.clientWidth;
   const ch = container.clientHeight;
   const cx = spot.offsetLeft + spot.offsetWidth / 2;
   const iw = infoEl.offsetWidth;
   const ih = infoEl.offsetHeight;
-  const gap = 22;
+  const cardH = refCardH || ih;   // referencia común → todas las cards a la misma altura
+  const gap = 18;
 
-  // Centrada horizontalmente sobre el punto
+  // Centrada horizontalmente sobre el punto (sin corregir por los bordes)
   let left = cx - iw / 2;
-  // Por encima del punto; si no entra arriba, la pone abajo
-  let top = spot.offsetTop - gap - ih;
-  if (top < 8) top = spot.offsetTop + spot.offsetHeight + gap;
+  // Siempre por encima del punto, alineadas a la misma altura → el número queda visible debajo.
+  // Solo en mobile (punto superior sin lugar arriba) se permite ubicarla debajo.
+  let top = spot.offsetTop - gap - cardH;
+  if (top < 8 && window.innerWidth <= 640) top = spot.offsetTop + spot.offsetHeight + gap;
 
-  left = Math.max(8, Math.min(cw - iw - 8, left));
-  top  = Math.max(8, Math.min(ch - ih - 8, top));
+  top = Math.max(8, Math.min(ch - ih - 8, top));
 
   infoEl.style.left = left + 'px';
   infoEl.style.top  = top + 'px';
@@ -303,6 +318,19 @@ document.addEventListener('keydown', e => {
     });
   }
 });
+
+// Altura de referencia para alinear todas las fichas a la misma altura
+if (qsa('.hotspot-info').length) {
+  measureCards();
+  window.addEventListener('load', measureCards);
+  window.addEventListener('resize', () => {
+    measureCards();
+    if (activeHotspot) {
+      const infoEl = qs('#' + activeHotspot.dataset.target);
+      if (infoEl && !infoEl.hidden) positionInfo(infoEl, activeHotspot);
+    }
+  }, { passive: true });
+}
 
 
 /* ════════════════════════════════════════════════
