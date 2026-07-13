@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Sistema de diseño de Trastes — Luthería de Autor. Colores, tipografías, botones, tokens y efectos de la interfaz." />
+  <meta name="description" content="Sistema de diseño de Trastes — Luthería de Autor. Colores, tipografías, botones, efectos e imágenes de la interfaz." />
   <title>Sistema de Diseño · TRASTES ★ Luthería</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -11,153 +11,105 @@
   <link rel="stylesheet" href="https://use.typekit.net/uct3nlq.css" />
   <link rel="stylesheet" href="css/styles.css" />
   <style>
-    /* ── Página de guía de estilos ── */
-    .ug { padding: clamp(2.5rem, 5vw, 4.5rem) var(--sp-side); border-top: 1px solid var(--bg-border); }
-    .ug:nth-child(even) { background: var(--bg-card); }
-    .ug-inner { max-width: 1100px; margin: 0 auto; }
-    .ug-kicker { font-family: var(--ff-sans); font-size: 0.66rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--red); }
-    .ug-title { font-family: var(--ff-display); font-size: clamp(2.2rem, 5vw, 3.6rem); line-height: 1; letter-spacing: 0.02em; color: var(--text-primary); margin: 0.4rem 0 0.6rem; }
-    .ug-lead { color: var(--text-muted); max-width: 620px; margin-bottom: 2.5rem; }
-    .ug-subtitle { font-family: var(--ff-display); font-size: 1.4rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--text-primary); margin: 2.5rem 0 1.1rem; }
+    /* ═══════════════════════════════════════════════
+       KIT DE ESTILOS UI — editorial y ordenado
+    ═══════════════════════════════════════════════ */
+    body::after { display: none !important; }                 /* sin grano en esta página */
+    .ug-inner { max-width: 1080px; margin: 0 auto; padding: 0 var(--sp-side); }
 
-    /* Colores */
-    .ug-swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 1rem; }
-    .ug-swatches--full { grid-template-columns: repeat(4, 1fr); gap: 1.4rem; }
-    .ug-swatches--full .sw-color { height: clamp(100px, 12vw, 150px); }
-    .ug-swatches--full .sw-meta { padding: 1rem 1.15rem; }
-    @media (max-width: 720px) { .ug-swatches--full { grid-template-columns: repeat(2, 1fr); } }
+    /* ── Encabezado principal ── */
+    .kit-header { padding: calc(64px + 3.5rem) 0 2.4rem; }
+    .kit-header .ug-inner { border-bottom: 2px solid var(--red); padding-bottom: 2.4rem; }
+    .kit-kicker { display: inline-block; font-family: var(--ff-sans); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: var(--red); margin-bottom: 1rem; }
+    .kit-header h1 { font-family: var(--ff-display); font-size: clamp(2.6rem, 8vw, 5rem); line-height: 0.88; letter-spacing: 0.01em; text-transform: uppercase; color: var(--text-primary); margin-bottom: 1.1rem; }
+    .kit-header p { font-family: var(--ff-sans); font-size: 1.05rem; line-height: 1.6; color: var(--text-muted); max-width: 620px; }
+    .kit-header p strong { color: var(--text-primary); }
+
+    /* ── Bloque de sección ── */
+    .ug { margin-bottom: clamp(3.5rem, 7vw, 6.5rem); }
+    .ug-title { display: flex; align-items: baseline; gap: 0.7rem; font-family: var(--ff-display); font-size: clamp(1.35rem, 2.6vw, 1.75rem); line-height: 1; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-primary); padding-bottom: 0.85rem; margin: 0 0 2.3rem; border-bottom: 1px dashed rgba(244,243,240,0.22); }
+    .ug-title .num { color: var(--red); }
+    .ug-sub { font-family: var(--ff-sans); font-size: 0.66rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-muted); font-weight: 600; margin: 2.2rem 0 1.2rem; }
+    .ug-note { font-family: var(--ff-sans); font-size: 0.85rem; color: var(--text-muted); margin-top: 1.5rem; max-width: 660px; line-height: 1.65; }
+    .ug-note code { color: var(--red); }
+
+    /* ── 01 · Colores ── */
+    .ug-swatches { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.6rem; }
     .sw { border: 1px solid var(--bg-border); border-radius: var(--radius); overflow: hidden; background: var(--bg-mid); }
-    .sw-color { height: 90px; }
-    .sw-meta { padding: 0.7rem 0.85rem; }
-    .sw-name { font-family: var(--ff-sans); font-size: 0.82rem; font-weight: 600; color: var(--text-primary); }
-    .sw-var  { font-family: var(--ff-sans); font-size: 0.7rem; color: var(--text-muted); }
-    .sw-hex  { font-family: var(--ff-sans); font-size: 0.72rem; color: var(--red); letter-spacing: 0.04em; text-transform: uppercase; margin-top: 0.15rem; }
+    .sw-color { height: clamp(110px, 13vw, 150px); }
+    .sw-meta { padding: 0.9rem 1rem; }
+    .sw-name { font-family: var(--ff-sans); font-size: 0.85rem; font-weight: 600; color: var(--text-primary); }
+    .sw-var { font-family: var(--ff-sans); font-size: 0.7rem; color: var(--text-muted); margin-top: 0.12rem; }
+    .sw-hex { font-family: var(--ff-sans); font-size: 0.72rem; color: var(--red); letter-spacing: 0.04em; text-transform: uppercase; margin-top: 0.35rem; }
 
-    /* Tipografías */
-    .ug-fonts { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+    /* ── 02 · Tipografía ── */
+    .ug-fonts { display: grid; grid-template-columns: 1fr 1fr; gap: 1.6rem; }
     .fontcard { border: 1px solid var(--bg-border); border-radius: var(--radius); padding: 1.8rem; background: var(--bg-mid); }
-    .fontcard .fc-big-display { font-family: var(--ff-display); font-size: 4rem; line-height: 0.9; color: var(--text-primary); }
-    .fontcard .fc-big-sans { font-family: var(--ff-sans); font-size: 2.6rem; line-height: 1; color: var(--text-primary); font-weight: 600; }
-    .fc-role { font-family: var(--ff-sans); font-size: 0.66rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--red); margin-bottom: 1rem; }
-    .fc-stack { font-family: var(--ff-sans); font-size: 0.82rem; color: var(--text-muted); margin-top: 1rem; word-break: break-word; }
-    .fc-alpha { font-family: var(--ff-display); color: var(--text-muted); font-size: 1.3rem; letter-spacing: 0.08em; margin-top: 0.8rem; }
+    .fc-role { font-family: var(--ff-sans); font-size: 0.64rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--red); margin-bottom: 1rem; }
+    .fc-big-display { font-family: var(--ff-display); font-size: clamp(2.6rem, 6vw, 3.8rem); line-height: 0.9; color: var(--text-primary); }
+    .fc-big-sans { font-family: var(--ff-sans); font-size: clamp(1.7rem, 4vw, 2.4rem); line-height: 1.05; color: var(--text-primary); font-weight: 600; }
+    .fc-alpha { font-family: var(--ff-display); color: var(--text-muted); font-size: 1.3rem; letter-spacing: 0.08em; margin-top: 0.9rem; }
     .fontcard--sans .fc-alpha { font-family: var(--ff-sans); }
-
+    .fc-stack { font-family: var(--ff-sans); font-size: 0.78rem; color: var(--text-muted); margin-top: 1rem; line-height: 1.5; }
     /* Escala tipográfica */
-    .scale-row { display: flex; align-items: baseline; gap: 1.5rem; padding: 0.9rem 0; border-bottom: 1px solid var(--bg-border); flex-wrap: wrap; }
-    .scale-sample { flex: 1 1 260px; min-width: 0; color: var(--text-primary); line-height: 1; }
-    .scale-meta { font-family: var(--ff-sans); font-size: 0.72rem; color: var(--text-muted); letter-spacing: 0.04em; text-align: right; flex-shrink: 0; }
-    .s-hero { font-family: var(--ff-display); font-size: clamp(2.4rem, 6vw, 4rem); }
-    .s-title { font-family: var(--ff-display); font-size: 2.4rem; }
-    .s-h3 { font-family: var(--ff-display); font-size: 1.6rem; letter-spacing: 0.03em; text-transform: uppercase; }
-    .s-body { font-family: var(--ff-sans); font-size: 1rem; }
-    .s-small { font-family: var(--ff-sans); font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 600; }
-    .s-tag { font-family: var(--ff-sans); font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase; font-weight: 600; color: var(--red); }
+    .ug-scale { border-top: 1px solid var(--bg-border); }
+    .scale-row { display: flex; align-items: baseline; justify-content: space-between; gap: 1.5rem; padding: 1.05rem 0; border-bottom: 1px solid var(--bg-border); flex-wrap: wrap; }
+    .scale-sample { color: var(--text-primary); line-height: 1; min-width: 0; }
+    .scale-meta { font-family: var(--ff-sans); font-size: 0.7rem; color: var(--text-muted); letter-spacing: 0.04em; text-align: right; flex-shrink: 0; }
+    .s-hero { font-family: var(--ff-display); font-size: clamp(2.2rem, 5vw, 3.4rem); text-transform: uppercase; }
+    .s-title { font-family: var(--ff-display); font-size: 1.9rem; text-transform: uppercase; }
+    .s-h3 { font-family: var(--ff-display); font-size: 1.4rem; letter-spacing: 0.03em; text-transform: uppercase; }
+    .s-body { font-family: var(--ff-sans); font-size: 1rem; color: var(--text-muted); }
+    .s-small { font-family: var(--ff-sans); font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 600; color: var(--red); }
 
-    /* Botones / componentes en fila */
-    .ug-row { display: flex; flex-wrap: wrap; gap: 1.2rem; align-items: center; }
-    .ug-note { font-family: var(--ff-sans); font-size: 0.8rem; color: var(--text-muted); margin-top: 0.8rem; }
+    /* ── 03 · Botones / 04 · Tags — showcase ── */
+    .showcase { display: flex; flex-wrap: wrap; gap: 1.4rem; align-items: center; }
 
-    /* Tokens */
-    .token-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
-    .token { border: 1px solid var(--bg-border); border-radius: var(--radius); padding: 1.1rem 1.2rem; background: var(--bg-mid); }
-    .token-name { font-family: var(--ff-sans); font-size: 0.78rem; font-weight: 600; color: var(--text-primary); }
-    .token-val { font-family: var(--ff-sans); font-size: 0.74rem; color: var(--red); margin-top: 0.2rem; }
-    .token-demo { margin-top: 0.9rem; }
-    .token-demo .bar { height: 16px; background: var(--red); border-radius: 2px; }
-    .radius-demo { width: 90px; height: 54px; background: var(--red); border-radius: var(--radius); }
-
-    /* Efectos */
-    .fx-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1.4rem 1.2rem; }
-    @media (max-width: 720px) { .fx-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-    .fx { text-align: center; }
-    .fx-label { font-family: var(--ff-sans); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-top: 1.1rem; }
-
-    /* Borde rasgado demo */
-    .fx-torn { position: relative; height: 130px; display: flex; align-items: center; justify-content: center; }
+    /* ── 05 · Efectos ── */
+    .fx-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.8rem; }
+    .fx-box { position: relative; height: 150px; border: 1px solid var(--bg-border); border-radius: var(--radius); background: var(--bg-mid); display: flex; align-items: center; justify-content: center; overflow: hidden; }
+    .fx-label { font-family: var(--ff-sans); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-top: 0.9rem; line-height: 1.5; }
+    /* rasgado */
+    .fx-torn { border: none; background: transparent; }
     .fx-torn span { position: relative; z-index: 1; font-family: var(--ff-display); font-size: 1.6rem; color: var(--text-dark); }
-    .fx-torn::before { content: ''; position: absolute; inset: 0 22%; background: var(--cream); filter: url(#paper-rip); box-shadow: 0 16px 38px rgba(0,0,0,0.45); z-index: 0; }
-
-    /* Doodles demo */
-    .fx-doodles { display: flex; flex-wrap: wrap; gap: 1.2rem; justify-content: center; align-items: center; height: 130px; }
-    .fx-doodles svg { width: 46px; height: 46px; color: var(--red); filter: url(#doodle-rough); }
-    .fx-doodles svg.big { width: 66px; height: 66px; }
-
-    /* Glow pulsante demo */
-    .fx-glow { display: flex; align-items: center; justify-content: center; height: 130px; }
-    .fx-glow span { font-family: var(--ff-display); font-size: 2.6rem; color: var(--red); animation: sg-glow 2.2s ease-in-out infinite; }
+    .fx-torn::before { content: ''; position: absolute; inset: 6px 16%; background: var(--cream); filter: url(#paper-rip); box-shadow: 0 16px 38px rgba(0,0,0,0.45); z-index: 0; }
+    /* doodles */
+    .fx-doodles { gap: 1rem; flex-wrap: wrap; padding: 0 1rem; }
+    .fx-doodles svg { width: 44px; height: 44px; color: var(--red); filter: url(#doodle-rough); }
+    .fx-doodles svg.big { width: 60px; height: 60px; }
+    /* glow */
+    .fx-glow span { font-family: var(--ff-display); font-size: 2.4rem; color: var(--red); animation: sg-glow 2.2s ease-in-out infinite; }
     @keyframes sg-glow { 0%,100% { text-shadow: 0 0 8px rgba(229,0,0,0.35); } 50% { text-shadow: 0 0 26px rgba(229,0,0,0.85); } }
-
-    /* Flip card demo */
-    .fx-flip { height: 130px; perspective: 900px; }
-    .fx-flip-inner { position: relative; width: 100%; height: 100%; transform-style: preserve-3d; transition: transform 0.6s cubic-bezier(.22,1,.36,1); }
-    .fx-flip:hover .fx-flip-inner { transform: rotateY(180deg); }
-    .fx-face { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; display: flex; align-items: center; justify-content: center; background: var(--cream); color: var(--text-dark); border-radius: var(--radius); font-family: var(--ff-display); font-size: 1.5rem; }
-    .fx-face.back { transform: rotateY(180deg); background: var(--red); color: #fff; font-size: 1rem; font-family: var(--ff-sans); text-transform: uppercase; letter-spacing: 0.12em; }
-
-    /* Neón botón demo */
-    .fx-neon { display: flex; align-items: center; justify-content: center; height: 130px; }
-
-    /* Marquee demo */
-    .fx-marquee { overflow: hidden; height: 130px; display: flex; align-items: center; border: 1px solid var(--bg-border); border-radius: var(--radius); }
-    .fx-marquee-track { display: flex; gap: 1rem; width: max-content; animation: sg-marquee 12s linear infinite; padding: 0 0.5rem; }
+    /* marquee */
+    .fx-marquee { padding: 0; }
+    .fx-marquee-track { display: flex; gap: 1rem; width: max-content; animation: sg-marquee 12s linear infinite; }
     .fx-marquee-track span { font-family: var(--ff-display); font-size: 1.4rem; color: var(--red); white-space: nowrap; }
     @keyframes sg-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-    /* Imágenes */
-    .img-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 1.6rem 1.4rem; }
-    .img-frame { position: relative; aspect-ratio: 4 / 5; background: #1a1a1a; overflow: hidden; }
+    /* ── 06 · Imágenes ── */
+    .img-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.8rem; }
+    .img-frame { position: relative; aspect-ratio: 4/5; background: #1a1a1a; overflow: hidden; border-radius: var(--radius); }
     .img-frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .img-label { font-family: var(--ff-sans); font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-muted); margin-top: 1.8rem; text-align: center; }
+    .img-label { font-family: var(--ff-sans); font-size: 0.68rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-muted); margin-top: 0.9rem; }
+    .img-torn { overflow: visible; background: transparent; }
     .img-torn::before { content: ''; position: absolute; inset: -12px; background: var(--cream); filter: url(#paper-rip); box-shadow: 0 16px 38px rgba(0,0,0,0.45); z-index: -1; }
-    .img-torn { overflow: visible; }
     .img-silueta { background: #0e0e0e; display: flex; align-items: center; justify-content: center; }
-    .img-silueta img { width: auto; height: 88%; object-fit: contain; filter: url(#tint-red); }
+    .img-silueta img { width: auto; height: 86%; object-fit: contain; filter: url(#tint-red); }
     .img-overlay::after { content: ''; position: absolute; inset: 0; background: linear-gradient(rgba(10,10,10,0.3), rgba(10,10,10,0.82)); }
-    .img-overlay .ov-text { position: absolute; bottom: 0.8rem; left: 0.9rem; z-index: 2; font-family: var(--ff-display); color: #fff; font-size: 1.3rem; letter-spacing: 0.03em; }
+    .img-overlay .ov-text { position: absolute; bottom: 0.7rem; left: 0.8rem; z-index: 2; font-family: var(--ff-display); color: #fff; font-size: 1.2rem; }
     .img-png { background: repeating-conic-gradient(#141414 0 25%, #1f1f1f 0 50%) 0 0 / 22px 22px; display: flex; align-items: center; justify-content: center; }
-    .img-png img { width: auto; height: 92%; object-fit: contain; }
+    .img-png img { width: auto; height: 90%; object-fit: contain; }
 
-    /* ── Responsive mobile ── */
-    @media (max-width: 700px) {
-      .ug { padding: clamp(1.8rem, 7vw, 2.6rem) var(--sp-side); }
-      .ug-subtitle { font-size: 1.1rem; margin: 1.6rem 0 0.9rem; }
+    /* ── Responsive ── */
+    @media (max-width: 860px) {
+      .fx-grid, .img-grid, .ug-swatches { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 620px) {
       .ug-fonts { grid-template-columns: 1fr; }
-      .fontcard { padding: 1.4rem; }
-      .fontcard .fc-big-display { font-size: 2.7rem; }
-      .fontcard .fc-big-sans { font-size: 1.9rem; }
-      .img-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.4rem 1rem; }
-      .ug-swatches--full { grid-template-columns: repeat(2, 1fr); }
-      .fx-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .ug-row { gap: 0.8rem; }
     }
-    @media (max-width: 400px) {
-      .img-grid { grid-template-columns: 1fr; }
-      .fx-grid { grid-template-columns: 1fr; }
-      .ug-swatches--full { grid-template-columns: 1fr; }
-    }
-
-    /* Sin textura de grano en toda la página UI */
-    body::after { display: none !important; }
-
-    /* Encabezados al estilo de las secciones del sitio (centrados + display grande) */
-    .ug-inner > .ug-kicker,
-    .ug-inner > .ug-title,
-    .ug-inner > .ug-lead { text-align: center; }
-    .ug-kicker::before { content: '★ '; }
-    .ug-title { font-size: clamp(2.8rem, 6vw, 5rem); letter-spacing: 0.02em; margin: 0.5rem 0 0.7rem; }
-    .ug-lead { margin-left: auto; margin-right: auto; margin-bottom: 3rem; }
-    .ug-subtitle { text-align: center; }
-
-    /* ── 4 elementos por fila ── */
-    .ug-swatches--full { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-    .fx-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-    .img-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-    @media (max-width: 720px) {
-      .ug-swatches--full, .fx-grid, .img-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    }
-    @media (max-width: 400px) {
-      .ug-swatches--full, .fx-grid, .img-grid { grid-template-columns: 1fr; }
+    @media (max-width: 440px) {
+      .fx-grid, .img-grid, .ug-swatches { grid-template-columns: 1fr; }
+      .scale-meta { text-align: left; }
     }
   </style>
 </head>
@@ -202,22 +154,20 @@
   </nav>
 </header>
 
-<!-- HERO -->
-<section class="ug reveal-section" style="padding-top: calc(64px + 3rem); position:relative; z-index:9001;">
-  <div class="ug-inner" style="text-align:center;">
-    <span class="ug-kicker">Design System</span>
-    <h1 class="ug-title" style="font-size:clamp(2.4rem, 6vw, 4.4rem); margin-top:0.5rem;">SISTEMA DE DISEÑO</h1>
-    <p class="ug-lead" style="margin:1rem auto 0;">La caja de herramientas visual de <strong style="color:var(--text-primary)">Trastes — Luthería de Autor</strong>:<br>paleta, tipografías, escala, botones, tokens y efectos.</p>
+<!-- HEADER DEL KIT -->
+<section class="kit-header">
+  <div class="ug-inner">
+    <span class="kit-kicker">★ Design System</span>
+    <h1>Sistema de diseño</h1>
+    <p>La caja de herramientas visual de <strong>Trastes — Luthería de Autor</strong>: paleta, tipografías, botones, efectos e imágenes.</p>
   </div>
 </section>
 
-<!-- COLORES -->
+<!-- 01 · COLORES -->
 <section class="ug reveal-section">
   <div class="ug-inner">
-    <span class="ug-kicker">01 · Paleta</span>
-    <h2 class="ug-title">COLORES</h2>
-
-    <div class="ug-swatches ug-swatches--full">
+    <h2 class="ug-title"><span class="num">01</span> Paleta de colores</h2>
+    <div class="ug-swatches">
       <div class="sw"><div class="sw-color" style="background:#000000"></div><div class="sw-meta"><div class="sw-name">Negro</div><div class="sw-var">--bg-deep</div><div class="sw-hex">#000000</div></div></div>
       <div class="sw"><div class="sw-color" style="background:#E50000"></div><div class="sw-meta"><div class="sw-name">Rojo rebelde</div><div class="sw-var">--red</div><div class="sw-hex">#E50000</div></div></div>
       <div class="sw"><div class="sw-color" style="background:#F4F3F0"></div><div class="sw-meta"><div class="sw-name">Crema</div><div class="sw-var">--cream</div><div class="sw-hex">#F4F3F0</div></div></div>
@@ -226,35 +176,42 @@
   </div>
 </section>
 
-<!-- TIPOGRAFÍAS -->
+<!-- 02 · TIPOGRAFÍA -->
 <section class="ug reveal-section">
   <div class="ug-inner">
-    <span class="ug-kicker">02 · Tipografía</span>
-    <h2 class="ug-title">FAMILIAS</h2>
+    <h2 class="ug-title"><span class="num">02</span> Jerarquía tipográfica</h2>
+
     <div class="ug-fonts">
       <div class="fontcard">
         <div class="fc-role">Display · Títulos</div>
         <div class="fc-big-display">HACETE<br>DE ABAJO</div>
         <div class="fc-alpha">A B C D E F G · 0 1 2 3 4 5</div>
-        <div class="fc-stack">'pf-fuel-grime', 'Bebas Neue', 'Impact'<br>Uso: títulos de sección, números y la cinta marquee. Mayúsculas, condensada, grunge.</div>
+        <div class="fc-stack">'pf-fuel-grime', 'Bebas Neue', 'Impact'<br>Títulos de sección, números y la cinta marquee. Mayúsculas, condensada, grunge.</div>
       </div>
       <div class="fontcard fontcard--sans">
         <div class="fc-role">Sans · Texto</div>
         <div class="fc-big-sans">Tu próxima guitarra no se compra.</div>
         <div class="fc-alpha">A B C D E F G · 0 1 2 3 4 5</div>
-        <div class="fc-stack">'tt-commons-pro', 'Inter', system-ui<br>Uso: cuerpo, bajadas, botones y labels. Pesos 300 / 400 / 500 / 600.</div>
+        <div class="fc-stack">'tt-commons-pro', 'Inter', system-ui<br>Cuerpo, bajadas, botones y labels. Pesos 300 / 400 / 500 / 600.</div>
       </div>
     </div>
 
+    <p class="ug-sub">Escala</p>
+    <div class="ug-scale">
+      <div class="scale-row"><span class="scale-sample s-hero">Hacete de abajo</span><span class="scale-meta">Display · Hero<br>clamp 2.2–3.4rem</span></div>
+      <div class="scale-row"><span class="scale-sample s-title">Ingeniería del sonido</span><span class="scale-meta">Display · Título<br>1.9rem</span></div>
+      <div class="scale-row"><span class="scale-sample s-h3">Del primer corte</span><span class="scale-meta">Display · Subtítulo<br>1.4rem</span></div>
+      <div class="scale-row"><span class="scale-sample s-body">Una guitarra que no se compra, se construye.</span><span class="scale-meta">Sans · Cuerpo<br>1rem</span></div>
+      <div class="scale-row"><span class="scale-sample s-small">★ Materia prima</span><span class="scale-meta">Sans · Etiqueta<br>0.72rem</span></div>
+    </div>
   </div>
 </section>
 
-<!-- BOTONES -->
+<!-- 03 · BOTONES -->
 <section class="ug reveal-section">
   <div class="ug-inner">
-    <span class="ug-kicker">03 · Acciones</span>
-    <h2 class="ug-title">BOTONES</h2>
-    <div class="ug-row">
+    <h2 class="ug-title"><span class="num">03</span> Botones y acciones</h2>
+    <div class="showcase">
       <button class="btn btn-primary" type="button">Botón primario <span aria-hidden="true">→</span></button>
       <button class="btn btn-ghost" type="button">Botón fantasma</button>
       <a class="nav-cta" href="#" style="pointer-events:none">Nav CTA</a>
@@ -263,12 +220,11 @@
   </div>
 </section>
 
-<!-- TAGS -->
+<!-- 04 · TAGS -->
 <section class="ug reveal-section">
   <div class="ug-inner">
-    <span class="ug-kicker">04 · Etiquetas</span>
-    <h2 class="ug-title">TAGS &amp; BADGES</h2>
-    <div class="ug-row">
+    <h2 class="ug-title"><span class="num">04</span> Tags y badges</h2>
+    <div class="showcase">
       <span class="section-tag">★ Section tag</span>
       <span class="curso-off">20% OFF</span>
       <span class="curso-duracion" style="position:static;">6 meses</span>
@@ -277,49 +233,45 @@
   </div>
 </section>
 
-<!-- EFECTOS -->
+<!-- 05 · EFECTOS -->
 <section class="ug reveal-section">
   <div class="ug-inner">
-    <span class="ug-kicker">05 · Efectos</span>
-    <h2 class="ug-title">EFECTOS &amp; TEXTURAS</h2>
+    <h2 class="ug-title"><span class="num">05</span> Efectos y texturas</h2>
     <div class="fx-grid">
       <div class="fx">
-        <div class="fx-torn"><span>Rasgado</span></div>
-        <div class="fx-label">Borde de papel rasgado · SVG #paper-rip</div>
+        <div class="fx-box fx-torn"><span>Rasgado</span></div>
+        <div class="fx-label">Borde de papel rasgado · #paper-rip</div>
       </div>
       <div class="fx">
-        <div class="fx-doodles">
+        <div class="fx-box fx-doodles">
           <svg viewBox="0 0 50 100"><use href="#d-bolt"/></svg>
           <svg viewBox="0 0 100 100" class="big"><use href="#d-skull"/></svg>
           <svg viewBox="0 0 100 100"><use href="#d-star"/></svg>
           <svg viewBox="0 0 100 100" class="big"><use href="#d-anarchy"/></svg>
           <svg viewBox="0 0 100 100"><use href="#d-spiral"/></svg>
         </div>
-        <div class="fx-label">Doodles a mano alzada · SVG #doodle-rough</div>
+        <div class="fx-label">Doodles a mano alzada · #doodle-rough</div>
       </div>
       <div class="fx">
-        <div class="fx-glow"><span>ENCENDIDO</span></div>
-        <div class="fx-label">Glow rojo pulsante (animación en loop)</div>
+        <div class="fx-box fx-glow"><span>ENCENDIDO</span></div>
+        <div class="fx-label">Glow rojo pulsante (loop)</div>
       </div>
       <div class="fx">
-        <div class="fx-neon"><button class="btn btn-primary" type="button">Neón al hover</button></div>
-        <div class="fx-label">Reborde + resplandor neón en el botón primario</div>
+        <div class="fx-box fx-neon"><button class="btn btn-primary" type="button">Neón al hover</button></div>
+        <div class="fx-label">Reborde + resplandor neón</div>
       </div>
       <div class="fx">
-        <div class="fx-marquee"><div class="fx-marquee-track"><span>HACETE DE ABAJO ★ HACETE DE ABAJO ★&nbsp;</span><span>HACETE DE ABAJO ★ HACETE DE ABAJO ★&nbsp;</span></div></div>
+        <div class="fx-box fx-marquee"><div class="fx-marquee-track"><span>HACETE DE ABAJO ★ HACETE DE ABAJO ★&nbsp;</span><span>HACETE DE ABAJO ★ HACETE DE ABAJO ★&nbsp;</span></div></div>
         <div class="fx-label">Banda / marquee en loop</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- IMÁGENES -->
+<!-- 06 · IMÁGENES -->
 <section class="ug reveal-section">
   <div class="ug-inner">
-    <span class="ug-kicker">06 · Imágenes</span>
-    <h2 class="ug-title">FORMATO DE IMÁGENES</h2>
-
-    <h3 class="ug-subtitle">Tratamientos</h3>
+    <h2 class="ug-title"><span class="num">06</span> Formato de imágenes</h2>
     <div class="img-grid">
       <div>
         <div class="img-frame img-torn"><img src="assets/taller.jpg" alt="Foto con marco de papel rasgado" loading="lazy"></div>
@@ -335,11 +287,7 @@
       </div>
       <div>
         <div class="img-frame img-png"><img src="assets/guitarra.png" alt="PNG con transparencia" loading="lazy"></div>
-        <div class="img-label">PNG transparente (silueta)</div>
-      </div>
-      <div>
-        <div class="img-frame"><img src="assets/cedro-madera.png" alt="Textura de madera" loading="lazy"></div>
-        <div class="img-label">Textura de madera (PNG)</div>
+        <div class="img-label">PNG transparente</div>
       </div>
     </div>
   </div>
@@ -396,20 +344,20 @@
 
 <script src="js/main.js"></script>
 <script>
-  /* Aparición escalonada de cada demo al entrar en viewport (mismo lenguaje que el sitio) */
+  /* Aparición escalonada de cada demo al entrar en viewport */
   (function () {
-    var items = document.querySelectorAll('.sw, .fontcard, .fx, .img-grid > div, .ug-row > *');
+    var items = document.querySelectorAll('.sw, .fontcard, .scale-row, .fx, .img-grid > div, .showcase > *');
     items.forEach(function (el) { el.classList.add('reveal-item'); });
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
         if (!e.isIntersecting) return;
         var group = e.target.querySelectorAll('.reveal-item');
         group.forEach(function (it, i) {
-          setTimeout(function () { it.classList.add('is-visible'); }, i * 90);
+          setTimeout(function () { it.classList.add('is-visible'); }, i * 70);
         });
         io.unobserve(e.target);
       });
-    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    }, { threshold: 0.1, rootMargin: '0px 0px -8% 0px' });
     document.querySelectorAll('.ug .ug-inner').forEach(function (g) { io.observe(g); });
   })();
 </script>
