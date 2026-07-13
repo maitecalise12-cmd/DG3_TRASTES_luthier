@@ -136,6 +136,29 @@
       .fx-grid { grid-template-columns: 1fr; }
       .ug-swatches--full { grid-template-columns: 1fr; }
     }
+
+    /* Sin textura de grano en toda la página UI */
+    body::after { display: none !important; }
+
+    /* Encabezados al estilo de las secciones del sitio (centrados + display grande) */
+    .ug-inner > .ug-kicker,
+    .ug-inner > .ug-title,
+    .ug-inner > .ug-lead { text-align: center; }
+    .ug-kicker::before { content: '★ '; }
+    .ug-title { font-size: clamp(2.8rem, 6vw, 5rem); letter-spacing: 0.02em; margin: 0.5rem 0 0.7rem; }
+    .ug-lead { margin-left: auto; margin-right: auto; margin-bottom: 3rem; }
+    .ug-subtitle { text-align: center; }
+
+    /* ── 4 elementos por fila ── */
+    .ug-swatches--full { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .fx-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .img-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    @media (max-width: 720px) {
+      .ug-swatches--full, .fx-grid, .img-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 400px) {
+      .ug-swatches--full, .fx-grid, .img-grid { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
@@ -180,16 +203,16 @@
 </header>
 
 <!-- HERO -->
-<section class="ug" style="padding-top: calc(64px + 3rem); position:relative; z-index:9001;">
+<section class="ug reveal-section" style="padding-top: calc(64px + 3rem); position:relative; z-index:9001;">
   <div class="ug-inner" style="text-align:center;">
-    <span class="ug-kicker">★ Design System</span>
+    <span class="ug-kicker">Design System</span>
     <h1 class="ug-title" style="font-size:clamp(2.4rem, 6vw, 4.4rem); margin-top:0.5rem;">SISTEMA DE DISEÑO</h1>
     <p class="ug-lead" style="margin:1rem auto 0;">La caja de herramientas visual de <strong style="color:var(--text-primary)">Trastes — Luthería de Autor</strong>:<br>paleta, tipografías, escala, botones, tokens y efectos.</p>
   </div>
 </section>
 
 <!-- COLORES -->
-<section class="ug">
+<section class="ug reveal-section">
   <div class="ug-inner">
     <span class="ug-kicker">01 · Paleta</span>
     <h2 class="ug-title">COLORES</h2>
@@ -204,7 +227,7 @@
 </section>
 
 <!-- TIPOGRAFÍAS -->
-<section class="ug">
+<section class="ug reveal-section">
   <div class="ug-inner">
     <span class="ug-kicker">02 · Tipografía</span>
     <h2 class="ug-title">FAMILIAS</h2>
@@ -227,7 +250,7 @@
 </section>
 
 <!-- BOTONES -->
-<section class="ug">
+<section class="ug reveal-section">
   <div class="ug-inner">
     <span class="ug-kicker">03 · Acciones</span>
     <h2 class="ug-title">BOTONES</h2>
@@ -241,7 +264,7 @@
 </section>
 
 <!-- TAGS -->
-<section class="ug">
+<section class="ug reveal-section">
   <div class="ug-inner">
     <span class="ug-kicker">04 · Etiquetas</span>
     <h2 class="ug-title">TAGS &amp; BADGES</h2>
@@ -255,7 +278,7 @@
 </section>
 
 <!-- EFECTOS -->
-<section class="ug">
+<section class="ug reveal-section">
   <div class="ug-inner">
     <span class="ug-kicker">05 · Efectos</span>
     <h2 class="ug-title">EFECTOS &amp; TEXTURAS</h2>
@@ -291,7 +314,7 @@
 </section>
 
 <!-- IMÁGENES -->
-<section class="ug">
+<section class="ug reveal-section">
   <div class="ug-inner">
     <span class="ug-kicker">06 · Imágenes</span>
     <h2 class="ug-title">FORMATO DE IMÁGENES</h2>
@@ -372,5 +395,23 @@
 </footer>
 
 <script src="js/main.js"></script>
+<script>
+  /* Aparición escalonada de cada demo al entrar en viewport (mismo lenguaje que el sitio) */
+  (function () {
+    var items = document.querySelectorAll('.sw, .fontcard, .fx, .img-grid > div, .ug-row > *');
+    items.forEach(function (el) { el.classList.add('reveal-item'); });
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        var group = e.target.querySelectorAll('.reveal-item');
+        group.forEach(function (it, i) {
+          setTimeout(function () { it.classList.add('is-visible'); }, i * 90);
+        });
+        io.unobserve(e.target);
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    document.querySelectorAll('.ug .ug-inner').forEach(function (g) { io.observe(g); });
+  })();
+</script>
 </body>
 </html>
