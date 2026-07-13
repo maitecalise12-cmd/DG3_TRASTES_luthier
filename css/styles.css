@@ -1950,6 +1950,20 @@ body::after {
 }
 .maderas-hint span { color: #8A7A66; font-weight: 400; }
 
+/* Indicación de interacción — mismo estilo que el hint de maderas, reutilizable en toda la web */
+.hint {
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin: 0.6rem 0 0;
+}
+.hint span { color: #8A7A66; font-weight: 400; }
+/* Sobre fondos oscuros (anatomía) el hint va en crema */
+.anatomia .hint { color: var(--cream); }
+.anatomia .hint span { color: rgba(244,243,240,0.55); }
+
 /* Banda en loop infinito de maderas — dos filas, a todo el ancho de la página */
 .maderas-marquee {
   position: relative;
