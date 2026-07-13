@@ -177,7 +177,7 @@ body::after {
 }
 
 .btn-ghost {
-  background: transparent;
+  background: rgba(0,0,0,0.2);
   color: var(--text-primary);
   border-color: rgba(255,255,255,0.22);
 }
@@ -3520,7 +3520,7 @@ details[open] .faq-question::after { transform: rotate(45deg); }
   text-transform: uppercase;
   color: var(--text-dark);
 }
-.acc-arrow { color: var(--red); font-size: 0.85rem; transition: transform 0.35s ease; }
+.acc-arrow { color: var(--red); font-size: 1.5rem; line-height: 1; filter: url(#doodle-rough); transition: transform 0.35s ease; }
 .acc-body {
   max-height: 0;
   overflow: hidden;
@@ -3573,7 +3573,7 @@ details[open] .faq-question::after { transform: rotate(45deg); }
 }
 .inscripcion-inner { position: relative; z-index: 1; max-width: 640px; margin: 0 auto; }
 /* Doodles rojos y grandes alrededor de la sección */
-.curso-inscripcion .doodle { color: var(--red); opacity: 0.85; }
+.curso-inscripcion .doodle { color: var(--red); opacity: 0.55; }
 .curso-inscripcion .section-title { font-size: clamp(2.6rem, 6vw, 5rem); margin-bottom: 1.5rem; }
 .inscripcion-precio { display: flex; flex-direction: column; gap: 0.25rem; margin-bottom: 1rem; }
 .inscripcion-num {
@@ -3756,17 +3756,12 @@ details[open] .faq-question::after { transform: rotate(45deg); }
   .marquee-arrow--prev { left: 50%; right: auto; margin-left: -52px; }
   .marquee-arrow--next { right: 50%; left: auto; margin-right: -52px; }
 
-  /* SALÍ DE LO CONVENCIONAL (maderas): flechas más chicas */
-  .maderas-marquee .marquee-arrow { width: 34px; height: 34px; font-size: 1.1rem; }
-  .maderas-marquee .marquee-arrow--prev { margin-left: -44px; }
-  .maderas-marquee .marquee-arrow--next { margin-right: -44px; }
-
   /* SALIERON CON LA SUYA (resultados): flechas más abajo */
   .resultados-marquee { padding-bottom: 92px; }
 
   /* FAQ: doodles solo en la franja del título (arriba) y debajo de las preguntas (abajo),
      nunca encima de la lista de preguntas */
-  .faq .doodle { width: 34px !important; opacity: 0.5; }
+  .faq .doodle { width: 34px !important; opacity: 0.55; }
   /* Franja del título (arriba) */
   .faq .doodle:nth-of-type(1) { top: 1% !important;  left: 3% !important; }
   .faq .doodle:nth-of-type(2) { top: 7% !important;  left: 11% !important; }
